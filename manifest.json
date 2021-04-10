@@ -1,0 +1,45 @@
+{
+	"manifest_version": 2,
+	"name": "AO3 Enhancement Suite",
+	"version": "1.0",
+
+	"developer":
+	{
+		"name": "Dr. Off"
+	},
+
+	"description": "Adds various new features when browsing on Archive of Our Own.",
+
+	"icons": 
+	{
+		"48": "icons/logo_48.png"
+	},
+
+	"content_scripts": 
+	[
+		{
+			"matches": 
+			[
+				"*://*.archiveofourown.org/works/search*"
+			],
+			"js": 
+			[
+				"js/search.js"
+			]
+		}
+	],
+
+	"permissions":
+	[
+		"storage",
+		"unlimitedStorage"
+	],
+
+	"browser_specific_settings":
+	{
+		"gecko":
+		{
+			"id": "{232432af-629e-4e61-b893-b9521a125456}"
+		}
+	}
+}
