@@ -6,6 +6,9 @@
 
 	let searchPresets = (await browser.storage.local.get("searchPresets")).searchPresets;
 
+	if(searchPresets == undefined)
+		searchPresets = {};
+
 	//
 	// Locals
 	//

@@ -3,12 +3,9 @@
 	"name": "AO3 Enhancement Suite",
 	"version": "1.0",
 
-	"developer":
-	{
-		"name": "Dr. Off"
-	},
-
 	"description": "An extension that aims to improve upon the already great experience on AO3 by adding various additional features.",
+
+	"author": "Dr. Off",
 
 	"icons": 
 	{
@@ -34,6 +31,7 @@
 			],
 			"js": 
 			[
+				"js/polyfills/browser-polyfill.min.js",
 				"js/search.js"
 			]
 		}
@@ -43,13 +41,5 @@
 	[
 		"storage",
 		"unlimitedStorage"
-	],
-
-	"browser_specific_settings":
-	{
-		"gecko":
-		{
-			"id": "{232432af-629e-4e61-b893-b9521a125456}"
-		}
-	}
+	]
 }
