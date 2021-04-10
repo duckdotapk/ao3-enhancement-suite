@@ -270,7 +270,7 @@
 
 		document.activeElement.blur();
 
-		window.scrollTo(oldScrollX, oldScrollY); // TODO: Figure out why this doesn't work.
+		window.scrollTo(oldScrollX, oldScrollY); // TODO: Figure out why this doesn't work in Firefox (seems to work in Chrome?)
 	}
 
 	function addPresetOption(select, searchPresetName, changeSelection)
@@ -319,19 +319,26 @@
 			return;
 		}
 
+		let replacingExisting = false;
 		if(searchPresets[searchPresetName] != undefined)
 		{
 			let confirmation = window.confirm(`A preset with the name "${ searchPresetName }" already exists. Saving this preset will replace it.`);
 
 			if(!confirmation)
 				return;
+
+			replacingExisting = true;
 		}
 
 		searchPresets[searchPresetName] = getCurrentSearchSettings();
 
 		browser.storage.local.set({ searchPresets: searchPresets });
 
-		addPresetOption(document.getElementById("aes_search_presets"), searchPresetName, true);
+		const select = document.getElementById("aes_search_presets")
+		if(!replacingExisting)
+			addPresetOption(select, searchPresetName, true);
+		else
+			select.value = searchPresetName;
 	}
 
 	//
