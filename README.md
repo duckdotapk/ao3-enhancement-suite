@@ -5,6 +5,7 @@ AO3 Enhancement Suite is a browser extension that aims to improve upon the alrea
 # Features
 
 * Saving Search Presets
+* Average Words per Chapter Statistic on Multi-chapter Works
 
 # License
 

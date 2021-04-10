@@ -18,6 +18,16 @@
 	"content_scripts": 
 	[
 		{
+			"matches":
+			[
+				"*://*.archiveofourown.org/*"
+			],
+			"js":
+			[
+				"js/global.js"
+			]
+		},
+		{
 			"matches": 
 			[
 				"*://*.archiveofourown.org/works/search*"
