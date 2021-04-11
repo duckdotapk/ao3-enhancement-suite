@@ -145,6 +145,8 @@
 			searchSettings.fandom_names = getAutocompleteItems("work_search_fandom_names");
 
 			searchSettings.rating_id = document.getElementById("work_search_rating_ids").value;
+
+			// Archive Warnings
 			searchSettings.warning_14 = document.getElementById("warning_14").checked;
 			searchSettings.warning_17 = document.getElementById("warning_17").checked;
 			searchSettings.warning_18 = document.getElementById("warning_18").checked;
@@ -152,6 +154,7 @@
 			searchSettings.warning_19 = document.getElementById("warning_19").checked;
 			searchSettings.warning_20 = document.getElementById("warning_20").checked;
 
+			// Relationship Types
 			searchSettings.category_116 = document.getElementById("category_116").checked;
 			searchSettings.category_22 = document.getElementById("category_22").checked;
 			searchSettings.category_21 = document.getElementById("category_21").checked;
