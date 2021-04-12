@@ -41,10 +41,15 @@
 			[
 				"*://*.archiveofourown.org/*"
 			],
+			"css":
+			[
+				"css/global.css"
+			],
 			"js":
 			[
 				"js/polyfills/browser-polyfill.min.js",
-				"js/features/average-words-per-chapter-stat.js"
+				"js/features/average-words-per-chapter-stat.js",
+				"js/features/tag-collapse.js"
 			]
 		},
 		{
