@@ -1,5 +1,3 @@
-console.log("salad");
-
 document.addEventListener("DOMContentLoaded", function() 
 {
 	const storage = browser.storage.local.get("settings");
