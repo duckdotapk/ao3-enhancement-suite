@@ -50,10 +50,10 @@
 				"js/polyfills/browser-polyfill.min.js",
 				
 				"js/classes/Setting.js",
-
 				"js/settings.js",
-				"js/features/average-words-per-chapter-stat.js",
-				"js/features/tag-collapse.js"
+
+				"js/features/tag-collapse.js",
+				"js/features/work-stats.js"
 			]
 		},
 		{
