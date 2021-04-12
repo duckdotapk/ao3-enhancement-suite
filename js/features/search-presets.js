@@ -356,6 +356,10 @@
 	//
 
 	const form = document.getElementById("new_work_search");
+	
+	// Looking at search results and not the search form
+	if(form == undefined)
+		return;
 
 	const aesFieldset = document.createElement("fieldset");
 
