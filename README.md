@@ -1,6 +1,5 @@
 # AO3 Enhancement Suite
-
-AO3 Enhancement Suite is a browser extension that aims to improve upon the already great experience on AO3 by adding various additional features.
+AO3 Enhancement Suite is a browser extension that aims to improve upon the already great experience on [Archive of Our Own](https://archiveofourown.org) by adding various additional features and niceties.
 
 # Features
 ## Search Presets
