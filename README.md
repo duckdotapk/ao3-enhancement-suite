@@ -11,6 +11,9 @@ AO3 Enhancement Suite is a browser extension that aims to improve upon the alrea
 
 See [LICENSE](/LICENSE).
 
+# Installation
+This extension is now available from the [Chrome Web Store](https://chrome.google.com/webstore/detail/ao3-enhancement-suite/bhmneclegcomgehhnoielpcmgjbamblj) and the [Firefox Add-on Store](https://addons.mozilla.org/en-US/firefox/addon/ao3-enhancement-suite/).
+
 # Version History
 ## 1.0
 Initial release.
