@@ -1,0 +1,56 @@
+{
+	"name":
+	{
+		"message": "AO3 Enhancement Suite"
+	},
+
+	"description":
+	{
+		"message": "An extension that aims to improve upon the already great experience on AO3 by adding various additional features."
+	},
+
+	"search_presets":
+	{
+		"message": "Search presets"
+	},
+
+	"tag_collapse":
+	{
+		"message": "Tag collapse"
+	},
+
+	"work_stats":
+	{
+		"message": "Work stats"
+	},
+
+	"enable":
+	{
+		"message": "Enable"
+	},
+
+	"enable_titled":
+	{
+		"message": "Enable \"$1\""
+	},
+
+	"threshold":
+	{
+		"message": "Threshold"
+	},
+
+	"average_words_per_chapter":
+	{
+		"message": "Average words per chapter"
+	},
+
+	"estimated_reading_time":
+	{
+		"message": "Estimated reading time"
+	},
+
+	"reading_speed":
+	{
+		"message": "Reading speed (wpm)"
+	}
+}

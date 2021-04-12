@@ -1,13 +1,15 @@
 {
 	"manifest_version": 2,
-	"name": "AO3 Enhancement Suite",
+	"name": "__MSG_name__",
 	"version": "1.1",
 
-	"description": "An extension that aims to improve upon the already great experience on AO3 by adding various additional features.",
+	"description": "__MSG_description__",
 
 	"author": "Dr. Off",
 
 	"homepage_url": "https://github.com/dr-off/ao3-enhancement-suite",
+
+	"default_locale": "en",
 
 	"icons": 
 	{
