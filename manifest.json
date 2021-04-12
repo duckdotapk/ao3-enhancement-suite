@@ -15,6 +15,14 @@
 		"96": "icons/logo_96.png"
 	},
 
+	"options_ui":
+	{
+		"browser_style": true,
+		"chrome_style": true,
+		"open_in_tab": true,
+		"page": "pages/settings.html"
+	},
+
 	"content_scripts": 
 	[
 		{
