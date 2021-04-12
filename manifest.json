@@ -43,7 +43,8 @@
 			],
 			"js":
 			[
-				"js/global.js"
+				"js/polyfills/browser-polyfill.min.js",
+				"js/features/average-words-per-chapter-stat.js"
 			]
 		},
 		{
@@ -54,7 +55,7 @@
 			"js": 
 			[
 				"js/polyfills/browser-polyfill.min.js",
-				"js/search.js"
+				"js/features/search-presets.js"
 			]
 		}
 	],
