@@ -17,15 +17,15 @@
 
 	"options_ui":
 	{
-		"browser_style": false,
-		"chrome_style": false,
-		"open_in_tab": true,
+		"browser_style": true,
+		"chrome_style": true,
+		"open_in_tab": false,
 		"page": "pages/settings.html"
 	},
 
 	"browser_action":
 	{
-		"browser_style": false,
+		"browser_style": true,
 		"default_popup": "pages/settings.html",
 		"default_icon":
 		{
@@ -48,6 +48,10 @@
 			"js":
 			[
 				"js/polyfills/browser-polyfill.min.js",
+				
+				"js/classes/Setting.js",
+
+				"js/settings.js",
 				"js/features/average-words-per-chapter-stat.js",
 				"js/features/tag-collapse.js"
 			]
@@ -59,7 +63,6 @@
 			],
 			"js": 
 			[
-				"js/polyfills/browser-polyfill.min.js",
 				"js/features/search-presets.js"
 			]
 		}

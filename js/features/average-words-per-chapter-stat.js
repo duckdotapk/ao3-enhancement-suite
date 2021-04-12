@@ -4,9 +4,7 @@
 	// Get User Settings
 	//
 
-	const settings = (await browser.storage.local.get("settings")).settings;
-
-	if(settings.enable_average_words_per_chapter_stat != undefined && !settings.enable_average_words_per_chapter_stat)
+	if(!await Setting.get("enable_average_words_per_chapter_stat"))
 		return;
 
 	//

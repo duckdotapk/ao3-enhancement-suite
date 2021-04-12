@@ -1,53 +1,114 @@
-document.addEventListener("DOMContentLoaded", function() 
+function createSettingLabel(settingContainer, setting, appendColon)
 {
-	const defaultSettings =
+	let label = document.createElement("label");
+
+	label.setAttribute("for", setting.id);
+	label.innerHTML = setting.title + (appendColon ? ": " : "");
+
+	settingContainer.appendChild(label);
+}
+
+function createSettingInput(settingContainer, setting, userSettings, changeCallback)
+{
+	let input = document.createElement("input");
+
+	input.type = setting.type;
+	input.id = setting.id;
+
+	let settingValue = userSettings[setting.id] != undefined ? userSettings[setting.id] : setting.defaultValue;
+	switch(setting.type)
 	{
-		enable_search_presets: true,
-		enable_average_words_per_chapter_stat: true,
-		enable_tag_collapse: true,
+		case "checkbox":
+			input.checked = settingValue;
+			break;
+		
+		case "number":
+			input.value = settingValue;
+			
+			if(setting.extraData)
+			{
+				if(setting.extraData.min != undefined)
+					input.setAttribute("min", setting.extraData.min);
+
+				if(setting.extraData.max != undefined)
+					input.setAttribute("max", setting.extraData.max);
+			}
+
+			break;
+
+		default:
+			break;
 	}
 
-	const storage = browser.storage.local.get("settings");
-
-	storage.then(
-		function(storage)
-		{
-			let settings = storage.settings;
-			if(settings == undefined)
-				settings = {};
-
-			settings = 
-			{
-				...defaultSettings,
-				...settings,
-			}
-
-			console.log(document.getElementById);
-
-			document.getElementById("enable_search_presets").checked = settings.enable_search_presets;
-			document.getElementById("enable_average_words_per_chapter_stat").checked = settings.enable_average_words_per_chapter_stat;
-			document.getElementById("enable_tag_collapse").checked = settings.enable_tag_collapse;
-		}, 
-		function(error) 
-		{
-			console.log(`Error: ${error}`);
-		}
-	);
-
-	document.getElementById("settings").addEventListener("submit", function(event)
+	input.addEventListener("change", function(event)
 	{
-		event.preventDefault();
-	
-		console.log(document.getElementById("enable_search_presets").checked);
-
-		browser.storage.local.set(
+		let storage =
 		{
-			settings:
+			settings: userSettings,
+		}
+		
+		storage.settings[setting.id] = changeCallback(event);
+
+		browser.storage.local.set(storage);
+	});
+
+	settingContainer.appendChild(input);
+}
+
+function createCheckboxSetting(settingContainer, setting, userSettings)
+{
+	createSettingInput(settingContainer, setting, userSettings, function(event)
+	{
+		return event.target.checked;
+	});
+
+	createSettingLabel(settingContainer, setting, false);
+}
+
+function createNumberSetting(settingContainer, setting, userSettings)
+{
+	createSettingLabel(settingContainer, setting, true);
+
+	createSettingInput(settingContainer, setting, userSettings, function(event)
+	{
+		return event.target.value;
+	});
+}
+
+document.addEventListener("DOMContentLoaded", async function()
+{
+	const userSettings = (await browser.storage.local.get("settings")).settings;
+
+	const settingsContainer = document.getElementById("settings");
+
+	Setting.categories.forEach(function(settings, categoryId, map)
+	{
+
+		let header = document.createElement("h3");
+		header.innerHTML = categoryId;
+
+		settingsContainer.appendChild(header);
+
+		for(let setting of settings)
+		{
+			const settingContainer = document.createElement("div");
+
+			switch(setting.type)
 			{
-				enable_search_presets: document.getElementById("enable_search_presets").checked,
-				enable_average_words_per_chapter_stat: document.getElementById("enable_average_words_per_chapter_stat").checked,
-				enable_tag_collapse: document.getElementById("enable_tag_collapse").checked,
+				case "checkbox":
+					createCheckboxSetting(settingContainer, setting, userSettings);
+					break;
+
+				case "number":
+					createNumberSetting(settingContainer, setting, userSettings);
+					break;
+
+				default:
+					break;
 			}
-		});
+
+			settingsContainer.appendChild(settingContainer);
+		}
+
 	});
 });

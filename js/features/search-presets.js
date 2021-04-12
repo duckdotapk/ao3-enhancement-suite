@@ -4,9 +4,7 @@
 	// Get User Settings
 	//
 
-	const settings = (await browser.storage.local.get("settings")).settings;
-
-	if(settings.enable_search_presets != undefined && !settings.enable_search_presets)
+	if(!await Setting.get("enable_search_presets"))
 		return;
 
 	//

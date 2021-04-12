@@ -1,19 +1,17 @@
 (async function()
 {
 	//
-	// Get User Settings
+	// Check if this feature is enabled
 	//
 
-	const settings = (await browser.storage.local.get("settings")).settings;
-
-	if(settings.enable_tag_collapse != undefined && !settings.enable_tag_collapse)
+	if(!await Setting.get("enable_tag_collapse"))
 		return;
 
 	//
 	// Locals
 	//
 
-	const threshold = 20; // TODO: Make user customisable
+	const threshold = await Setting.get("tag_collapse_threshold");
 
 	const lists =
 	[
@@ -45,18 +43,26 @@
 			for(let i = threshold; i < tagListItems.length; i++)
 				excessList.appendChild(tagListItems[i]);
 		
-			// Add the "and X more tags" link to the main list	
-			const moreConnector = document.createElement("span");
-			moreConnector.classList.add("aes_tags_more_connector");
-			moreConnector.innerHTML = " and ";
-		
-			mainList.append(moreConnector);
+			// Add the "and X more tags" / "Show X tags" link to the main list
+			let moreConnector;
+			if(threshold > 0)
+			{
+				moreConnector = document.createElement("span");
+				moreConnector.classList.add("aes_tags_more_connector");
+				moreConnector.innerHTML = " and ";
+			
+				mainList.append(moreConnector);
+			}
 		
 			const moreLink = document.createElement("a");
 			moreLink.classList.add("aes_tags_more_link");
 			moreLink.href = "#";
-			moreLink.innerHTML = excessList.children.length + " more tags";
-		
+
+			if(threshold > 0)
+				moreLink.innerHTML = excessList.children.length + " more tags";
+			else
+				moreLink.innerHTML = "Show " + excessList.children.length + " tags";
+
 			moreLink.addEventListener("click", function(event)
 			{
 				event.preventDefault();
@@ -65,7 +71,7 @@
 					mainList.appendChild(excessList.children[0]);
 		
 				excessList.remove();
-				moreConnector.remove();
+				moreConnector?.remove();
 				moreLink.remove();
 			});
 		
