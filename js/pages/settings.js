@@ -77,7 +77,7 @@ function createNumberSetting(settingContainer, setting, userSettings)
 
 document.addEventListener("DOMContentLoaded", async function()
 {
-	const userSettings = (await browser.storage.local.get("settings")).settings;
+	const userSettings = await Setting.getAll();
 
 	const settingsContainer = document.getElementById("settings");
 

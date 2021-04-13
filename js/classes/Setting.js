@@ -7,7 +7,9 @@ class Setting
 
 	static async getAll()
 	{
-		let settings = (await browser.storage.local.get("settings")).settings;
+		let settings = (await browser.storage.local.get("settings"))?.settings;
+		if(settings == undefined)
+			settings = {};
 
 		for(let setting of Setting.instances)
 			if(settings[setting.id] == undefined)
@@ -18,7 +20,9 @@ class Setting
 
 	static async get(id)
 	{
-		let settings = (await browser.storage.local.get("settings")).settings;
+		let settings = (await browser.storage.local.get("settings"))?.settings;
+		if(settings == undefined)
+			settings = {};
 
 		let setting = settings[id];
 
