@@ -29,10 +29,22 @@ You can customise the words-per-minute used to calculate this statistic in the e
 See [LICENSE](/LICENSE).
 
 # Version History
+## 1.1.2
+
+**This update was released on April 13th, 2021.**
+
+- Various internal code changes to resolve warnings from and work around Mozilla's linter.
+- Added new 16x16 and 32x32 icons for the browser action instead of using the 48x48 icon for this.
+
 ## 1.1.1
+
+**This update was released on April 13th, 2021.**
+
 Fixed a few bugs that caused settings to be completely broken for new installs (everyone but me).
 
 ## 1.1
+
+**This update was released on April 12th, 2021.**
 
 - Updated the icon slightly and added a higher resolution version.
 - Added settings to customise your experience.
@@ -46,4 +58,4 @@ Fixed a few bugs that caused settings to be completely broken for new installs (
 	- This will require other people to contribute to the project though as I only know English.
 
 ## 1.0
-Initial release.
+Initial release on April 10th, 2021.
