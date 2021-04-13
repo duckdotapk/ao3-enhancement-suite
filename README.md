@@ -29,5 +29,21 @@ You can customise the words-per-minute used to calculate this statistic in the e
 See [LICENSE](/LICENSE).
 
 # Version History
+## 1.1.1
+Fixed a few bugs that caused settings to be completely broken for new installs (everyone but me).
+
+## 1.1
+
+- Updated the icon slightly and added a higher resolution version.
+- Added settings to customise your experience.
+	- These can be accessed from your browser's extensions panel or via the new AES browser action button.
+- Added a new Tag Collapse feature.
+	- This makes browsing through works with lots and lots of tags much more manageable.
+	- Tags can be expanded via the "And X more tags" button at the end of a tag list.
+	- You can also hide tags altogether by setting the threshold to 0, putting them behind a "Show X tags" button instead.
+- Added a new Estimated reading time stat for works.
+- Added support for localization of most text strings.
+	- This will require other people to contribute to the project though as I only know English.
+
 ## 1.0
 Initial release.
