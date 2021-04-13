@@ -304,7 +304,7 @@
 		if(option.value == "")
 			return;
 
-		if(window.confirm(`Are you sure you'd like to delete your "${ option.innerText }" preset?`))
+		if(window.confirm(browser.i18n.getMessage("delete_currently_selected_preset_message", [ option.innerText ])))
 		{
 			delete searchPresets[option.value];
 
@@ -318,13 +318,13 @@
 
 	function saveCurrentSettingsAsPreset()
 	{
-		let searchPresetName = window.prompt("Name this preset", "My Search Preset");
+		let searchPresetName = window.prompt(browser.i18n.getMessage("name_this_preset"), browser.i18n.getMessage("default_preset_name"));
 
 		searchPresetName = searchPresetName.trim();
 
 		if(searchPresetName == "")
 		{
-			window.alert("Your preset name cannot be blank.");
+			window.alert(browser.i18n.getMessage("preset_name_blank_warning"));
 
 			return;
 		}
@@ -332,7 +332,7 @@
 		let replacingExisting = false;
 		if(searchPresets[searchPresetName] != undefined)
 		{
-			let confirmation = window.confirm(`A preset with the name "${ searchPresetName }" already exists. Saving this preset will replace it.`);
+			let confirmation = window.confirm(browser.i18n.getMessage("preset_name_already_exists_warning"));
 
 			if(!confirmation)
 				return;
@@ -365,7 +365,7 @@
 
 	{
 		const legend = document.createElement("legend");
-		legend.innerText = browser.runtime.getManifest().name + ": Search Presets";
+		legend.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name"), browser.i18n.getMessage("search_presets") ]);
 		
 		aesFieldset.append(legend);
 	}
@@ -380,7 +380,7 @@
 				const label = document.createElement("label");
 
 				label.setAttribute("for", "aes_search_preset");
-				label.innerText = "Search Preset";
+				label.innerText = browser.i18n.getMessage("search_preset");
 				
 				descriptionTerm.append(label);
 			}
@@ -398,7 +398,7 @@
 				{
 					const option = document.createElement("option");
 					option.setAttribute("value", "");
-					option.innerText = "Default";
+					option.innerText = browser.i18n.getMessage("default");
 
 					select.append(option);
 				}
@@ -434,14 +434,14 @@
 		controls.classList.add("actions");
 
 		{
-			addControl(controls, "Delete Currently Selected Preset", function(event)
+			addControl(controls, browser.i18n.getMessage("delete_currently_selected_preset"), function(event)
 			{
 				deleteCurrentlySelectedPreset();
 			});
 		}
 
 		{
-			addControl(controls, "Save Current Settings as Preset", function(event)
+			addControl(controls, browser.i18n.getMessage("save_current_settings_as_preset"), function(event)
 			{
 				saveCurrentSettingsAsPreset();
 			});

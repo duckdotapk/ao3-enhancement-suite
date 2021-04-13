@@ -53,7 +53,7 @@
 		{
 			let average = Math.ceil(words / currentChapterCount);
 
-			addStat(statElement, "aes_average_chapter_length", "Average words per chapter", average.toLocaleString("en"));
+			addStat(statElement, "aes_average_chapter_length", browser.i18n.getMessage("average_words_per_chapter"), average.toLocaleString("en"));
 		}
 
 		// Estimated reading time
@@ -71,7 +71,7 @@
 				
 			stat += minutes.toString() + " minutes";
 
-			addStat(statElement, "aes_estimated_reading_time", "Estimated reading time", stat);
+			addStat(statElement, "aes_estimated_reading_time", browser.i18n.getMessage("estimated_reading_time"), stat);
 		}
 	}
 })();

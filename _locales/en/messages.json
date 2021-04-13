@@ -9,19 +9,24 @@
 		"message": "An extension that aims to improve upon the already great experience on AO3 by adding various additional features."
 	},
 
+	"search_preset":
+	{
+		"message": "Search Preset"
+	},
+
 	"search_presets":
 	{
-		"message": "Search presets"
+		"message": "Search Presets"
 	},
 
 	"tag_collapse":
 	{
-		"message": "Tag collapse"
+		"message": "Tag Collapse"
 	},
 
 	"work_stats":
 	{
-		"message": "Work stats"
+		"message": "Work Stats"
 	},
 
 	"enable":
@@ -51,6 +56,51 @@
 
 	"reading_speed":
 	{
-		"message": "Reading speed (wpm)"
+		"message": "Reading Speed (wpm)"
+	},
+
+	"delete_currently_selected_preset_message":
+	{
+		"message": "Are you sure you'd like to delete your \"$1\" preset?"
+	},
+
+	"name_this_preset":
+	{
+		"message": "Name this preset"
+	},
+
+	"default_preset_name":
+	{
+		"message": "My Search Preset"
+	},
+
+	"preset_name_blank_warning":
+	{
+		"message": "Your preset name cannot be blank"
+	},
+
+	"preset_name_already_exists_warning":
+	{
+		"message": "A preset with the name \"$1\" already exists. Saving this preset will replace it."
+	},
+
+	"fieldset_title":
+	{
+		"message": "$1: $2"
+	},
+
+	"default":
+	{
+		"message": "Default"
+	},
+
+	"delete_currently_selected_preset":
+	{
+		"message": "Delete Currently Selected Preset"
+	},
+
+	"save_current_settings_as_preset":
+	{
+		"message": "Save Current Settings as Preset"
 	}
 }
