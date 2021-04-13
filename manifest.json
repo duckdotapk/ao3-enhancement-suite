@@ -31,8 +31,8 @@
 		"default_popup": "pages/settings.html",
 		"default_icon":
 		{
-			"16": "icons/logo_48.png",
-			"32": "icons/logo_48.png"
+			"16": "icons/logo_16.png",
+			"32": "icons/logo_32.png"
 		}
 	},
 

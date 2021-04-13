@@ -49,7 +49,7 @@
 			{
 				moreConnector = document.createElement("span");
 				moreConnector.classList.add("aes_tags_more_connector");
-				moreConnector.innerHTML = " and ";
+				moreConnector.innerText = " and ";
 			
 				mainList.append(moreConnector);
 			}
@@ -59,9 +59,9 @@
 			moreLink.href = "#";
 
 			if(threshold > 0)
-				moreLink.innerHTML = excessList.children.length + " more tags";
+				moreLink.innerText = excessList.children.length + " more tags";
 			else
-				moreLink.innerHTML = "Show " + excessList.children.length + " tags";
+				moreLink.innerText = "Show " + excessList.children.length + " tags";
 
 			moreLink.addEventListener("click", function(event)
 			{

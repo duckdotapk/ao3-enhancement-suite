@@ -3,7 +3,7 @@ function createSettingLabel(settingContainer, setting, appendColon)
 	let label = document.createElement("label");
 
 	label.setAttribute("for", setting.id);
-	label.innerHTML = setting.title + (appendColon ? ": " : "");
+	label.innerText = setting.title + (appendColon ? ": " : "");
 
 	settingContainer.appendChild(label);
 }
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async function()
 	{
 
 		let header = document.createElement("h3");
-		header.innerHTML = categoryId;
+		header.innerText = categoryId;
 
 		settingsContainer.appendChild(header);
 
