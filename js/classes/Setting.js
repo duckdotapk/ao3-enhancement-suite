@@ -1,9 +1,9 @@
 class Setting
 {
-	static instances = [];
-	static instancesById = {};
+	//static instances = [];
+	//static instancesById = {};
 
-	static categories = new Map();
+	//static categories = new Map();
 
 	static async getAll()
 	{
@@ -53,3 +53,11 @@ class Setting
 		Setting.categories.set(categoryId, category);
 	}
 }
+
+// HACK: This is working around an issue where static fields cause validation to fail on Mozilla.
+//			https://github.com/mozilla/addons-linter/issues/3673
+//			https://github.com/mozilla/addons-linter/issues/3062#issuecomment-714170622
+
+Setting.instances = [];
+Setting.instancesById = {};
+Setting.categories = new Map();
