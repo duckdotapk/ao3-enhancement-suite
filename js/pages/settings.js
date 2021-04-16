@@ -111,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async function()
 		for(let setting of settings)
 		{
 			const settingContainer = document.createElement("div");
+			settingContainer.classList.add("setting");
 
 			switch(setting.type)
 			{
