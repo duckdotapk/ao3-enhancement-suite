@@ -25,11 +25,33 @@ async function insertSelection(textarea)
 		}
 	}
 
+
+
 	textarea.value += processedSelection.join("\r\n\r\n") + "\r\n\r\n";
 
-	if(await Setting.get("fcb_focus_after_insert"))
+	if(await Setting.get("cb_focus_after_insert"))
 		textarea.focus();
 };
+
+function clipCommentBox(mainElement)
+{
+	let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // HACK
+	let mainElementRect = mainElement.getBoundingClientRect();
+
+	let maxX = window.innerWidth - scrollbarWidth - mainElementRect.width;
+	if(maxX < 0)
+		maxX = 0;
+
+	let maxY = window.innerHeight - 30;
+	if(maxY < 0)
+		maxY = 0;
+
+	if(mainElement.offsetLeft > maxX)
+		mainElement.style.left = maxX.toString() + "px";
+
+	if(mainElement.offsetTop > maxY)
+		mainElement.style.top = maxY.toString() + "px";
+}
 
 // Based on this W3 example
 //		https://www.w3schools.com/howto/howto_js_draggable.asp
@@ -40,41 +62,30 @@ function makeElementDraggable(mainElement, headerElement)
 	let pos3 = 0;
 	let pos4 = 0;
 
-	function mouseDown(e) 
+	function mouseDown(event) 
 	{
-		e = e || window.event;
-		e.preventDefault();
+		event = event || window.event;
+		event.preventDefault();
 
 		// Calculate the ew cursor position
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
+		pos1 = pos3 - event.clientX;
+		pos2 = pos4 - event.clientY;
+		pos3 = event.clientX;
+		pos4 = event.clientY;
 
 		// Set the element's new position
-		let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // HACK
-		let mainElementRect = mainElement.getBoundingClientRect();
-
-		let maxX = window.innerWidth - scrollbarWidth - mainElementRect.width;
-
-		let maxY = window.innerHeight - mainElementRect.height;
-
 		let newX = mainElement.offsetLeft - pos1;
-
 		if(newX < 0)
 			newX = 0;
-		else if(newX > maxX)
-			newX = maxX;
 
 		let newY = mainElement.offsetTop - pos2;
-
 		if(newY < 0)
 			newY = 0;
-		else if(newY > maxY)
-			newY = maxY;
 
 		mainElement.style.left = newX.toString() + "px";
 		mainElement.style.top = newY.toString() + "px";
+
+		clipCommentBox(mainElement);
 	}
 
 	function mouseUp() 
@@ -99,6 +110,11 @@ function makeElementDraggable(mainElement, headerElement)
 	}
 		
 	headerElement.addEventListener("mousedown", dragMouseDown);
+
+	window.addEventListener("resize", function(event)
+	{
+		clipCommentBox(mainElement);
+	});
 }
 
 (async function()
@@ -128,7 +144,7 @@ function makeElementDraggable(mainElement, headerElement)
 	{
 		let fcbRecommendation = document.createElement("p");
 		fcbRecommendation.classList.add("footnote");
-		fcbRecommendation.innerText = `(${ browser.i18n.getMessage("fcb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
+		fcbRecommendation.innerText = `(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
 		fieldset.append(fcbRecommendation);
 	}
 
@@ -154,7 +170,7 @@ function makeElementDraggable(mainElement, headerElement)
 			insertSelection(textarea);
 		});
 	
-		insert.title = "Inserts your current selection.\n\nYou can customise the default style of the inserted text in the AES settings.";
+		insert.title = browser.i18n.getMessage("cb_insert_tooltip");
 	
 		fieldset.insertBefore(controlSet.element, textarea.parentElement);
 	}

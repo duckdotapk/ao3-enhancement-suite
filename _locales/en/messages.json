@@ -154,6 +154,11 @@
 		"message": "Additional Controls"
 	},
 
+	"cb_insert_tooltip":
+	{
+		"message": "Inserts your current selection.\n\nYou can customise the default style of the inserted text in the AES settings."
+	},
+
 	"settings":
 	{
 		"message": "Settings"
