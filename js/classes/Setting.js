@@ -32,6 +32,15 @@ class Setting
 		return setting;
 	}
 
+	static async set(id, value)
+	{
+		let settings = await Setting.getAll();
+
+		settings[id] = value;
+
+		await browser.storage.local.set({ settings: settings });
+	}
+
 	constructor(id, categoryId, title, type, defaultValue, extraData)
 	{
 		this.id = id;
