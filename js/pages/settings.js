@@ -8,14 +8,16 @@ function createSettingLabel(settingContainer, setting, appendColon)
 	settingContainer.appendChild(label);
 }
 
-function createSettingInput(settingContainer, setting, userSettings, changeCallback)
+async function createSettingInput(settingContainer, setting, userSettings, changeCallback)
 {
 	let input = document.createElement("input");
 
 	input.type = setting.type;
 	input.id = setting.id;
 
-	let settingValue = userSettings[setting.id] != undefined ? userSettings[setting.id] : setting.defaultValue;
+	let settingValue = await Setting.get(setting.id);
+	console.log(setting.id, settingValue);
+
 	switch(setting.type)
 	{
 		case "checkbox":
@@ -42,22 +44,15 @@ function createSettingInput(settingContainer, setting, userSettings, changeCallb
 
 	input.addEventListener("change", function(event)
 	{
-		let storage =
-		{
-			settings: userSettings,
-		}
-		
-		storage.settings[setting.id] = changeCallback(event);
-
-		browser.storage.local.set(storage);
+		Setting.set(setting.id, changeCallback(event));
 	});
 
 	settingContainer.appendChild(input);
 }
 
-function createCheckboxSetting(settingContainer, setting, userSettings)
+async function createCheckboxSetting(settingContainer, setting, userSettings)
 {
-	createSettingInput(settingContainer, setting, userSettings, function(event)
+	await createSettingInput(settingContainer, setting, userSettings, function(event)
 	{
 		return event.target.checked;
 	});
@@ -65,13 +60,38 @@ function createCheckboxSetting(settingContainer, setting, userSettings)
 	createSettingLabel(settingContainer, setting, false);
 }
 
-function createNumberSetting(settingContainer, setting, userSettings)
+async function createNumberSetting(settingContainer, setting, userSettings)
 {
 	createSettingLabel(settingContainer, setting, true);
 
-	createSettingInput(settingContainer, setting, userSettings, function(event)
+	await createSettingInput(settingContainer, setting, userSettings, function(event)
 	{
 		return event.target.value;
+	});
+}
+
+async function createSelectSetting(settingContainer, setting, userSettings)
+{
+	createSettingLabel(settingContainer, setting, true);
+
+	let selectElement = document.createElement("select");
+	settingContainer.appendChild(selectElement);
+
+	for(let option of setting.extraData.options)
+	{
+		let optionElement = document.createElement("option");
+		optionElement.setAttribute("value", option.value);
+		optionElement.innerText = option.text;
+
+		if(option.value == await Setting.get(setting.id))
+			optionElement.selected = true;
+
+		selectElement.appendChild(optionElement);
+	}
+
+	selectElement.addEventListener("change", function(event)
+	{
+		Setting.set(setting.id, event.target.value);
 	});
 }
 
@@ -81,9 +101,8 @@ document.addEventListener("DOMContentLoaded", async function()
 
 	const settingsContainer = document.getElementById("settings");
 
-	Setting.categories.forEach(function(settings, categoryId, map)
+	for(let [categoryId, settings] of Setting.categories.entries())
 	{
-
 		let header = document.createElement("h3");
 		header.innerText = categoryId;
 
@@ -96,11 +115,15 @@ document.addEventListener("DOMContentLoaded", async function()
 			switch(setting.type)
 			{
 				case "checkbox":
-					createCheckboxSetting(settingContainer, setting, userSettings);
+					await createCheckboxSetting(settingContainer, setting, userSettings);
 					break;
 
 				case "number":
-					createNumberSetting(settingContainer, setting, userSettings);
+					await createNumberSetting(settingContainer, setting, userSettings);
+					break;
+
+				case "select":
+					await createSelectSetting(settingContainer, setting, userSettings);
 					break;
 
 				default:
@@ -110,5 +133,5 @@ document.addEventListener("DOMContentLoaded", async function()
 			settingsContainer.appendChild(settingContainer);
 		}
 
-	});
+	};
 });
