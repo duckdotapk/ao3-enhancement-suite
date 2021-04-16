@@ -152,5 +152,10 @@
 	"additional_controls":
 	{
 		"message": "Additional Controls"
+	},
+
+	"settings":
+	{
+		"message": "Settings"
 	}
 }

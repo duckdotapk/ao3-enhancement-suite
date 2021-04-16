@@ -96,16 +96,28 @@ async function createSelectSetting(settingContainer, setting, userSettings)
 
 document.addEventListener("DOMContentLoaded", async function()
 {
-	const userSettings = await Setting.getAll();
-
 	const settingsContainer = document.getElementById("settings");
+
+	let header = document.createElement("h1");
+	header.innerText = browser.i18n.getMessage("name");
+	settingsContainer.appendChild(header);
+
+	let versionSpan = document.createElement("span");
+	versionSpan.classList.add("small");
+	versionSpan.innerText = " v" + browser.runtime.getManifest().version;
+	header.appendChild(versionSpan);
+
+	let settingsHeader = document.createElement("h2");
+	settingsHeader.innerText = browser.i18n.getMessage("settings");
+	settingsContainer.appendChild(settingsHeader);
+
+	const userSettings = await Setting.getAll();
 
 	for(let [categoryId, settings] of Setting.categories.entries())
 	{
-		let header = document.createElement("h3");
-		header.innerText = categoryId;
-
-		settingsContainer.appendChild(header);
+		let categoryHeader = document.createElement("h3");
+		categoryHeader.innerText = categoryId;
+		settingsContainer.appendChild(categoryHeader);
 
 		for(let setting of settings)
 		{
@@ -132,6 +144,5 @@ document.addEventListener("DOMContentLoaded", async function()
 
 			settingsContainer.appendChild(settingContainer);
 		}
-
 	};
 });

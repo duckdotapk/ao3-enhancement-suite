@@ -1,10 +1,15 @@
 #settings
 {
 	padding: 20px;
-	width: 350px;
+	width: 410px;
 }
 
 .setting
 {
 	padding: 1px;
+}
+
+.small
+{
+	font-size: 50%;
 }
