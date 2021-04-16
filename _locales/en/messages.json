@@ -237,5 +237,10 @@
 	"read_speed_tooltip":
 	{
 		"message": "Set the amount of words-per-minute used to calculate \"Estimated reading time\" stats."
+	},
+
+	"setting_requires_reload":
+	{
+		"message": "You must reload the page for changes to this setting to take effect."
 	}
 }

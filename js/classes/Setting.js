@@ -49,7 +49,7 @@ class Setting
 		this.type = options.type;
 		this.defaultValue = options.defaultValue;
 		this.tooltip = options.tooltip;
-		this.requiredSettings = options.requiredSettings;
+		this.requiresReload = options.requiresReload;
 		this.extraData = options.extraData;
 
 		Setting.instances.push(this);

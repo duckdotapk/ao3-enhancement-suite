@@ -124,7 +124,13 @@ document.addEventListener("DOMContentLoaded", async function()
 			settingContainer.classList.add("setting");
 
 			if(setting.tooltip)
-				settingContainer.setAttribute("title", setting.tooltip);
+			{
+				let tooltip = setting.tooltip;
+				if(setting.requiresReload)
+					tooltip += "\r\n\r\n" + browser.i18n.getMessage("setting_requires_reload");
+
+				settingContainer.setAttribute("title", tooltip);
+			}
 
 			settingsContainer.appendChild(settingContainer);
 
