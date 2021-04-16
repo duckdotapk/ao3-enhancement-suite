@@ -127,5 +127,10 @@
 	"fcb_focus_after_insert":
 	{
 		"message": "Focus comment text area after insert"
+	},
+
+	"fcb_recommendation":
+	{
+		"message": "For easier commenting, you can enable a Floating Comment Box in the $1 settings."
 	}
 }

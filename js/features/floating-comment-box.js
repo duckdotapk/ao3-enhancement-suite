@@ -90,28 +90,26 @@ function makeElementDraggable(mainElement, headerElement)
 
 (async function()
 {
-	//
-	// Get User Settings
-	//
+	const commentBox = document.getElementById("add_comment_placeholder");
+	const fieldset = commentBox.querySelector("fieldset");
 
 	if(!await Setting.get("enable_floating_comment_box"))
+	{
+		let fcbRecommendation = document.createElement("p");
+		fcbRecommendation.classList.add("footnote");
+		fcbRecommendation.innerText = `(${ browser.i18n.getMessage("fcb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
+		fieldset.append(fcbRecommendation);
+
 		return;
+	}
 
-	//
-	// Feature
-	//
-
-	const commentBox = document.getElementById("add_comment_placeholder");
 	commentBox.classList.add("aes-fcb");
 	commentBox.style = "top: 0px; left: 0px; opacity: 100%;";
 
 	const moveHeader = document.createElement("div");
 	moveHeader.classList.add("aes-move-header");
 	moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
-
 	commentBox.prepend(moveHeader);
-
-	const fieldset = commentBox.querySelector("fieldset");
 
 	const heading = fieldset.querySelector("h4.heading");
 	if(await Setting.get("fcb_hide_comment_as_heading"))
