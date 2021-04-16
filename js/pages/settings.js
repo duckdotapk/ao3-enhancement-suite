@@ -99,13 +99,9 @@ document.addEventListener("DOMContentLoaded", async function()
 	const settingsContainer = document.getElementById("settings");
 
 	let header = document.createElement("h1");
+	header.id = "header";
 	header.innerText = browser.i18n.getMessage("name");
 	settingsContainer.appendChild(header);
-
-	let versionSpan = document.createElement("span");
-	versionSpan.classList.add("small");
-	versionSpan.innerText = " v" + browser.runtime.getManifest().version;
-	header.appendChild(versionSpan);
 
 	let settingsHeader = document.createElement("h2");
 	settingsHeader.innerText = browser.i18n.getMessage("settings");
@@ -145,4 +141,38 @@ document.addEventListener("DOMContentLoaded", async function()
 			settingsContainer.appendChild(settingContainer);
 		}
 	};
+
+	let footer = document.createElement("footer");
+	settingsContainer.appendChild(footer);
+
+	{
+		let versionSpan = document.createElement("span");
+		versionSpan.innerText = " v" + browser.runtime.getManifest().version;
+		footer.appendChild(versionSpan);
+	}
+
+	{
+		let separator = document.createElement("span");
+		separator.innerText = " · ";
+		footer.appendChild(separator);
+	}
+
+
+	{
+		const resetSettingsButton = document.createElement("a");
+		resetSettingsButton.id = "reset";
+		resetSettingsButton.setAttribute("href", "#");
+		resetSettingsButton.innerText = "Reset All Settings";
+	
+		resetSettingsButton.addEventListener("click", async function(event)
+		{
+			event.preventDefault();
+	
+			await browser.storage.local.remove("settings");
+	
+			location.reload();
+		});
+	
+		footer.appendChild(resetSettingsButton);
+	}
 });
