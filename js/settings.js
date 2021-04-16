@@ -5,7 +5,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
 	type: "checkbox",
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -14,7 +14,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_comment_as_heading"), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -23,7 +23,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_html_footnote"), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -32,7 +32,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("additional_controls") ]), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -41,7 +41,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_focus_after_insert"), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -50,7 +50,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_insert_formatting"), 
 	type: "select", 
-	defaultvalue: "bold", 
+	defaultValue: "bold", 
 	extraData:
 	{
 		options:
@@ -69,7 +69,7 @@ new Setting(
 	category: browser.i18n.getMessage("search_presets"),	
 	title: browser.i18n.getMessage("enable"), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 // Tag Collapse
@@ -79,7 +79,7 @@ new Setting(
 	category: browser.i18n.getMessage("tag_collapse"),	
 	title: browser.i18n.getMessage("enable"), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 new Setting(
 {
@@ -87,7 +87,7 @@ new Setting(
 	category: browser.i18n.getMessage("tag_collapse"),	
 	title: browser.i18n.getMessage("threshold"), 
 	type: "number", 
-	defaultvalue: 20, 
+	defaultValue: 20, 
 	extraData:
 	{ 
 		min: 0, 
@@ -101,7 +101,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("average_words_per_chapter") ]),	
 	type: "checkbox",	
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -110,7 +110,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("estimated_reading_time") ]), 
 	type: "checkbox", 
-	defaultvalue: true,
+	defaultValue: true,
 });
 
 new Setting(
@@ -119,7 +119,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("reading_speed"), 
 	type: "number", 
-	defaultvalue: 200, 
+	defaultValue: 200, 
 	extraData:
 	{
 		min: 1,
