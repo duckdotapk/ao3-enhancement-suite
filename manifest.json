@@ -63,6 +63,20 @@
 		{
 			"matches": 
 			[
+				"*://*.archiveofourown.org/works/*"
+			],
+			"css":
+			[
+				"css/features/floating-comment-box.css"
+			],
+			"js": 
+			[
+				"js/features/floating-comment-box.js"
+			]
+		},
+		{
+			"matches": 
+			[
 				"*://*.archiveofourown.org/works/search*"
 			],
 			"js": 

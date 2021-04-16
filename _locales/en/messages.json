@@ -4,6 +4,11 @@
 		"message": "AO3 Enhancement Suite"
 	},
 
+	"name_acronym":
+	{
+		"message": "AO3ES"
+	},
+
 	"description":
 	{
 		"message": "An extension that aims to improve upon the already great experience on AO3 by adding various additional features."
@@ -102,5 +107,25 @@
 	"save_current_settings_as_preset":
 	{
 		"message": "Save Current Settings as Preset"
+	},
+
+	"floating_comment_box":
+	{
+		"message": "Floating Comment Box"
+	},
+
+	"fcb_hide_comment_as_heading":
+	{
+		"message": "Hide \"Comment as <pseud>\" heading"
+	},
+
+	"fcb_hide_html_footnote":
+	{
+		"message": "Hide \"Plain text with limited HTML\" footnote"
+	},
+
+	"fcb_focus_after_insert":
+	{
+		"message": "Focus comment text area after insert"
 	}
 }
