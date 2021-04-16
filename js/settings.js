@@ -43,6 +43,7 @@ new Setting(
 	type: "checkbox", 
 	defaultvalue: true,
 });
+
 new Setting(
 {
 	id: "cb_insert_formatting", 

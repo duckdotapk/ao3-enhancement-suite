@@ -9,7 +9,20 @@ async function insertSelection(textarea)
 		if(line == "")
 			continue;
 
-		processedSelection.push(`<b>${ line }</b>`);
+		switch(await Setting.get("cb_insert_formatting"))
+		{
+			case "bold":
+				processedSelection.push(`<b>${ line }</b>`);
+				break;
+
+			case "italics":
+				processedSelection.push(`<i>${ line }</i>`);
+				break;
+
+			case "none":
+			default:
+				processedSelection.push(line);
+		}
 	}
 
 	textarea.value += processedSelection.join("\r\n\r\n") + "\r\n\r\n";
