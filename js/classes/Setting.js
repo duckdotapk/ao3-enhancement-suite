@@ -41,25 +41,25 @@ class Setting
 		await browser.storage.local.set({ settings: settings });
 	}
 
-	constructor(id, categoryId, title, type, defaultValue, extraData)
+	constructor(options)
 	{
-		this.id = id;
-		this.categoryId = categoryId;
-		this.title = title;
-		this.type = type;
-		this.defaultValue = defaultValue;
-		this.extraData = extraData;
+		this.id = options.id;
+		this.categoryId = options.category;
+		this.title = options.title;
+		this.type = options.type;
+		this.defaultValue = options.defaultValue;
+		this.extraData = options.extraData;
 
 		Setting.instances.push(this);
-		Setting.instancesById[id] = this;
+		Setting.instancesById[this.id] = this;
 
-		let category = Setting.categories.get(categoryId);
+		let category = Setting.categories.get(this.categoryId);
 		if(category == undefined)
 			category = [];
 
 		category.push(this);
 
-		Setting.categories.set(categoryId, category);
+		Setting.categories.set(this.categoryId, category);
 	}
 }
 

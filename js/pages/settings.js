@@ -16,7 +16,6 @@ async function createSettingInput(settingContainer, setting, userSettings, chang
 	input.id = setting.id;
 
 	let settingValue = await Setting.get(setting.id);
-	console.log(setting.id, settingValue);
 
 	switch(setting.type)
 	{
