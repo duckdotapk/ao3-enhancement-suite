@@ -8,7 +8,7 @@
 
 #add_comment_placeholder.aes-cb.aes-fcb:focus-within
 {
-	opacity: 1;
+	opacity: 1 !important;
 }
 
 #add_comment_placeholder.aes-cb.aes-fcb .aes-move-header

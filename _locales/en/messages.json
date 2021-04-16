@@ -176,7 +176,7 @@
 
 	"cb_floating_opacity_tooltip":
 	{
-		"message": "Set how opaque the floating comment box is when it's not focused."
+		"message": "Set how transparent the floating comment box will be when its text area is not focused."
 	},
 
 	"cb_hide_comment_as_heading_tooltip":

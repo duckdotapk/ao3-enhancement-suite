@@ -18,7 +18,7 @@ new Setting(
 	type: "number",
 	tooltip: browser.i18n.getMessage("cb_floating_opacity_tooltip"),
 	requiresReload: true,
-	defaultValue: 0.85,
+	defaultValue: 0.65,
 	extraData:
 	{
 		min: 0.1,
