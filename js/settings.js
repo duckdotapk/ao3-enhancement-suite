@@ -5,7 +5,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
 	type: "checkbox",
-	defaultValue: true,
+	defaultValue: false,
 });
 
 new Setting(
