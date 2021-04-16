@@ -12,6 +12,7 @@
 	width: 100%;
 
 	background: rgb(153, 0, 0);
+	color: #ffffff;
 
 	/* TODO: This style should maybe be applied with JS instead because of archive skins */
 	background-image: url("https://archiveofourown.org/images/skins/textures/tiles/red-ao3.png"); 
@@ -41,9 +42,10 @@
 
 #add_comment_placeholder.aes-cb.aes-fcb textarea
 {
-	min-width: 255px;
+	min-width: 506px;
+	max-width: 90vw;
 
-	width: 500px;
+	width: 506px;
 }
 
 #add_comment_placeholder.aes-cb.aes-fcb .LV_validation_message
