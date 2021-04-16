@@ -1,3 +1,4 @@
+// TODO: maybe make this a custom element that extends HTMLUListElement instead of this implementation
 class ControlSet
 {
 	constructor()
@@ -29,5 +30,7 @@ class ControlSet
 		}
 	
 		this.element.append(control);
+
+		return control;
 	}
 }
