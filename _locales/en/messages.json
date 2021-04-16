@@ -44,6 +44,11 @@
 		"message": "Enable \"$1\""
 	},
 
+	"enable_titled_nq":
+	{
+		"message": "Enable $1"
+	},
+
 	"threshold":
 	{
 		"message": "Threshold"
@@ -109,28 +114,43 @@
 		"message": "Save Current Settings as Preset"
 	},
 
+	"comment_box":
+	{
+		"message": "Comment Box"
+	},
+
 	"floating_comment_box":
 	{
 		"message": "Floating Comment Box"
 	},
 
-	"fcb_hide_comment_as_heading":
+	"cb_hide_comment_as_heading":
 	{
 		"message": "Hide \"Comment as <pseud>\" heading"
 	},
 
-	"fcb_hide_html_footnote":
+	"cb_hide_html_footnote":
 	{
 		"message": "Hide \"Plain text with limited HTML\" footnote"
 	},
 
-	"fcb_focus_after_insert":
+	"cb_focus_after_insert":
 	{
 		"message": "Focus comment text area after insert"
 	},
 
-	"fcb_recommendation":
+	"cb_recommendation":
 	{
 		"message": "For easier commenting, you can enable a Floating Comment Box in the $1 settings."
+	},
+
+	"cb_insert_formatting":
+	{
+		"message": "Inserted text formatting"
+	},
+
+	"additional_controls":
+	{
+		"message": "Additional Controls"
 	}
 }

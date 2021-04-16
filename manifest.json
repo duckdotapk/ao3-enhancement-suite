@@ -67,11 +67,11 @@
 			],
 			"css":
 			[
-				"css/features/floating-comment-box.css"
+				"css/features/comment-box.css"
 			],
 			"js": 
 			[
-				"js/features/floating-comment-box.js"
+				"js/features/comment-box.js"
 			]
 		},
 		{

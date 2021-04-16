@@ -91,50 +91,55 @@ function makeElementDraggable(mainElement, headerElement)
 (async function()
 {
 	const commentBox = document.getElementById("add_comment_placeholder");
+	commentBox.classList.add("aes-cb");
+
 	const fieldset = commentBox.querySelector("fieldset");
 
-	if(!await Setting.get("enable_floating_comment_box"))
+	if(await Setting.get("enable_floating_comment_box"))
+	{
+		commentBox.classList.add("aes-fcb");
+		commentBox.style = "top: 0px; left: 0px; opacity: 100%;";
+
+		const moveHeader = document.createElement("div");
+		moveHeader.classList.add("aes-move-header");
+		moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
+		commentBox.prepend(moveHeader);
+
+		document.body.appendChild(commentBox);
+		makeElementDraggable(commentBox, moveHeader);
+	}
+	else
 	{
 		let fcbRecommendation = document.createElement("p");
 		fcbRecommendation.classList.add("footnote");
 		fcbRecommendation.innerText = `(${ browser.i18n.getMessage("fcb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
 		fieldset.append(fcbRecommendation);
-
-		return;
 	}
 
-	commentBox.classList.add("aes-fcb");
-	commentBox.style = "top: 0px; left: 0px; opacity: 100%;";
-
-	const moveHeader = document.createElement("div");
-	moveHeader.classList.add("aes-move-header");
-	moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
-	commentBox.prepend(moveHeader);
-
 	const heading = fieldset.querySelector("h4.heading");
-	if(await Setting.get("fcb_hide_comment_as_heading"))
+	if(await Setting.get("cb_hide_comment_as_heading"))
 		heading.classList.add("aes-hidden");
 
 	const footnote = fieldset.querySelector(".footnote");
-	if(await Setting.get("fcb_hide_html_footnote"))
+	if(await Setting.get("cb_hide_html_footnote"))
 		footnote.classList.add("aes-hidden");
 
 	const textarea = fieldset.querySelector("textarea");
 
-	const controlSet = new ControlSet();
-	controlSet.element.classList.add("aes-fcb-actions");
-	if(!await Setting.get("fcb_hide_html_footnote"))
-		controlSet.element.classList.add("aes-footnote-offset");
-
-	const insert = controlSet.addControl("Insert", function(event)
+	if(await Setting.get("cb_enable_additional_controls"))
 	{
-		insertSelection(textarea);
-	});
-
-	insert.title = "Inserts your current selection.\n\nYou can customise the default style of the inserted text in the AES settings.";
-
-	fieldset.insertBefore(controlSet.element, textarea.parentElement);
-
-	document.body.appendChild(commentBox);
-	makeElementDraggable(commentBox, moveHeader);
+		const controlSet = new ControlSet();
+		controlSet.element.classList.add("aes-cb-actions");
+		if(!await Setting.get("cb_hide_html_footnote"))
+			controlSet.element.classList.add("aes-footnote-offset");
+	
+		const insert = controlSet.addControl("Insert Selection", function(event)
+		{
+			insertSelection(textarea);
+		});
+	
+		insert.title = "Inserts your current selection.\n\nYou can customise the default style of the inserted text in the AES settings.";
+	
+		fieldset.insertBefore(controlSet.element, textarea.parentElement);
+	}
 })();

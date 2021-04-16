@@ -1,4 +1,4 @@
-#add_comment_placeholder.aes-fcb
+#add_comment_placeholder.aes-cb.aes-fcb
 {
 	position: fixed; 
 	z-index: 99;
@@ -6,7 +6,7 @@
 	box-shadow: 3px 3px 14px 1px #000000;
 }
 
-#add_comment_placeholder.aes-fcb .aes-move-header
+#add_comment_placeholder.aes-cb.aes-fcb .aes-move-header
 {
 	height: 30px;
 	width: 100%;
@@ -28,25 +28,25 @@
 	cursor: grab;
 }
 
-#add_comment_placeholder.aes-fcb .aes-fcb-actions
+#add_comment_placeholder.aes-cb .aes-cb-actions
 {
 	float: none;
 	text-align: left;
 }
 
-#add_commentg_placeholder.aes-fcb .aes-footnote-offset
+#add_comment_placeholder.aes-cb .aes-footnote-offset
 {
-	padding-top: 30px;
+	padding-top: 35px;
 }
 
-#add_comment_placeholder.aes-fcb textarea
+#add_comment_placeholder.aes-cb.aes-fcb textarea
 {
 	min-width: 255px;
 
 	width: 500px;
 }
 
-#add_comment_placeholder.aes-fcb .LV_validation_message
+#add_comment_placeholder.aes-cb.aes-fcb .LV_validation_message
 {
 	/* HACK: Hide the "Brevity is the soul of wit" message because it's a bit glitchy with this atm */
 	display: none;
