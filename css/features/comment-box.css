@@ -6,6 +6,11 @@
 	box-shadow: 3px 3px 14px 1px #000000;
 }
 
+#add_comment_placeholder.aes-cb.aes-fcb:focus-within
+{
+	opacity: 1;
+}
+
 #add_comment_placeholder.aes-cb.aes-fcb .aes-move-header
 {
 	height: 30px;

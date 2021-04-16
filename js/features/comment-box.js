@@ -130,7 +130,7 @@ function makeElementDraggable(mainElement, headerElement)
 	if(await Setting.get("enable_floating_comment_box"))
 	{
 		commentBox.classList.add("aes-fcb");
-		commentBox.style = "top: 0px; left: 0px; opacity: 100%;";
+		commentBox.style = `top: 0px; left: 0px; opacity: ${ await Setting.get("cb_floating_opacity") };`;
 
 		const moveHeader = document.createElement("div");
 		moveHeader.classList.add("aes-move-header");

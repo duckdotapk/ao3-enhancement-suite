@@ -124,6 +124,11 @@
 		"message": "Floating Comment Box"
 	},
 
+	"cb_floating_opacity":
+	{
+		"message": "Floating Comment Box Opacity"
+	},
+
 	"cb_hide_comment_as_heading":
 	{
 		"message": "Hide \"Comment as <pseud>\" heading"

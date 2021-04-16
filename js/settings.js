@@ -10,6 +10,21 @@ new Setting(
 
 new Setting(
 {
+	id: "cb_floating_opacity",
+	category: browser.i18n.getMessage("comment_box"),
+	title: browser.i18n.getMessage("cb_floating_opacity"),
+	type: "number",
+	defaultValue: 0.85,
+	extraData:
+	{
+		min: 0.1,
+		max: 1,
+		step: 0.01,
+	},
+});
+
+new Setting(
+{
 	id: "cb_hide_comment_as_heading", 
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_comment_as_heading"), 

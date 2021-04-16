@@ -33,6 +33,9 @@ async function createSettingInput(settingContainer, setting, userSettings, chang
 
 				if(setting.extraData.max != undefined)
 					input.setAttribute("max", setting.extraData.max);
+
+				if(setting.extraData.step != undefined)
+					input.setAttribute("step", setting.extraData.step);
 			}
 
 			break;
