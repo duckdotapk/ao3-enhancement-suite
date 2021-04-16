@@ -1,13 +1,11 @@
 class ControlSet
 {
-	constructor(parentElement)
+	constructor()
 	{
 		const controlSet = document.createElement("ul");
 		controlSet.classList.add("actions");
 
-		this.controlSet = controlSet;
-
-		parentElement.append(this.controlSet);
+		this.element = controlSet;
 	}
 
 	addControl(controlText, onClick)
@@ -30,6 +28,6 @@ class ControlSet
 			control.append(link);
 		}
 	
-		this.controlSet.append(control);
+		this.element.append(control);
 	}
 }

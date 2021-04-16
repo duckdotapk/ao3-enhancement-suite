@@ -407,7 +407,7 @@
 	}
 
 	{
-		const controlSet = new ControlSet(aesFieldset);
+		const controlSet = new ControlSet();
 
 		controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), function(event)
 		{
@@ -418,6 +418,8 @@
 		{
 			saveCurrentSettingsAsPreset();
 		});
+
+		aesFieldset.append(controlSet.element);
 	}
 
 	form.prepend(aesFieldset);
