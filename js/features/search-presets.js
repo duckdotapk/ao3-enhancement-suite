@@ -74,29 +74,6 @@
 
 	const radioSuffixes = ["", "f", "t"];
 
-	function addControl(controlsListElement, controlText, onClick)
-	{
-		const control = document.createElement("li");
-
-		{
-			const link = document.createElement("a");
-
-			link.href = "#";
-			link.innerText = controlText;
-
-			link.addEventListener("click", function(event)
-			{
-				event.preventDefault();
-
-				onClick(event);
-			});
-
-			control.append(link);
-		}
-
-		controlsListElement.append(control);
-	}
-
 	function removeAllAutocompleteItems(elementId)
 	{
 		const deleteButtons = document.getElementById(elementId).previousElementSibling.getElementsByClassName("delete");
@@ -430,24 +407,17 @@
 	}
 
 	{
-		const controls = document.createElement("ul");
-		controls.classList.add("actions");
+		const controlSet = new ControlSet(aesFieldset);
 
+		controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), function(event)
 		{
-			addControl(controls, browser.i18n.getMessage("delete_currently_selected_preset"), function(event)
-			{
-				deleteCurrentlySelectedPreset();
-			});
-		}
-
+			deleteCurrentlySelectedPreset();
+		});
+		
+		controlSet.addControl(browser.i18n.getMessage("save_current_settings_as_preset"), function(event)
 		{
-			addControl(controls, browser.i18n.getMessage("save_current_settings_as_preset"), function(event)
-			{
-				saveCurrentSettingsAsPreset();
-			});
-		}
-
-		aesFieldset.append(controls);
+			saveCurrentSettingsAsPreset();
+		});
 	}
 
 	form.prepend(aesFieldset);

@@ -54,6 +54,8 @@
 				"js/classes/Setting.js",
 				"js/settings.js",
 
+				"js/classes/ControlSet.js",
+
 				"js/features/tag-collapse.js",
 				"js/features/work-stats.js"
 			]
