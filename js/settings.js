@@ -14,7 +14,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_comment_as_heading"), 
 	type: "checkbox", 
-	defaultValue: true,
+	defaultValue: false,
 });
 
 new Setting(
@@ -23,7 +23,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_html_footnote"), 
 	type: "checkbox", 
-	defaultValue: true,
+	defaultValue: false,
 });
 
 new Setting(
