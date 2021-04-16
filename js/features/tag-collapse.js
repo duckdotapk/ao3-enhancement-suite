@@ -32,7 +32,7 @@
 		{
 			// Move excess tags into a hidden list
 			const excessList = document.createElement("ul");
-			excessList.classList.add("commas", "aes", "excess");
+			excessList.classList.add("commas", "aes-hidden");
 			mainList.after(excessList);
 		
 			const tagListItems = mainList.querySelectorAll("li");	
