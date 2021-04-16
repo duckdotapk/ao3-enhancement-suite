@@ -48,6 +48,8 @@ class Setting
 		this.title = options.title;
 		this.type = options.type;
 		this.defaultValue = options.defaultValue;
+		this.tooltip = options.tooltip;
+		this.requiredSettings = options.requiredSettings;
 		this.extraData = options.extraData;
 
 		Setting.instances.push(this);

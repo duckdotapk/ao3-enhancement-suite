@@ -123,6 +123,11 @@ document.addEventListener("DOMContentLoaded", async function()
 			const settingContainer = document.createElement("div");
 			settingContainer.classList.add("setting");
 
+			if(setting.tooltip)
+				settingContainer.setAttribute("title", setting.tooltip);
+
+			settingsContainer.appendChild(settingContainer);
+
 			switch(setting.type)
 			{
 				case "checkbox":
@@ -141,7 +146,6 @@ document.addEventListener("DOMContentLoaded", async function()
 					break;
 			}
 
-			settingsContainer.appendChild(settingContainer);
 		}
 	};
 
@@ -165,6 +169,7 @@ document.addEventListener("DOMContentLoaded", async function()
 		const resetSettingsButton = document.createElement("a");
 		resetSettingsButton.id = "reset";
 		resetSettingsButton.setAttribute("href", "#");
+		resetSettingsButton.setAttribute("title", "Reset all settings to their default values.");
 		resetSettingsButton.innerText = "Reset All Settings";
 	
 		resetSettingsButton.addEventListener("click", async function(event)

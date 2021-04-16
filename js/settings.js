@@ -5,6 +5,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
 	type: "checkbox",
+	tooltip: browser.i18n.getMessage("enable_floating_comment_box_toolip"),
 	defaultValue: false,
 });
 
@@ -14,6 +15,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("cb_floating_opacity"),
 	type: "number",
+	tooltip: browser.i18n.getMessage("cb_floating_opacity_tooltip"),
 	defaultValue: 0.85,
 	extraData:
 	{
@@ -29,6 +31,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_comment_as_heading"), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("cb_hide_comment_as_heading_tooltip"),
 	defaultValue: false,
 });
 
@@ -38,6 +41,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_hide_html_footnote"), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("cb_hide_html_footnote_tooltip"),
 	defaultValue: false,
 });
 
@@ -47,6 +51,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("additional_controls") ]), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("cb_enable_additional_controls_tooltip"),
 	defaultValue: true,
 });
 
@@ -56,6 +61,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_focus_after_insert"), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("cb_focus_after_insert_tooltip", [ browser.i18n.getMessage("insert_selection_button_explanation") ]),
 	defaultValue: true,
 });
 
@@ -65,6 +71,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"), 
 	title: browser.i18n.getMessage("cb_insert_formatting"), 
 	type: "select", 
+	tooltip: browser.i18n.getMessage("cb_insert_formatting_tooltip", [ browser.i18n.getMessage("insert_selection_button_explanation") ]),
 	defaultValue: "bold", 
 	extraData:
 	{
@@ -84,6 +91,7 @@ new Setting(
 	category: browser.i18n.getMessage("search_presets"),	
 	title: browser.i18n.getMessage("enable"), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("enable_search_presets_tooltip"),
 	defaultValue: true,
 });
 
@@ -94,6 +102,7 @@ new Setting(
 	category: browser.i18n.getMessage("tag_collapse"),	
 	title: browser.i18n.getMessage("enable"), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("enable_tag_collapse_tooltip"),
 	defaultValue: true,
 });
 new Setting(
@@ -102,6 +111,7 @@ new Setting(
 	category: browser.i18n.getMessage("tag_collapse"),	
 	title: browser.i18n.getMessage("threshold"), 
 	type: "number", 
+	tooltip: browser.i18n.getMessage("tag_collapse_threshold_tooltip"),
 	defaultValue: 20, 
 	extraData:
 	{ 
@@ -116,6 +126,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("average_words_per_chapter") ]),	
 	type: "checkbox",	
+	tooltip: browser.i18n.getMessage("enable_average_words_per_chapter_stat_tooltip"),
 	defaultValue: true,
 });
 
@@ -125,6 +136,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("estimated_reading_time") ]), 
 	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("enable_estimated_reading_time_stat_tooltip"),
 	defaultValue: true,
 });
 
@@ -134,6 +146,7 @@ new Setting(
 	category: browser.i18n.getMessage("work_stats"), 
 	title: browser.i18n.getMessage("reading_speed"), 
 	type: "number", 
+	tooltip: browser.i18n.getMessage("read_speed_tooltip"),
 	defaultValue: 200, 
 	extraData:
 	{

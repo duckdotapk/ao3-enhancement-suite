@@ -167,5 +167,75 @@
 	"settings":
 	{
 		"message": "Settings"
+	},
+
+	"enable_floating_comment_box_toolip":
+	{
+		"message": "Turns the comment box into a floating window that stays with you as you read for easier commenting."
+	},
+
+	"cb_floating_opacity_tooltip":
+	{
+		"message": "Set how opaque the floating comment box is when it's not focused."
+	},
+
+	"cb_hide_comment_as_heading_tooltip":
+	{
+		"message": "Hides the \"Comment as <pseud>\" heading in the comment box."
+	},
+
+	"cb_hide_html_footnote_tooltip":
+	{
+		"message": "Hides the \"Plain text with limited HTML\" footnote in the comment box."
+	},
+
+	"cb_enable_additional_controls_tooltip":
+	{
+		"message": "Enables an additional set of controls to make formatting your comments easier."
+	},
+
+	"insert_selection_button_explanation":
+	{
+		"message": "\"Insert Selection\" button (shown when Additional Controls are enabled)"
+	},
+
+	"cb_focus_after_insert_tooltip":
+	{
+		"message": "Makes the $1 focus the comment text box after inserting your selection."
+	},
+
+	"cb_insert_formatting_tooltip":
+	{
+		"message": "Set what kind of formatting text added with the $1 will have when inserted."
+	},
+
+	"enable_search_presets_tooltip":
+	{
+		"message": "Enables the search presets fieldset on the search page."
+	},
+
+	"enable_tag_collapse_tooltip":
+	{
+		"message": "Makes it so excessive tags (any after the amount set in the Threshold below) are hidden by default."
+	},
+
+	"tag_collapse_threshold_tooltip":
+	{
+		"message": "Set how many tags are shown before additional ones they're collapsed and hidden by default."
+	},
+
+	"enable_average_words_per_chapter_stat_tooltip":
+	{
+		"message": "Adds an \"Average words per chapter\" stat to works."
+	},
+
+	"enable_estimated_reading_time_stat_tooltip":
+	{
+		"message": "Adds an \"Estimated reading time\" stat to works. This is calculated with the reading speed set below."
+	},
+
+	"read_speed_tooltip":
+	{
+		"message": "Set the amount of words-per-minute used to calculate \"Estimated reading time\" stats."
 	}
 }
