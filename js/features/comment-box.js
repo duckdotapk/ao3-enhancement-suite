@@ -104,6 +104,9 @@ function makeElementDraggable(mainElement, headerElement)
 (async function()
 {
 	const commentBox = document.getElementById("add_comment_placeholder");
+	if(commentBox == null)
+		return;
+
 	commentBox.classList.add("aes-cb");
 
 	const fieldset = commentBox.querySelector("fieldset");
@@ -131,7 +134,7 @@ function makeElementDraggable(mainElement, headerElement)
 
 	const heading = fieldset.querySelector("h4.heading");
 	if(await Setting.get("cb_hide_comment_as_heading"))
-		heading.classList.add("aes-hidden");
+		heading?.classList.add("aes-hidden");
 
 	const footnote = fieldset.querySelector(".footnote");
 	if(await Setting.get("cb_hide_html_footnote"))
