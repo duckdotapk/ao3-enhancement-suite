@@ -170,13 +170,12 @@ document.addEventListener("DOMContentLoaded", async function()
 		footer.appendChild(separator);
 	}
 
-
 	{
 		const resetSettingsButton = document.createElement("a");
-		resetSettingsButton.id = "reset";
+		resetSettingsButton.id = "reset-settings";
 		resetSettingsButton.setAttribute("href", "#");
-		resetSettingsButton.setAttribute("title", "Reset all settings to their default values.");
-		resetSettingsButton.innerText = "Reset All Settings";
+		resetSettingsButton.setAttribute("title", browser.i18n.getMessage("reset_all_settings_tooltip"));
+		resetSettingsButton.innerText = browser.i18n.getMessage("reset_all_settings");
 	
 		resetSettingsButton.addEventListener("click", async function(event)
 		{
@@ -188,5 +187,33 @@ document.addEventListener("DOMContentLoaded", async function()
 		});
 	
 		footer.appendChild(resetSettingsButton);
+	}
+
+	{
+		let separator = document.createElement("span");
+		separator.innerText = " · ";
+		footer.appendChild(separator);
+	}
+
+	{
+		const resetDataButton = document.createElement("a");
+		resetDataButton.id = "reset-data";
+		resetDataButton.setAttribute("href", "#");
+		resetDataButton.setAttribute("title", browser.i18n.getMessage("reset_all_data_tooltip"));
+		resetDataButton.innerText = browser.i18n.getMessage("reset_all_data");
+	
+		resetDataButton.addEventListener("click", async function(event)
+		{
+			event.preventDefault();
+	
+			if(window.confirm(browser.i18n.getMessage("reset_all_data_confirmation")))
+			{
+				await browser.storage.local.clear();
+	
+				location.reload();
+			}
+		});
+	
+		footer.appendChild(resetDataButton);
 	}
 });

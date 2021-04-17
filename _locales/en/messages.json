@@ -252,5 +252,30 @@
 	"save_comments_to_storage_tooltip":
 	{
 		"message": "Autosaves comments to your browser's storage."
+	},
+
+	"reset_all_settings":
+	{
+		"message": "Reset All Settings"
+	},
+
+	"reset_all_settings_tooltip":
+	{
+		"message": "Resets all settings to their default values."
+	},
+
+	"reset_all_data":
+	{
+		"message": "Reset All Data"
+	},
+
+	"reset_all_data_tooltip":
+	{
+		"message": "Reset all data for the extension."
+	},
+
+	"reset_all_data_confirmation":
+	{
+		"message": "Are you sure you'd like to reset all of your data for this extension?\n\nThis action will delete all of your settings, search presets and saved comments."
 	}
 }
