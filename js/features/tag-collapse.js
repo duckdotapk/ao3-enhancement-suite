@@ -13,15 +13,6 @@
 
 	const threshold = await Setting.get("tag_collapse_threshold");
 
-	const lists =
-	[
-		"ul.tags.commas",
-		"dd.fandom.tags > ul",
-		"dd.relationship.tags > ul",
-		"dd.character.tags > ul",
-		"dd.freeform.tags > ul",
-	];
-
 	function collapseTagLists(selector)
 	{	
 		// Get all lists that match the given selector
@@ -86,5 +77,5 @@
 	// Feature
 	//
 
-	collapseTagLists(lists.join(", "));
+	collapseTagLists(tagListsStr);
 })();

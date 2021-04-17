@@ -53,6 +53,8 @@
 				
 				"js/classes/Setting.js",
 				"js/settings.js",
+				
+				"js/globals.js",
 
 				"js/classes/ControlSet.js",
 				"js/classes/Modal.js",
