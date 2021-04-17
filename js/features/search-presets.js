@@ -272,7 +272,7 @@
 			select.value = searchPresetName;
 	}
 
-	function deleteCurrentlySelectedPreset()
+	async function deleteCurrentlySelectedPreset()
 	{
 		const select = document.getElementById("aes_search_presets");
 
@@ -281,7 +281,7 @@
 		if(option.value == "")
 			return;
 
-		if(window.confirm(browser.i18n.getMessage("delete_currently_selected_preset_message", [ option.innerText ])))
+		if(await Modal.confirm(browser.i18n.getMessage("delete_currently_selected_preset_message", [ option.innerText ])))
 		{
 			delete searchPresets[option.value];
 
@@ -293,25 +293,19 @@
 		setCurrentSearchSettings(defaultSearchSettings);
 	}
 
-	function saveCurrentSettingsAsPreset()
+	async function saveCurrentSettingsAsPreset()
 	{
-		let searchPresetName = window.prompt(browser.i18n.getMessage("name_this_preset"), browser.i18n.getMessage("default_preset_name"));
+		let searchPresetName = await Modal.prompt(browser.i18n.getMessage("name_this_preset"), browser.i18n.getMessage("default_preset_name"), { minlength: 1 });
 
 		searchPresetName = searchPresetName.trim();
 
 		if(searchPresetName == "")
-		{
-			window.alert(browser.i18n.getMessage("preset_name_blank_warning"));
-
-			return;
-		}
+			return await Modal.alert(browser.i18n.getMessage("preset_name_blank_warning"));
 
 		let replacingExisting = false;
 		if(searchPresets[searchPresetName] != undefined)
 		{
-			let confirmation = window.confirm(browser.i18n.getMessage("preset_name_already_exists_warning"));
-
-			if(!confirmation)
+			if(!await Modal.confirm(browser.i18n.getMessage("preset_name_already_exists_warning", [ searchPresetName ])))
 				return;
 
 			replacingExisting = true;

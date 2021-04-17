@@ -277,5 +277,15 @@
 	"reset_all_data_confirmation":
 	{
 		"message": "Are you sure you'd like to reset all of your data for this extension?\n\nThis action will delete all of your settings, search presets and saved comments."
+	},
+
+	"confirm":
+	{
+		"message": "OK"
+	},
+
+	"cancel":
+	{
+		"message": "Cancel"
 	}
 }

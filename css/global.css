@@ -2,3 +2,9 @@
 {
 	display: none;
 }
+
+.aes-modal-control-set li
+{
+	display: inline;
+	list-style-type: none;
+}
