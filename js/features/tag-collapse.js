@@ -59,9 +59,12 @@
 			moreLink.href = "#";
 
 			if(threshold > 0)
-				moreLink.innerText = excessList.children.length + " more tags";
+				moreLink.innerText = excessList.children.length + " more tag";
 			else
-				moreLink.innerText = "Show " + excessList.children.length + " tags";
+				moreLink.innerText = "Show " + excessList.children.length + " tag";
+
+			if(excessList.children.length != 1)
+				moreLink.innerText += "s";
 
 			moreLink.addEventListener("click", function(event)
 			{
