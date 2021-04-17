@@ -194,7 +194,9 @@ function makeElementDraggable(mainElement, headerElement)
 
 	if(settings.save_comments_to_storage)
 	{
-		let savedComments = (await browser.storage.local.get("savedComments")).savedComments;
+		let savedComments = (await browser.storage.local.get("savedComments"))?.savedComments;
+		if(savedComments == undefined)
+			savedComments = {};
 
 		let workId = textarea.id.substr(20);
 
@@ -209,7 +211,7 @@ function makeElementDraggable(mainElement, headerElement)
 	{
 		const controlSet = new ControlSet();
 		controlSet.element.classList.add("aes-cb-actions");
-		if(settings.cb_hide_html_footnote)
+		if(!settings.cb_hide_html_footnote)
 			controlSet.element.classList.add("aes-footnote-offset");
 	
 		const insert = controlSet.addControl("Insert Selection", function(event)
