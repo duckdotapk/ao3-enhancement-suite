@@ -90,8 +90,6 @@
 	"permissions":
 	[
 		"storage",
-		"unlimitedStorage",
-		"webRequest",
-		"webRequestBlocking"
+		"unlimitedStorage"
 	]
 }
