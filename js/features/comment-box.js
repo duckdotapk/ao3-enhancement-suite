@@ -39,6 +39,9 @@ async function insertSelection(textarea)
 		}
 	}
 
+	if(processedSelection.length == 0)
+		return;
+
 	textarea.value += processedSelection.join("\r\n\r\n") + "\r\n\r\n";
 
 	if(await Setting.get("cb_focus_after_insert"))
@@ -215,10 +218,10 @@ function makeElementDraggable(mainElement, headerElement)
 			textarea.value = savedComment;
 	}
 
-
+	let controlSet;
 	if(settings.cb_enable_additional_controls)
 	{
-		const controlSet = new ControlSet();
+		controlSet = new ControlSet();
 		controlSet.element.classList.add("aes-cb-actions");
 		if(!settings.cb_hide_html_footnote)
 			controlSet.element.classList.add("aes-footnote-offset");
@@ -247,8 +250,30 @@ function makeElementDraggable(mainElement, headerElement)
 					switchToStaticCommentBox(commentBox);
 			}
 
-			if(settings.newValue == undefined || changes.settings.newValue.enable_floating_comment_box)
+			if(changes.settings.newValue?.enable_floating_comment_box)
 				commentBox.style.opacity = changes.settings.newValue.cb_floating_opacity;
+
+			if(changes.settings.oldValue?.cb_hide_comment_as_heading != changes.settings.newValue?.cb_hide_comment_as_heading)
+			{
+				if(changes.settings.newValue?.cb_hide_comment_as_heading)
+					heading?.classList.add("aes-hidden");
+				else
+					heading?.classList.remove("aes-hidden");
+			}
+			
+			if(changes.settings.oldValue?.cb_hide_html_footnote != changes.settings.newValue?.cb_hide_html_footnote)
+			{
+				if(changes.settings.newValue?.cb_hide_html_footnote)
+				{
+					footnote?.classList.add("aes-hidden");
+					controlSet?.element.classList.remove("aes-footnote-offset");
+				}
+				else
+				{
+					footnote?.classList.remove("aes-hidden");
+					controlSet?.element.classList.add("aes-footnote-offset");
+				}
+			}
 		}
 	});
 })();
