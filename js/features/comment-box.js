@@ -25,12 +25,12 @@ async function insertSelection(textarea)
 		}
 	}
 
-
-
 	textarea.value += processedSelection.join("\r\n\r\n") + "\r\n\r\n";
 
 	if(await Setting.get("cb_focus_after_insert"))
 		textarea.focus();
+
+	textarea.dispatchEvent(new Event("input"));
 };
 
 function clipCommentBox(mainElement)
@@ -119,6 +119,8 @@ function makeElementDraggable(mainElement, headerElement)
 
 (async function()
 {
+	const settings = await Setting.getAll();
+
 	const commentBox = document.getElementById("add_comment_placeholder");
 	if(commentBox == null)
 		return;
@@ -127,10 +129,10 @@ function makeElementDraggable(mainElement, headerElement)
 
 	const fieldset = commentBox.querySelector("fieldset");
 
-	if(await Setting.get("enable_floating_comment_box"))
+	if(settings.enable_floating_comment_box)
 	{
 		commentBox.classList.add("aes-fcb");
-		commentBox.style = `top: 0px; left: 0px; opacity: ${ await Setting.get("cb_floating_opacity") };`;
+		commentBox.style = `top: 0px; left: 0px; opacity: ${ settings.cb_floating_opacity };`;
 
 		const moveHeader = document.createElement("div");
 		moveHeader.classList.add("aes-move-header");
@@ -149,20 +151,65 @@ function makeElementDraggable(mainElement, headerElement)
 	}
 
 	const heading = fieldset.querySelector("h4.heading");
-	if(await Setting.get("cb_hide_comment_as_heading"))
+	if(settings.cb_hide_comment_as_heading)
 		heading?.classList.add("aes-hidden");
 
 	const footnote = fieldset.querySelector(".footnote");
-	if(await Setting.get("cb_hide_html_footnote"))
+	if(settings.cb_hide_html_footnote)
 		footnote.classList.add("aes-hidden");
 
 	const textarea = fieldset.querySelector("textarea");
 
-	if(await Setting.get("cb_enable_additional_controls"))
+	let timeout;
+	textarea.addEventListener("input", async function(event)
+	{
+		// Not using "settings" here so the setting can be changed without reloading the page
+		if(!await Setting.get("save_comments_to_storage")) 
+			return;
+
+		if(timeout != undefined)
+			clearTimeout(timeout);
+
+		timeout = setTimeout(function()
+		{
+			try
+			{
+				let workId = "work_" + textarea.id.substr(20);
+
+				let storage =
+				{
+					savedComments: {},
+				}
+	
+				storage.savedComments[workId] = textarea.value;
+	
+				browser.storage.local.set(storage);
+			}
+			catch(error)
+			{
+				debugger;
+			}
+		}, 1000);
+	});
+
+	if(settings.save_comments_to_storage)
+	{
+		let savedComments = (await browser.storage.local.get("savedComments")).savedComments;
+
+		let workId = textarea.id.substr(20);
+
+		let savedComment = savedComments["work_" + workId];
+
+		if(savedComment != undefined)
+			textarea.value = savedComment;
+	}
+
+
+	if(settings.cb_enable_additional_controls)
 	{
 		const controlSet = new ControlSet();
 		controlSet.element.classList.add("aes-cb-actions");
-		if(!await Setting.get("cb_hide_html_footnote"))
+		if(settings.cb_hide_html_footnote)
 			controlSet.element.classList.add("aes-footnote-offset");
 	
 		const insert = controlSet.addControl("Insert Selection", function(event)

@@ -242,5 +242,15 @@
 	"setting_requires_reload":
 	{
 		"message": "You must reload the page for changes to this setting to take effect."
+	},
+
+	"save_comments_to_storage":
+	{
+		"message": "Autosave Comments"
+	},
+
+	"save_comments_to_storage_tooltip":
+	{
+		"message": "Autosaves comments to your browser's storage."
 	}
 }

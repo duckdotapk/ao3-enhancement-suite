@@ -1,6 +1,16 @@
 // Enhanced Comment Box
 new Setting(
 {
+	id: "save_comments_to_storage",
+	category: browser.i18n.getMessage("comment_box"),
+	title: browser.i18n.getMessage("save_comments_to_storage"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("save_comments_to_storage_toolip"),
+	defaultValue: true,
+});
+
+new Setting(
+{
 	id: "enable_floating_comment_box",
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
