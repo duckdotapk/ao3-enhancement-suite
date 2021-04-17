@@ -5,7 +5,7 @@ new Setting(
 	category: browser.i18n.getMessage("comment_box"),
 	title: browser.i18n.getMessage("save_comments_to_storage"),
 	type: "checkbox",
-	tooltip: browser.i18n.getMessage("save_comments_to_storage_toolip"),
+	tooltip: browser.i18n.getMessage("save_comments_to_storage_tooltip"),
 	defaultValue: true,
 });
 
