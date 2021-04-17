@@ -5,6 +5,20 @@ AO3 Enhancement Suite is a browser extension that aims to improve upon the alrea
 This extension is now available from the [Chrome Web Store](https://chrome.google.com/webstore/detail/ao3-enhancement-suite/bhmneclegcomgehhnoielpcmgjbamblj) and the [Firefox Add-on Store](https://addons.mozilla.org/en-US/firefox/addon/ao3-enhancement-suite/).
 
 # Features
+## Enhanced Comment Box
+There are various features to enhance the commenting experience!
+
+### Autosaving Comments
+This feature autosaves comments to your browser's storage as you type to save you time and potential headaches from browser crashes or accidentally closing tabs.
+
+### Floating Comment Box
+This feature moves the comment box into a floating, resizable window that follows you as you scroll. This makes it easy to comment as you go on long works!
+
+*This feature must be enabled in the extension's settings before it can be used.*
+
+### Insert Selection
+This feature allows you to easily insert the text you have selected into the comment box. You can also choose the default formatting of the inserted text (bold, italics or none).
+
 ## Search Presets
 This feature allows you to easily save and reload search setting presets. If you ever have a really fine tuned search to find works you're looking for and want to save it, this is the feature for you!
 
@@ -29,6 +43,19 @@ You can customise the words-per-minute used to calculate this statistic in the e
 See [LICENSE](/LICENSE).
 
 # Version History
+## 1.2
+
+**This update was released on April 16th, 2021.**
+
+- Updated the design of the settings page.
+	- Added tooltips to every setting that explain what they do.
+	- Added buttons at the bottom to reset your settings and to reset all data.
+- Added various new comment box features.
+	- Autosaving comments to your browser's storage.
+	- A floating comment box with customisable opacity, disabled by default.
+	- The ability to hide the "Comment as <pseud>" heading and "Plain text with limited HTML" footnote, disabled by default.
+	- An "Insert Selection" button with customisable formatting.
+
 ## 1.1.2
 
 **This update was released on April 13th, 2021.**
