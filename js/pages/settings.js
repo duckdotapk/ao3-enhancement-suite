@@ -8,7 +8,7 @@ function createSettingLabel(settingContainer, setting, appendColon)
 	settingContainer.appendChild(label);
 }
 
-async function createSettingInput(settingContainer, setting, userSettings, changeCallback)
+async function createSettingInput(settingContainer, setting, changeCallback)
 {
 	let input = document.createElement("input");
 
@@ -52,9 +52,9 @@ async function createSettingInput(settingContainer, setting, userSettings, chang
 	settingContainer.appendChild(input);
 }
 
-async function createCheckboxSetting(settingContainer, setting, userSettings)
+async function createCheckboxSetting(settingContainer, setting)
 {
-	await createSettingInput(settingContainer, setting, userSettings, function(event)
+	await createSettingInput(settingContainer, setting, function(event)
 	{
 		return event.target.checked;
 	});
@@ -62,17 +62,17 @@ async function createCheckboxSetting(settingContainer, setting, userSettings)
 	createSettingLabel(settingContainer, setting, false);
 }
 
-async function createNumberSetting(settingContainer, setting, userSettings)
+async function createNumberSetting(settingContainer, setting)
 {
 	createSettingLabel(settingContainer, setting, true);
 
-	await createSettingInput(settingContainer, setting, userSettings, function(event)
+	await createSettingInput(settingContainer, setting, function(event)
 	{
 		return event.target.value;
 	});
 }
 
-async function createSelectSetting(settingContainer, setting, userSettings)
+async function createSelectSetting(settingContainer, setting)
 {
 	createSettingLabel(settingContainer, setting, true);
 
@@ -110,8 +110,6 @@ document.addEventListener("DOMContentLoaded", async function()
 	settingsHeader.innerText = browser.i18n.getMessage("settings");
 	settingsContainer.appendChild(settingsHeader);
 
-	const userSettings = await Setting.getAll();
-
 	for(let [categoryId, settings] of Setting.categories.entries())
 	{
 		let categoryHeader = document.createElement("h3");
@@ -137,15 +135,15 @@ document.addEventListener("DOMContentLoaded", async function()
 			switch(setting.type)
 			{
 				case "checkbox":
-					await createCheckboxSetting(settingContainer, setting, userSettings);
+					await createCheckboxSetting(settingContainer, setting);
 					break;
 
 				case "number":
-					await createNumberSetting(settingContainer, setting, userSettings);
+					await createNumberSetting(settingContainer, setting);
 					break;
 
 				case "select":
-					await createSelectSetting(settingContainer, setting, userSettings);
+					await createSelectSetting(settingContainer, setting);
 					break;
 
 				default:

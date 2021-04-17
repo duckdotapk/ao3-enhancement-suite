@@ -16,7 +16,7 @@ new Setting(
 	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
 	type: "checkbox",
 	tooltip: browser.i18n.getMessage("enable_floating_comment_box_toolip"),
-	requiresReload: true,
+	requiresReload: false,
 	defaultValue: false,
 });
 
@@ -27,7 +27,7 @@ new Setting(
 	title: browser.i18n.getMessage("cb_floating_opacity"),
 	type: "number",
 	tooltip: browser.i18n.getMessage("cb_floating_opacity_tooltip"),
-	requiresReload: true,
+	requiresReload: false,
 	defaultValue: 0.65,
 	extraData:
 	{

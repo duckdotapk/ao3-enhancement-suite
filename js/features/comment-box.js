@@ -1,3 +1,17 @@
+function switchToFloatingCommentBox(commentBox, opacity)
+{
+	commentBox.classList.add("aes-fcb");
+	commentBox.style = `top: 0px; left: 0px; opacity: ${ opacity };`;
+	document.body.appendChild(commentBox);
+}
+
+function switchToStaticCommentBox(commentBox)
+{
+	commentBox.classList.remove("aes-fcb");
+	commentBox.style = "";
+	document.getElementById("feedback").insertBefore(commentBox, document.getElementById("comments_placeholder"));
+}
+
 async function insertSelection(textarea)
 {
 	let rawSelection = window.getSelection().toString().split("\r\n");
@@ -127,28 +141,23 @@ function makeElementDraggable(mainElement, headerElement)
 
 	commentBox.classList.add("aes-cb");
 
+	if(settings.enable_floating_comment_box)
+		switchToFloatingCommentBox(commentBox, settings.cb_floating_opacity);
+
 	const fieldset = commentBox.querySelector("fieldset");
 
-	if(settings.enable_floating_comment_box)
-	{
-		commentBox.classList.add("aes-fcb");
-		commentBox.style = `top: 0px; left: 0px; opacity: ${ settings.cb_floating_opacity };`;
+	const moveHeader = document.createElement("div");
+	moveHeader.classList.add("aes-move-header");
+	moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
+	commentBox.prepend(moveHeader);
 
-		const moveHeader = document.createElement("div");
-		moveHeader.classList.add("aes-move-header");
-		moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
-		commentBox.prepend(moveHeader);
-
-		document.body.appendChild(commentBox);
-		makeElementDraggable(commentBox, moveHeader);
-	}
-	else
-	{
-		let fcbRecommendation = document.createElement("p");
-		fcbRecommendation.classList.add("footnote");
-		fcbRecommendation.innerText = `(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
-		fieldset.append(fcbRecommendation);
-	}
+	makeElementDraggable(commentBox, moveHeader);
+	
+	let fcbRecommendation = document.createElement("p");
+	fcbRecommendation.classList.add("footnote");
+	fcbRecommendation.classList.add("aes-fcb-recommendation");
+	fcbRecommendation.innerText = `(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
+	fieldset.append(fcbRecommendation);
 
 	const heading = fieldset.querySelector("h4.heading");
 	if(settings.cb_hide_comment_as_heading)
@@ -223,4 +232,23 @@ function makeElementDraggable(mainElement, headerElement)
 	
 		fieldset.insertBefore(controlSet.element, textarea.parentElement);
 	}
+
+	browser.storage.onChanged.addListener(function(changes, areaName)
+	{
+		if(areaName == "local")
+		{
+			console.log(changes);
+
+			if(changes.settings.oldValue?.enable_floating_comment_box != changes.settings.newValue?.enable_floating_comment_box)
+			{
+				if(changes.settings.newValue?.enable_floating_comment_box)
+					switchToFloatingCommentBox(commentBox, changes.settings.newValue.cb_floating_opacity);
+				else
+					switchToStaticCommentBox(commentBox);
+			}
+
+			if(settings.newValue == undefined || changes.settings.newValue.enable_floating_comment_box)
+				commentBox.style.opacity = changes.settings.newValue.cb_floating_opacity;
+		}
+	});
 })();
