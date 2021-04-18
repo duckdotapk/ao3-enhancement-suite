@@ -165,8 +165,6 @@ function makeElementDraggable(mainElement, headerElement)
 	{
 		let fcbRecommendationHelp = new HelpButton("?", browser.i18n.getMessage("settings"), function(event)
 		{
-			console.log(aesDropdown.getItem("settings"));
-
 			aesDropdown.getItem("settings").onClick();
 		});
 	
@@ -255,8 +253,6 @@ function makeElementDraggable(mainElement, headerElement)
 	{
 		if(areaName == "local")
 		{
-			console.log(changes);
-
 			if(changes.settings.oldValue?.enable_floating_comment_box != changes.settings.newValue?.enable_floating_comment_box)
 			{
 				if(changes.settings.newValue?.enable_floating_comment_box)
