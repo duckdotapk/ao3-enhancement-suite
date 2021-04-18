@@ -104,13 +104,45 @@ new Setting(
 // Hidden Authors & Works
 new Setting(
 {
+	id: "hidden_aw_max_rating", 
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hidden_aw_max_rating"), 
+	type: "select", 
+	tooltip: browser.i18n.getMessage("hidden_aw_max_rating_tooltip"),
+	defaultValue: 3, 
+	requiresReload: true,
+	extraData:
+	{
+		options:
+		[
+			{ value: 0, text: "General Audiences" },
+			{ value: 1, text: "Teen And Up Audiences" },
+			{ value: 2, text: "Mature" },
+			{ value: 3, text: "Explicit (All Works)" },
+		],
+	},
+});
+
+new Setting(
+{
+	id: "hidden_aw_consider_not_rated_explicit", 
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hidden_aw_consider_not_rated_explicit"), 
+	type: "checkbox", 
+	tooltip: browser.i18n.getMessage("hidden_aw_consider_not_rated_explicit_tooltip"),
+	requiresReload: true,
+	defaultValue: true,
+});
+
+new Setting(
+{
 	id: "hidden_aw_quick_hide_key", 
 	category: browser.i18n.getMessage("hidden_authors_and_works"),
 	title: browser.i18n.getMessage("hidden_aw_quick_hide_key"), 
 	type: "select", 
 	tooltip: browser.i18n.getMessage("hidden_aw_quick_hide_key_tooltip"),
 	defaultValue: "disabled", 
-	requiresReload: false,
+	requiresReload: true,
 	extraData:
 	{
 		options:
@@ -173,8 +205,8 @@ new Setting(
 	title: browser.i18n.getMessage("multiple_fandoms_threshold"), 
 	type: "number", 
 	tooltip: browser.i18n.getMessage("multiple_fandoms_threshold_tooltip"),
-	requiresReload: true,
 	defaultValue: 2, 
+	requiresReload: true,
 	extraData:
 	{ 
 		min: 2, 

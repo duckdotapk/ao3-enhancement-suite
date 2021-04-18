@@ -402,5 +402,25 @@
 	"hidden_aw_quick_hide_key_tooltip":
 	{
 		"message": "Set what method you'd like to use to quickly hide authors, fandoms and tags."
+	},
+
+	"hidden_aw_max_rating":
+	{
+		"message": "Maximum Rating"
+	},
+
+	"hidden_aw_max_rating_tooltip":
+	{
+		"message": "Hides works that exceed the maximum rating"
+	},
+
+	"hidden_aw_consider_not_rated_explicit":
+	{
+		"message": "Consider \"Not Rated\" Works Explicit"
+	},
+
+	"hidden_aw_consider_not_rated_explicit_tooltip":
+	{
+		"message": "When enabled, works that are marked \"Not Rated\" will be considered explicit.\n\nWhen disabled, these works will be shown regardless of the maximum rating."
 	}
 }
