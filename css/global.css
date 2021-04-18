@@ -1,3 +1,4 @@
+/* General */
 .aes-hidden
 {
 	display: none;
@@ -8,8 +9,20 @@
 	font-size: 50%;
 }
 
-.aes-modal-control-set li
+.aes-modal .aes-control-set li
 {
 	display: inline;
 	list-style-type: none;
+}
+
+/* Nav Settings */
+#aes-settings footer
+{
+	text-align: center;
+	padding: 10px;
+}
+
+#aes-settings input
+{
+	width: auto;
 }

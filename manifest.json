@@ -59,6 +59,7 @@
 				"js/globals.js",
 				
 				"js/settings.js",
+				"js/nav-settings.js",
 
 				"js/features/tag-collapse.js",
 				"js/features/work-stats.js"
