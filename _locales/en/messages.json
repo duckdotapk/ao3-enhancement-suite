@@ -432,5 +432,60 @@
 	"hidden_aw_consider_not_rated_explicit_tooltip":
 	{
 		"message": "When enabled, works that are marked \"Not Rated\" will be considered explicit.\n\nWhen disabled, these works will be shown regardless of the maximum rating."
+	},
+
+	"manage_hide_lists":
+	{
+		"message": "Manage Hidden Authors, Fandoms and Tags"
+	},
+
+	"hidelist_authors":
+	{
+		"message": "Hidden Authors"
+	},
+
+	"hidelist_fandoms":
+	{
+		"message": "Hidden Fandoms"
+	},
+
+	"hidelist_warnings":
+	{
+		"message": "Hidden Archive Warnings"
+	},
+
+	"hidelist_relationships":
+	{
+		"message": "Hidden Relationships"
+	},
+
+	"hidelist_characters":
+	{
+		"message": "Hidden Characters"
+	},
+
+	"hidelist_freeforms":
+	{
+		"message": "Hidden Additional Tags"
+	},
+
+	"hidelist_empty":
+	{
+		"message": "You do not currently have any of these hidden."
+	},
+
+	"stop_hiding_works_by":
+	{
+		"message": "Stop hiding works by $1"
+	},
+
+	"stop_hiding_works_in_fandom":
+	{
+		"message": "Stop hiding works in the fandom $1"
+	},
+
+	"stop_hiding_works_tagged":
+	{
+		"message": "Stop hiding works tagged $1"
 	}
 }

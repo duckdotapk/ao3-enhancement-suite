@@ -52,6 +52,7 @@
 				"js/polyfills/browser-polyfill.min.js",
 
 				"js/classes/ControlSet.js",
+				"js/classes/DeleteButton.js",
 				"js/classes/HelpButton.js",
 				"js/classes/HideList.js",
 				"js/classes/Modal.js",
@@ -64,6 +65,7 @@
 
 				"js/nav-dropdown/about.js",
 				"js/nav-dropdown/settings.js",
+				"js/nav-dropdown/manage-hide-lists.js",
 
 				"js/features/hide-works.js",
 				"js/features/tag-collapse.js",
