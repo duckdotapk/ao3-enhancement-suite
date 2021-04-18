@@ -115,7 +115,7 @@
 			}
 		}
 
-		const showReasons = await Setting.get("hidden_aw_show_reasons");
+		const showReasons = settings.hidden_aw_show_reasons;
 
 		if(exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
 		{
