@@ -141,7 +141,7 @@ new Setting(
 	title: browser.i18n.getMessage("hidden_aw_quick_hide_key"), 
 	type: "select", 
 	tooltip: browser.i18n.getMessage("hidden_aw_quick_hide_key_tooltip"),
-	defaultValue: "disabled", 
+	defaultValue: "alt", 
 	requiresReload: true,
 	extraData:
 	{
