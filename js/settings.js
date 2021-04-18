@@ -124,6 +124,7 @@ new Setting(
 	requiresReload: true,
 	defaultValue: true,
 });
+
 new Setting(
 {
 	id: "tag_collapse_threshold", 

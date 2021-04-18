@@ -50,15 +50,15 @@
 			"js":
 			[
 				"js/polyfills/browser-polyfill.min.js",
-				
-				"js/classes/Setting.js",
-				"js/settings.js",
-				
-				"js/globals.js",
 
 				"js/classes/ControlSet.js",
 				"js/classes/Modal.js",
 				"js/classes/NavDropdown.js",
+				"js/classes/Setting.js",
+
+				"js/globals.js",
+				
+				"js/settings.js",
 
 				"js/features/tag-collapse.js",
 				"js/features/work-stats.js"

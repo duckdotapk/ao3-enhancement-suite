@@ -287,5 +287,10 @@
 	"cancel":
 	{
 		"message": "Cancel"
+	},
+
+	"about":
+	{
+		"message": "About"
 	}
 }
