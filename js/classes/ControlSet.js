@@ -5,6 +5,7 @@ class ControlSet
 	{
 		const controlSet = document.createElement("ul");
 		controlSet.classList.add("actions");
+		controlSet.classList.add("aes-control-set");
 
 		if(cssClasses != undefined)
 			for(let cssClass of cssClasses)
