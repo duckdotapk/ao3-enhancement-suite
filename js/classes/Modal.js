@@ -36,6 +36,10 @@ class Modal
 			Modal.body.append(contentElement);
 
 		Modal.footer.querySelector(".title").innerText = browser.i18n.getMessage("name");
+
+		// Forces the Modal to get resized, AO3 is listening for this event
+		//	https://github.com/otwcode/otwarchive/blob/1f7610f25b28388bd6b2beb4715f2a80ece78ef7/public/javascripts/ao3modal.js#L242
+		window.dispatchEvent(new Event("resize"));
 	}
 
 	static close()
