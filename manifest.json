@@ -52,6 +52,7 @@
 				"js/polyfills/browser-polyfill.min.js",
 
 				"js/classes/ControlSet.js",
+				"js/classes/HelpButton.js",
 				"js/classes/Modal.js",
 				"js/classes/NavDropdown.js",
 				"js/classes/Setting.js",
