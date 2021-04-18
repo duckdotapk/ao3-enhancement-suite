@@ -22,10 +22,22 @@
 		...blockedFreeformTags,
 	];
 
-	let works = document.querySelectorAll(".work.blurb");
+	let works = document.querySelectorAll(".work.blurb, .series.blurb, .bookmark.blurb");
 
 	for(let work of works)
 	{
+		// Skip the users own works
+		if(work.classList.contains("own"))
+			continue;
+
+		let workType;
+		if(work.classList.contains("bookmark"))
+			workType = "bookmark";
+		else if(work.classList.contains("series"))
+			workType = "series";
+		else
+			workType = "work";
+
 		let ratingElement = work.querySelector(".rating");
 
 		let rating = 0;
@@ -147,8 +159,13 @@
 			
 			{
 				let controlHeader = document.createElement("h4");
-
-				controlHeader.innerText = browser.i18n.getMessage("hidden_work");
+				
+				if(work.classList.contains("bookmark"))
+					controlHeader.innerText = browser.i18n.getMessage("hidden_bookmark");
+				else if(work.classList.contains("series"))
+					controlHeader.innerText = browser.i18n.getMessage("hidden_series");
+				else
+					controlHeader.innerText = browser.i18n.getMessage("hidden_work");
 
 				if(showReasons)
 					controlHeader.innerText += " - " + blockReasons.join(" - ");

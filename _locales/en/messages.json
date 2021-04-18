@@ -304,6 +304,16 @@
 		"message": "Hidden Work"
 	},
 
+	"hidden_series":
+	{
+		"message": "Hidden Series"
+	},
+
+	"hidden_bookmark":
+	{
+		"message": "Hidden Bookmark"
+	},
+
 	"hidden_authors_and_works":
 	{
 		"message": "Hidden Authors & Works"
