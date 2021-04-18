@@ -159,7 +159,22 @@ function makeElementDraggable(mainElement, headerElement)
 	let fcbRecommendation = document.createElement("p");
 	fcbRecommendation.classList.add("footnote");
 	fcbRecommendation.classList.add("aes-fcb-recommendation");
-	fcbRecommendation.innerText = `(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) })`;
+	
+	fcbRecommendation.appendChild(document.createTextNode(`(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) } `));
+
+	{
+		let fcbRecommendationHelp = new HelpButton("?", browser.i18n.getMessage("settings"), function(event)
+		{
+			console.log(aesDropdown.getItem("settings"));
+
+			aesDropdown.getItem("settings").onClick();
+		});
+	
+		fcbRecommendation.appendChild(fcbRecommendationHelp.element);
+	}
+	
+	fcbRecommendation.appendChild(document.createTextNode(")"));
+
 	fieldset.append(fcbRecommendation);
 
 	const heading = fieldset.querySelector("h4.heading");
