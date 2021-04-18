@@ -292,5 +292,10 @@
 	"about":
 	{
 		"message": "About"
+	},
+
+	"settings_moved":
+	{
+		"message": "The settings have moved to the new $1 menu within the site's navbar."
 	}
 }
