@@ -27,7 +27,7 @@ class ControlSet
 			{
 				event.preventDefault();
 	
-				onClick(event);
+				onClick(event, link);
 			});
 	
 			control.append(link);
