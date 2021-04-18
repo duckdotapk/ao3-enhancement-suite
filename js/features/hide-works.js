@@ -21,10 +21,6 @@
 
 	for(let work of works)
 	{
-		// Skip the users own works
-		if(work.classList.contains("own"))
-			continue;
-
 		let workType;
 		if(work.classList.contains("bookmark"))
 			workType = "bookmark";
@@ -124,7 +120,11 @@
 
 		const showReasons = settings.hidden_aw_show_reasons;
 
-		if(exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
+		// Skip the users own works
+		if(work.classList.contains("own"))
+			continue;
+
+		if(!exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
 		{
 			let blockReasons = [];
 
@@ -201,7 +201,7 @@
 			if(!link.classList.contains("aes-hide-parameter"))
 				return;
 
-			event.preventDefault();
+			event.preventDefault();	
 
 			let hideListId = link.dataset.aesHideListId;
 			let tag = link.innerText.trim();
@@ -221,6 +221,5 @@
 					}
 				});
 		}
-
 	});
 })();
