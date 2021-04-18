@@ -2,19 +2,14 @@
 {
 	const settings = await Setting.getAll();
 
-	let blockedAuthors = await HideList.get("authors");
+	const blockedAuthors = await HideList.get("authors");
+	const blockedFandoms = await HideList.get("fandoms");
+	const blockedWarnings = await HideList.get("warnings");
+	const blockedRelationships = await HideList.get("relationships");
+	const blockedCharacters = await HideList.get("characters");
+	const blockedFreeformTags = await HideList.get("freeforms");
 
-	let blockedFandoms = await HideList.get("fandoms");
-
-	let blockedWarnings = await HideList.get("warnings");
-
-	let blockedRelationships = await HideList.get("relationships");
-
-	let blockedCharacters = await HideList.get("characters");
-
-	let blockedFreeformTags = await HideList.get("freeforms");
-
-	let blockedTags =
+	const blockedTags =
 	[
 		...blockedWarnings,
 		...blockedRelationships,
