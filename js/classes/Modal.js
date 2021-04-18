@@ -17,7 +17,7 @@ function addBodyCloseEvent(resolve, args)
 
 class Modal
 {
-	static show(contentElements)
+	static show(contentElements, hideCloseButton)
 	{
 		while(Modal.body.firstChild)
 			Modal.body.removeChild(Modal.body.firstChild);
@@ -40,6 +40,9 @@ class Modal
 
 		Modal.footer.querySelector(".title").innerText = browser.i18n.getMessage("name");
 
+		if(hideCloseButton)
+			Modal.closeButton.classList.add("aes-hidden");
+
 		// Forces the Modal to get resized, AO3 is listening for this event
 		//	https://github.com/otwcode/otwarchive/blob/1f7610f25b28388bd6b2beb4715f2a80ece78ef7/public/javascripts/ao3modal.js#L242
 		window.dispatchEvent(new Event("resize"));
@@ -55,6 +58,8 @@ class Modal
 
 		Modal.body.classList.add("userstuff");
 		Modal.body.classList.remove("aes-modal");
+
+		Modal.closeButton.classList.remove("aes-hidden");
 	}
 
 	static async alert(message)
@@ -79,7 +84,7 @@ class Modal
 				[ 
 					header,
 					controlSet.element 
-				]);
+				], true);
 			});
 	}
 
@@ -112,7 +117,7 @@ class Modal
 				[ 
 					header,
 					controlSet.element 
-				]);
+				], true);
 			});
 	}
 
@@ -153,7 +158,7 @@ class Modal
 					header,
 					input,
 					controlSet.element 
-				]);
+				], true);
 			});
 	}
 }
