@@ -1,4 +1,4 @@
-(async function()
+(function()
 {
 	//
 	// Util Functions
@@ -132,90 +132,97 @@
 	// Settings Container
 	//
 
-	const settingsContainer = document.createElement("div");
-	settingsContainer.id = "aes-settings";
-
-	let settingsHeader = document.createElement("h1");
-	settingsHeader.innerText = browser.i18n.getMessage("settings");
-	settingsContainer.appendChild(settingsHeader);
-
-	for(let [categoryId, settings] of Setting.categories.entries())
+	async function createSettingsContainer()
 	{
-		let categoryContainer = document.createElement("fieldset");
-		settingsContainer.append(categoryContainer);
-
-		let categoryHeader = document.createElement("h4");
-		categoryHeader.classList.add("heading");
-		categoryHeader.innerText = categoryId;
-		categoryContainer.appendChild(categoryHeader);
-
-		let settingsList = document.createElement("ul");
-		categoryContainer.appendChild(settingsList);
-
-		for(let setting of settings)
-		{
-			const settingContainer = document.createElement("li");
-			settingsContainer.classList.add("aes-setting");
-			settingsContainer.classList.add("aes-setting-" + setting.type);
-
-			if(setting.tooltip)
-			{
-				let tooltip = setting.tooltip;
-				if(setting.requiresReload)
-					tooltip += "\r\n\r\n" + browser.i18n.getMessage("setting_requires_reload");
-
-				settingContainer.setAttribute("title", tooltip);
-			}
-
-			settingsList.appendChild(settingContainer);
-
-			switch(setting.type)
-			{
-				case "checkbox":
-					await createCheckboxSetting(settingContainer, setting);
-					break;
-
-				case "number":
-					await createNumberSetting(settingContainer, setting);
-					break;
-
-				case "select":
-					await createSelectSetting(settingContainer, setting);
-					break;
-
-				default:
-					break;
-			}
-
-		}
-	};
-
-	// TODO: Replace this with a controlSet now that it's part of the page
-	let footer = document.createElement("footer");
-	settingsContainer.appendChild(footer);
-
-	addFooterLink(footer, "reset-settings", browser.i18n.getMessage("reset_all_settings"), browser.i18n.getMessage("reset_all_settings_tooltip"), async function(event)
-	{
-		await browser.storage.local.remove("settings");
-
-		location.reload();
-	});
-
-	addFooterSeparator(footer);
-
-	addFooterLink(footer, "reset-data", browser.i18n.getMessage("reset_all_data"), browser.i18n.getMessage("reset_all_data_tooltip"), async function(event)
-	{
-		// TODO: switch to Modal.confirm
-		if(window.confirm(browser.i18n.getMessage("reset_all_data_confirmation")))
-		{
-			await browser.storage.local.clear();
-
-			location.reload();
-		}
-	});
+		const settingsContainer = document.createElement("div");
+		settingsContainer.id = "aes-settings";
 	
-	aesDropdown.addItem("settings", browser.i18n.getMessage("settings"), function(event, item)
+		let settingsHeader = document.createElement("h1");
+		settingsHeader.innerText = browser.i18n.getMessage("settings");
+		settingsContainer.appendChild(settingsHeader);
+	
+		for(let [categoryId, settings] of Setting.categories.entries())
+		{
+			let categoryContainer = document.createElement("fieldset");
+			settingsContainer.append(categoryContainer);
+	
+			let categoryHeader = document.createElement("h4");
+			categoryHeader.classList.add("heading");
+			categoryHeader.innerText = categoryId;
+			categoryContainer.appendChild(categoryHeader);
+	
+			let settingsList = document.createElement("ul");
+			categoryContainer.appendChild(settingsList);
+	
+			for(let setting of settings)
+			{
+				const settingContainer = document.createElement("li");
+				settingsContainer.classList.add("aes-setting");
+				settingsContainer.classList.add("aes-setting-" + setting.type);
+	
+				if(setting.tooltip)
+				{
+					let tooltip = setting.tooltip;
+					if(setting.requiresReload)
+						tooltip += "\r\n\r\n" + browser.i18n.getMessage("setting_requires_reload");
+	
+					settingContainer.setAttribute("title", tooltip);
+				}
+	
+				settingsList.appendChild(settingContainer);
+	
+				switch(setting.type)
+				{
+					case "checkbox":
+						await createCheckboxSetting(settingContainer, setting);
+						break;
+	
+					case "number":
+						await createNumberSetting(settingContainer, setting);
+						break;
+	
+					case "select":
+						await createSelectSetting(settingContainer, setting);
+						break;
+	
+					default:
+						break;
+				}
+	
+			}
+		};
+
+		// TODO: Replace this with a controlSet now that it's part of the page
+		let footer = document.createElement("footer");
+		settingsContainer.appendChild(footer);
+	
+		addFooterLink(footer, "reset-settings", browser.i18n.getMessage("reset_all_settings"), browser.i18n.getMessage("reset_all_settings_tooltip"), async function(event)
+		{
+			await browser.storage.local.remove("settings");
+	
+			location.reload();
+		});
+	
+		addFooterSeparator(footer);
+	
+		addFooterLink(footer, "reset-data", browser.i18n.getMessage("reset_all_data"), browser.i18n.getMessage("reset_all_data_tooltip"), async function(event)
+		{
+			// TODO: switch to Modal.confirm
+			if(window.confirm(browser.i18n.getMessage("reset_all_data_confirmation")))
+			{
+				await browser.storage.local.clear();
+	
+				location.reload();
+			}
+		});
+
+		return settingsContainer;
+	}
+	
+	aesDropdown.addItem("settings", browser.i18n.getMessage("settings"), async function(event, item)
 	{
+		let settingsContainer = await createSettingsContainer();
+
 		Modal.show(
 		[
 			settingsContainer,
