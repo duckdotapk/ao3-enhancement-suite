@@ -49,6 +49,7 @@
 			case "rating-mature":
 				rating = 2;
 				break;
+
 			case "rating-explicit":
 				rating = 3;
 				break;
@@ -57,7 +58,7 @@
 				break;
 		}
 
-		let exceedsMaxRating = rating > settings.hidden_aw_max_rating;
+		let exceedsMaxRating = rating > parseInt(settings.hidden_aw_max_rating);
 
 		let authorLinks = work.querySelectorAll(`a[rel="author"]`);
 
@@ -124,7 +125,7 @@
 		if(work.classList.contains("own"))
 			continue;
 
-		if(!exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
+		if(exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
 		{
 			let blockReasons = [];
 
@@ -155,9 +156,9 @@
 			{
 				let controlHeader = document.createElement("h4");
 				
-				if(work.classList.contains("bookmark"))
+				if(workType == "bookmark")
 					controlHeader.innerText = browser.i18n.getMessage("hidden_bookmark");
-				else if(work.classList.contains("series"))
+				else if(workType == "series")
 					controlHeader.innerText = browser.i18n.getMessage("hidden_series");
 				else
 					controlHeader.innerText = browser.i18n.getMessage("hidden_work");
