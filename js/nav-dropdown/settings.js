@@ -221,7 +221,7 @@
 	
 	aesDropdown.addItem("settings", browser.i18n.getMessage("settings"), async function(event, item)
 	{
-		let settingsContainer = await createSettingsContainer();
+		const settingsContainer = await createSettingsContainer();
 
 		Modal.show(
 		[
