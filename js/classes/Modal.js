@@ -32,6 +32,9 @@ class Modal
 		Modal.wrap.style.display = "block";
 		Modal.wrap.style.top = `${ window.scrollY.toString() }px`;
 
+		Modal.body.classList.remove("userstuff");
+		Modal.body.classList.add("aes-modal");
+
 		for(let contentElement of contentElements)
 			Modal.body.append(contentElement);
 
@@ -45,8 +48,13 @@ class Modal
 	static close()
 	{
 		document.body.style = "";
+
 		Modal.background.style.display = "none";
+
 		Modal.wrap.style.display = "none";
+
+		Modal.body.classList.add("userstuff");
+		Modal.body.classList.remove("aes-modal");
 	}
 
 	static async alert(message)
@@ -56,7 +64,7 @@ class Modal
 				let header = document.createElement("h4");
 				header.innerText = message;
 
-				let controlSet = new ControlSet([ "aes-modal-control-set" ]);
+				let controlSet = new ControlSet();
 
 				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
 				{
@@ -82,7 +90,7 @@ class Modal
 				let header = document.createElement("h4");
 				header.innerText = message;
 
-				let controlSet = new ControlSet([ "aes-modal-control-set" ]);
+				let controlSet = new ControlSet();
 
 				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
 				{
@@ -122,7 +130,7 @@ class Modal
 				if(options.minlength != undefined)
 					input.minlength = options.minlength;
 		
-				let controlSet = new ControlSet([ "aes-modal-control-set" ]);
+				let controlSet = new ControlSet();
 		
 				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
 				{
