@@ -27,6 +27,11 @@
 	width: auto;
 }
 
+.aes-dropdown-menu
+{
+	width: auto !important;
+}
+
 /* Hidden Authors & Works */
 .aes-hidden-work-controls
 {

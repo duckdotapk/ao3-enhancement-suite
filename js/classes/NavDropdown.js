@@ -25,6 +25,7 @@ class NavDropdown
 			const dropdown = document.createElement("ul");
 			dropdown.classList.add("menu");
 			dropdown.classList.add("dropdown-menu");
+			dropdown.classList.add("aes-dropdown-menu");
 			dropdown.setAttribute("role", "menu");
 
 			container.appendChild(dropdown);
