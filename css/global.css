@@ -30,6 +30,7 @@
 .aes-dropdown-menu
 {
 	width: auto !important;
+	min-width: 20em;
 }
 
 /* Hidden Authors & Works */
