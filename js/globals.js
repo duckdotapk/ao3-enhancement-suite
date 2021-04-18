@@ -11,7 +11,7 @@ const tagListsStr = tagLists.join(", ");
 
 const aesDropdown = new NavDropdown(browser.i18n.getMessage("name"));
 
-aesDropdown.addItem(browser.i18n.getMessage("about"), function(event, item)
+aesDropdown.addItem("about", browser.i18n.getMessage("about"), function(event, item)
 {
 	let header = document.createElement("h1");
 	header.innerText = browser.i18n.getMessage("name");

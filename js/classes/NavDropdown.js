@@ -31,12 +31,15 @@ class NavDropdown
 
 			this.dropdown = dropdown;
 		}
+
+		this.items = {};
 	}
 
-	addItem(text, onClick)
+	addItem(id, text, onClick)
 	{
 		const item = document.createElement("li");
 		item.setAttribute("role", "menu-item");
+		item.id = NavDropdown.idBase + id;
 
 		this.dropdown.appendChild(item);
 
@@ -55,8 +58,22 @@ class NavDropdown
 			item.appendChild(link);
 		}
 
+		this.items[id] =
+		{
+			id: id,
+			text: text,
+			onClick: onClick,
+			item: item,
+		}
+
 		return item;
+	}
+
+	getItem(id)
+	{
+		return this.items[id];
 	}
 }
 
 NavDropdown.navbar = document.querySelector(".primary.navigation.actions");
+NavDropdown.idBase = "aes-nav-dropdown-item-";

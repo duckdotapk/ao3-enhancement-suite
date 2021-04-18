@@ -214,7 +214,7 @@
 		}
 	});
 	
-	aesDropdown.addItem(browser.i18n.getMessage("settings"), function(event, item)
+	aesDropdown.addItem("settings", browser.i18n.getMessage("settings"), function(event, item)
 	{
 		Modal.show(
 		[
