@@ -1,8 +1,12 @@
 # AO3 Enhancement Suite
-AO3 Enhancement Suite is a browser extension that aims to improve upon the already great experience on [Archive of Our Own](https://archiveofourown.org) by adding various additional features and niceties.
+This is a browser extension that aims to improve upon the already great experience on [Archive of Our Own](https://archiveofourown.org) by adding various additional features and niceties.
+
+It is designed to be lightweight (no libraries!) and follow AO3's frontend design language.
 
 # Installation
 This extension is now available from the [Chrome Web Store](https://chrome.google.com/webstore/detail/ao3-enhancement-suite/bhmneclegcomgehhnoielpcmgjbamblj) and the [Firefox Add-on Store](https://addons.mozilla.org/en-US/firefox/addon/ao3-enhancement-suite/).
+
+This Chrome version of this extension also works in Edge providing that you enable "Allow extensions from other stores."
 
 # Features
 ## Enhanced Comment Box
@@ -37,6 +41,16 @@ This feature adds an "Average words per chapter" stat to multi-chapter works so 
 This feature adds an "Estimated reading time" stat to works so you can get a more specific idea of how long it may take to read a work. 
 
 You can customise the words-per-minute used to calculate this statistic in the extension's settings to your own personal reading speed.
+
+# Screenshots
+Here are some screenshots of the features in action:
+
+![Search Presets](https://addons.cdn.mozilla.net/user-media/previews/full/255/255054.png?modified=1618636155)
+
+![Floating Comment Box](https://addons.cdn.mozilla.net/user-media/previews/full/255/255247.png?modified=1618636160)
+
+# Developing
+Clone/fork this repository and load the addon into your web browser. There are no additional setup steps.
 
 # License
 
