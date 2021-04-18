@@ -26,3 +26,21 @@
 {
 	width: auto;
 }
+
+/* Hidden Authors & Works */
+.aes-hidden-work-controls
+{
+	display: inline;
+}
+
+.aes-hidden-work-controls h4
+{
+	display: inline;
+	line-height: 36px;
+	font-style: italic;
+}
+
+.aes-hidden-tag
+{
+	text-decoration: line-through !important;
+}

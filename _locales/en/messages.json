@@ -289,6 +289,86 @@
 		"message": "Cancel"
 	},
 
+	"show":
+	{
+		"message": "Show"
+	},
+
+	"hide":
+	{
+		"message": "Hide"
+	},
+
+	"hidden_work":
+	{
+		"message": "Hidden Work"
+	},
+
+	"hidden_authors_and_works":
+	{
+		"message": "Hidden Authors & Works"
+	},
+
+	"hidden_aw_show_reasons":
+	{
+		"message": "Show Reasons"
+	},
+
+	"hidden_aw_show_reasons_tooltip":
+	{
+		"message": "Shows the reasons a work has been hidden when enabled."
+	},
+
+	"hide_specific_authors":
+	{
+		"message": "Hide Specific Authors"
+	},
+
+	"hide_specific_authors_tooltip":
+	{
+		"message": "Hides works by authors in your author hide list when enabled."
+	},
+
+	"hide_specific_fandoms":
+	{
+		"message": "Hide Specific Fandoms"
+	},
+
+	"hide_specific_fandoms_tooltip":
+	{
+		"message": "Hides works within fandoms in your fandom hide list when enabled."
+	},
+
+	"hide_multiple_fandoms":
+	{
+		"message": "Hide Crossovers"
+	},
+
+	"hide_multiple_fandoms_tooltip":
+	{
+		"message": "Hides works with multiple fandoms when enabled."
+	},
+
+	"multiple_fandoms_threshold":
+	{
+		"message": "Crossover threshold"
+	},
+
+	"multiple_fandoms_threshold_tooltip":
+	{
+		"message": "Sets the amount of fandoms required for crossover works to be hidden."
+	},
+
+	"hide_specific_tags":
+	{
+		"message": "Hide Specific Tags"
+	},
+
+	"hide_specific_tags_threshold":
+	{
+		"message": "Hides works with tags in your tag hide list when enabled."
+	},
+
 	"about":
 	{
 		"message": "About"
@@ -297,5 +377,30 @@
 	"settings_moved":
 	{
 		"message": "The settings have moved to the new \"$1\" menu within the site's navbar."
+	},
+
+	"ao3_hide_setting_note":
+	{
+		"message": "Note: This setting being enabled will prevent $1 from hiding works based on their $2."
+	},
+
+	"archive_warnings_lc":
+	{
+		"message": "archive warnings"
+	},
+
+	"additional_tags_lc":
+	{
+		"message": "additional tags"
+	},
+
+	"hidden_aw_quick_hide_key":
+	{
+		"message": "Quick Hide Shortcut"
+	},
+
+	"hidden_aw_quick_hide_key_tooltip":
+	{
+		"message": "Set what method you'd like to use to quickly hide authors, fandoms and tags."
 	}
 }

@@ -101,6 +101,97 @@ new Setting(
 	},
 });
 
+// Hidden Authors & Works
+new Setting(
+{
+	id: "hidden_aw_quick_hide_key", 
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hidden_aw_quick_hide_key"), 
+	type: "select", 
+	tooltip: browser.i18n.getMessage("hidden_aw_quick_hide_key_tooltip"),
+	defaultValue: "disabled", 
+	requiresReload: false,
+	extraData:
+	{
+		options:
+		[
+			{ value: "disabled", text: "Disabled" },
+			{ value: "ctrl", text: "Ctrl + Click on Authors/Fandoms/Tags" },
+			{ value: "alt", text: "Alt + Click on Authors/Fandoms/Tags" },
+		],
+	},
+});
+	
+new Setting(
+{
+	id: "hidden_aw_show_reasons",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hidden_aw_show_reasons"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hidden_aw_show_reasons_tooltip"),
+	defaultValue: true,
+	requiresReload: true,
+});
+
+new Setting(
+{
+	id: "hide_specific_authors",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_specific_authors"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hide_specific_authors_tooltip"),
+	defaultValue: true,
+	requiresReload: true,
+});
+
+new Setting(
+{
+	id: "hide_specific_fandoms",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_specific_fandoms"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hide_specific_fandoms_tooltip"),
+	defaultValue: true,
+	requiresReload: true,
+});
+
+new Setting(
+{
+	id: "hide_multiple_fandoms",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_multiple_fandoms"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hide_multiple_fandoms_tooltip"),
+	defaultValue: false,
+	requiresReload: true,
+});
+
+new Setting(
+{
+	id: "multiple_fandoms_threshold", 
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("multiple_fandoms_threshold"), 
+	type: "number", 
+	tooltip: browser.i18n.getMessage("multiple_fandoms_threshold_tooltip"),
+	requiresReload: true,
+	defaultValue: 2, 
+	extraData:
+	{ 
+		min: 2, 
+	},
+});
+
+new Setting(
+{
+	id: "hide_specific_tags",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_specific_tags"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hide_specific_tags_tooltip"),
+	defaultValue: true,
+	requiresReload: true,
+});
+
 // Search Presets
 new Setting(
 {
