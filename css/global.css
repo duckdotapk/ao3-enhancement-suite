@@ -3,6 +3,11 @@
 	display: none;
 }
 
+.aes-small
+{
+	font-size: 50%;
+}
+
 .aes-modal-control-set li
 {
 	display: inline;
