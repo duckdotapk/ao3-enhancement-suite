@@ -58,6 +58,7 @@
 
 				"js/classes/ControlSet.js",
 				"js/classes/Modal.js",
+				"js/classes/NavDropdown.js",
 
 				"js/features/tag-collapse.js",
 				"js/features/work-stats.js"
