@@ -487,5 +487,10 @@
 	"stop_hiding_works_tagged":
 	{
 		"message": "Stop hiding works tagged $1"
+	},
+
+	"choose_a_warning":
+	{
+		"message": "- Choose an Archive Warning -"
 	}
 }

@@ -1,4 +1,28 @@
-{	
+{
+	function addItem(id, list, empty, tooltip, tag)
+	{
+		empty.classList.add("aes-hidden");
+
+		const item = document.createElement("li");
+		item.innerText = tag + " ";
+
+		list.appendChild(item);
+
+		{
+			const deleteButton = new DeleteButton(browser.i18n.getMessage(tooltip, [ tag ]), async function(event)
+			{
+				await HideList.remove(id, tag);
+
+				item.remove();
+
+				if(document.getElementById("aes-hide-list-" + id).children.length == 0)
+					empty.classList.remove("aes-hidden");
+			});
+
+			item.prepend(deleteButton.element);
+		}
+	}
+
 	async function createHideList(container, id, tooltip)
 	{
 		const hideList = await HideList.get(id);
@@ -29,28 +53,59 @@
 			listFieldset.appendChild(empty);
 
 			for(let tag of hideList)
-			{
-				const item = document.createElement("li");
-				item.innerText = tag + " ";
+				addItem(id, list, empty, tooltip, tag);
 
-				list.appendChild(item);
+			let input;
+			let event;
+			if(id == "warnings")
+			{
+				input = document.createElement("select");
 
 				{
-					const deleteButton = new DeleteButton(browser.i18n.getMessage(tooltip, [ tag ]), async function(event)
-					{
-						await HideList.remove(id, tag);
+					const option = document.createElement("option");
+					option.value = "";
+					option.innerText = browser.i18n.getMessage("choose_a_warning");
 
-						item.remove();
-
-						if(document.getElementById("aes-hide-list-" + id).children.length == 0)
-							empty.classList.remove("aes-hidden");
-					});
-	
-					item.prepend(deleteButton.element);
+					input.appendChild(option);
 				}
-			}
-		}
 
+				for(let warning of archiveWarnings)
+				{
+					const option = document.createElement("option");
+					option.value = warning;
+					option.innerText = warning;
+
+					input.appendChild(option);
+				}
+				
+				event = "change";
+			}
+			else
+			{
+				input = document.createElement("input");
+				input.type = "text";
+
+				event = "keydown";
+			}
+	
+			input.addEventListener(event, async function(event)
+			{
+				if(event.code == undefined || event.code == "Enter")
+				{
+					let tag = event.target.value;
+					event.target.value = "";
+
+					if(await HideList.includes(id, tag))
+						return;
+
+					addItem(id, list, empty, tooltip, tag);
+
+					HideList.add(id, tag);
+				}
+			});
+
+			listFieldset.appendChild(input);
+		}
 	};
 
 	async function createManageContainer()

@@ -26,6 +26,13 @@ class HideList
 		await browser.storage.local.set(storage);
 	}
 
+	static async includes(id, item)
+	{
+		let hideList = await HideList.get(id);
+
+		return hideList.includes(item);		
+	}
+
 	static async remove(id, item)
 	{
 		let hideList = await HideList.get(id);
