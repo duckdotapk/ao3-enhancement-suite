@@ -361,7 +361,7 @@
 
 	"multiple_fandoms_threshold":
 	{
-		"message": "Crossover threshold"
+		"message": "Crossover threshold (# of fandoms)"
 	},
 
 	"multiple_fandoms_threshold_tooltip":
@@ -374,7 +374,7 @@
 		"message": "Hide Specific Tags"
 	},
 
-	"hide_specific_tags_threshold":
+	"hide_specific_tags_tooltip":
 	{
 		"message": "Hides works with tags in your tag hide list when enabled."
 	},
