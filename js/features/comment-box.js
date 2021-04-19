@@ -197,23 +197,16 @@ function makeElementDraggable(mainElement, headerElement)
 
 		timeout = setTimeout(function()
 		{
-			try
-			{
-				let workId = "work_" + textarea.id.substr(20);
+			let workId = "work_" + textarea.id.substr(20);
 
-				let storage =
-				{
-					savedComments: {},
-				}
-	
-				storage.savedComments[workId] = textarea.value;
-	
-				browser.storage.local.set(storage);
-			}
-			catch(error)
+			let storage =
 			{
-				debugger;
+				savedComments: {},
 			}
+
+			storage.savedComments[workId] = textarea.value;
+
+			browser.storage.local.set(storage);
 		}, 1000);
 	});
 

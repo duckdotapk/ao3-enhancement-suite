@@ -131,15 +131,11 @@
 
 	aesDropdown.addItem("manage-hide-lists", browser.i18n.getMessage("manage_hide_lists"), async function(event, item)
 	{
-		try {
-			const manageContainer = await createManageContainer();
-	
-			Modal.show(
-			[
-				manageContainer,
-			]);
-		} catch (err) {
-						debugger;
-		}
+		const manageContainer = await createManageContainer();
+
+		Modal.show(
+		[
+			manageContainer,
+		]);
 	});
 }
