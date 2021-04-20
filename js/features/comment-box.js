@@ -1,14 +1,13 @@
-function switchToFloatingCommentBox(commentBox, opacity)
+function switchToFloatingCommentBox(fcbWindow, commentBox, opacity)
 {
-	commentBox.classList.add("aes-fcb");
-	commentBox.style = `top: 0px; left: 0px; opacity: ${ opacity };`;
-	document.body.appendChild(commentBox);
+	fcbWindow.show();
+	fcbWindow.contentWrapper.appendChild(commentBox);
+	fcbWindow.root.style.opacity = opacity;
 }
 
-function switchToStaticCommentBox(commentBox)
+function switchToStaticCommentBox(fcbWindow, commentBox)
 {
-	commentBox.classList.remove("aes-fcb");
-	commentBox.style = "";
+	fcbWindow.hide();
 	document.getElementById("feedback").insertBefore(commentBox, document.getElementById("comments_placeholder"));
 }
 
@@ -50,90 +49,6 @@ async function insertSelection(textarea)
 	textarea.dispatchEvent(new Event("input"));
 };
 
-function clipCommentBox(mainElement)
-{
-	let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // HACK
-	let mainElementRect = mainElement.getBoundingClientRect();
-
-	let maxX = window.innerWidth - scrollbarWidth - mainElementRect.width;
-	if(maxX < 0)
-		maxX = 0;
-
-	let maxY = window.innerHeight - 30;
-	if(maxY < 0)
-		maxY = 0;
-
-	if(mainElement.offsetLeft > maxX)
-		mainElement.style.left = maxX.toString() + "px";
-
-	if(mainElement.offsetTop > maxY)
-		mainElement.style.top = maxY.toString() + "px";
-}
-
-// Based on this W3 example
-//		https://www.w3schools.com/howto/howto_js_draggable.asp
-function makeElementDraggable(mainElement, headerElement) 
-{
-	let pos1 = 0;
-	let pos2 = 0;
-	let pos3 = 0;
-	let pos4 = 0;
-
-	function mouseDown(event) 
-	{
-		event = event || window.event;
-		event.preventDefault();
-
-		// Calculate the ew cursor position
-		pos1 = pos3 - event.clientX;
-		pos2 = pos4 - event.clientY;
-		pos3 = event.clientX;
-		pos4 = event.clientY;
-
-		// Set the element's new position
-		let newX = mainElement.offsetLeft - pos1;
-		if(newX < 0)
-			newX = 0;
-
-		let newY = mainElement.offsetTop - pos2;
-		if(newY < 0)
-			newY = 0;
-
-		mainElement.style.left = newX.toString() + "px";
-		mainElement.style.top = newY.toString() + "px";
-
-		clipCommentBox(mainElement);
-	}
-
-	function mouseUp() 
-	{
-		// stop moving when mouse button is released:
-		document.removeEventListener("mousemove", mouseDown);
-		document.removeEventListener("mouseup", mouseUp);
-	}
-
-	function dragMouseDown(e) 
-	{
-		e = e || window.event;
-		e.preventDefault();
-
-		// get the mouse cursor position at startup:
-		pos3 = e.clientX;
-		pos4 = e.clientY;
-
-		// call a function whenever the cursor moves:
-		document.addEventListener("mousemove", mouseDown);
-		document.addEventListener("mouseup", mouseUp);
-	}
-		
-	headerElement.addEventListener("mousedown", dragMouseDown);
-
-	window.addEventListener("resize", function(event)
-	{
-		clipCommentBox(mainElement);
-	});
-}
-
 (async function()
 {
 	const settings = await Setting.getAll();
@@ -144,17 +59,12 @@ function makeElementDraggable(mainElement, headerElement)
 
 	commentBox.classList.add("aes-cb");
 
+	const fcbWindow = new FloatingWindow(browser.i18n.getMessage("floating_comment_box"), settings.enable_floating_comment_box, [ "aes-fcb-window" ]);
+
 	if(settings.enable_floating_comment_box)
-		switchToFloatingCommentBox(commentBox, settings.cb_floating_opacity);
+		switchToFloatingCommentBox(fcbWindow, commentBox, settings.cb_floating_opacity);
 
 	const fieldset = commentBox.querySelector("fieldset");
-
-	const moveHeader = document.createElement("div");
-	moveHeader.classList.add("aes-move-header");
-	moveHeader.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name_acronym"), browser.i18n.getMessage("floating_comment_box") ] );
-	commentBox.prepend(moveHeader);
-
-	makeElementDraggable(commentBox, moveHeader);
 	
 	let fcbRecommendation = document.createElement("p");
 	fcbRecommendation.classList.add("footnote");
@@ -173,7 +83,7 @@ function makeElementDraggable(mainElement, headerElement)
 			Setting.get("cb_floating_opacity")
 				.then(function (opacity)
 				{
-					switchToFloatingCommentBox(commentBox, opacity);
+					switchToFloatingCommentBox(fcbWindow, commentBox, opacity);
 				});
 
 			Setting.set("enable_floating_comment_box", true);
@@ -260,9 +170,9 @@ function makeElementDraggable(mainElement, headerElement)
 			if(changes.settings.oldValue?.enable_floating_comment_box != changes.settings.newValue?.enable_floating_comment_box)
 			{
 				if(changes.settings.newValue?.enable_floating_comment_box)
-					switchToFloatingCommentBox(commentBox, changes.settings.newValue.cb_floating_opacity);
+					switchToFloatingCommentBox(fcbWindow, commentBox, changes.settings.newValue.cb_floating_opacity);
 				else
-					switchToStaticCommentBox(commentBox);
+					switchToStaticCommentBox(fcbWindow, commentBox);
 			}
 
 			if(changes.settings.newValue?.enable_floating_comment_box)

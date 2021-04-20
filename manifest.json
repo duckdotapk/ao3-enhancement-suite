@@ -45,7 +45,8 @@
 			],
 			"css":
 			[
-				"css/global.css"
+				"css/global.css",
+				"css/floating-window.css"
 			],
 			"js":
 			[
@@ -53,6 +54,7 @@
 
 				"js/classes/ControlSet.js",
 				"js/classes/DeleteButton.js",
+				"js/classes/FloatingWindow.js",
 				"js/classes/HelpButton.js",
 				"js/classes/HideList.js",
 				"js/classes/Modal.js",

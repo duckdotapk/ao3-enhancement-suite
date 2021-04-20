@@ -1,79 +1,41 @@
-#add_comment_placeholder.aes-cb.aes-fcb
-{
-	position: fixed; 
-	z-index: 99;
-
-	box-shadow: 3px 3px 14px 1px #000000;
-	
-	white-space: nowrap;
-}
-
-#add_comment_placeholder.aes-cb.aes-fcb:focus-within
-{
-	opacity: 1 !important;
-}
-
-#add_comment_placeholder.aes-cb .aes-move-header
-{
-	display: none;
-}
-
-#add_comment_placeholder.aes-cb.aes-fcb .aes-move-header
-{
-	display: block;
-
-	height: 30px;
-	width: 100%;
-
-	background: rgb(153, 0, 0);
-	color: #ffffff;
-
-	/* TODO: This style should maybe be applied with JS instead because of archive skins */
-	background-image: url("https://archiveofourown.org/images/skins/textures/tiles/red-ao3.png"); 
-
-	box-shadow: rgba(0, 0, 0, 0.35) 0px -6px 10px inset, rgba(0, 0, 0, 0.25) 1px 1px 3px -1px, rgba(0, 0, 0, 0.85) 0px -1px 0px inset;
-
-	line-height: 30px; 
-	padding-left: 10px; 
-	box-sizing: border-box;
-
-	overflow: hidden;
-	text-overflow: clip;
-
-	cursor: grab;
-}
-
-#add_comment_placeholder.aes-cb .aes-fcb-recommendation
-{
-	display: block;
-}
-
-#add_comment_placeholder.aes-cb.aes-fcb .aes-fcb-recommendation
-{
-	display: none;
-}
-
-#add_comment_placeholder.aes-cb .aes-cb-actions
+/* General */
+.aes-cb .aes-cb-actions
 {
 	float: none;
 	text-align: left;
 }
 
-#add_comment_placeholder.aes-cb .aes-footnote-offset
+.aes-cb .aes-footnote-offset
 {
 	padding-top: 35px;
 }
 
-#add_comment_placeholder.aes-cb.aes-fcb textarea
+/* Floating Comment Box */
+.aes-fcb-window
 {
-	min-width: 506px;
-	max-width: 90vw;
-
-	width: 506px;
+	resize: none;
 }
 
-#add_comment_placeholder.aes-cb.aes-fcb .LV_validation_message
+.aes-fcb-window:focus-within
+{
+	opacity: 1 !important;
+}
+
+.aes-fcb-window textarea
+{
+	min-width: 300px;
+	max-width: 90vw;
+
+	width: 500px;
+}
+
+.aes-fcb-window .LV_validation_message
 {
 	/* HACK: Hide the "Brevity is the soul of wit" message because it's a bit glitchy with this atm */
+	display: none;
+}
+
+.aes-fcb-window .aes-fcb-recommendation
+{
 	display: none;
 }
