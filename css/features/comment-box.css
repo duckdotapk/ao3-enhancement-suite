@@ -4,6 +4,8 @@
 	z-index: 99;
 
 	box-shadow: 3px 3px 14px 1px #000000;
+	
+	white-space: nowrap;
 }
 
 #add_comment_placeholder.aes-cb.aes-fcb:focus-within
