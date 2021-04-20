@@ -63,6 +63,7 @@ async function insertSelection(textarea)
 	const heading = fieldset.querySelector("h4.heading");
 	const footnote = fieldset.querySelector(".footnote");
 	const textarea = fieldset.querySelector("textarea");
+	const submit = fieldset.querySelector(".submit.actions > input");
 
 	// Feature: FLoating Comment Box
 	const fcbWindow = new FloatingWindow(browser.i18n.getMessage("floating_comment_box"), settings.enable_floating_comment_box, [ "aes-fcb-window" ]);
@@ -165,6 +166,34 @@ async function insertSelection(textarea)
 
 		if(savedComment != undefined)
 			textarea.value = savedComment;
+	}
+
+	{
+		// Add a fake submit button so we can do stuff when it's clicked before triggering the real one
+		//	This is awesome and a little disgusting lol
+		const fakeSubmit = submit.cloneNode();
+		fakeSubmit.classList.add("aes-fake-submit");
+		fakeSubmit.removeAttribute("id");
+		fakeSubmit.removeAttribute("name");
+		fakeSubmit.setAttribute("type", "button");
+
+		fakeSubmit.addEventListener("click", async function(event)
+		{
+			if(textarea.value.length == 0)
+			{
+				textarea.classList.add("LV_invalid_field");
+				return;
+			}
+
+			fakeSubmit.value = fakeSubmit.dataset.disableWith;
+
+			// TODO: delete saved comment then proceed
+
+			submit.click();
+		});
+
+		submit.classList.add("aes-hidden");
+		submit.parentElement.appendChild(fakeSubmit);
 	}
 
 	// Update Settings w/o Page Reload
