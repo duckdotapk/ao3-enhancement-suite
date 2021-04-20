@@ -181,7 +181,7 @@ async function insertSelection(textarea)
 			}
 
 			if(changes.settings.newValue?.enable_floating_comment_box)
-				commentBox.style.opacity = changes.settings.newValue.cb_floating_opacity;
+				fcbWindow.root.style.opacity = changes.settings.newValue.cb_floating_opacity;
 
 			if(changes.settings.oldValue?.cb_hide_comment_as_heading != changes.settings.newValue?.cb_hide_comment_as_heading)
 			{
