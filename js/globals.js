@@ -1,3 +1,9 @@
+const ArchiveConfig =
+{
+	// https://github.com/otwcode/otwarchive/blob/7e583009b59acb17e805cb228c545aec6893627c/config/config.yml#L89
+	COMMENT_MAX: 10000,
+}
+
 const archiveWarnings =
 [
 	"Choose Not To Use Archive Warnings",

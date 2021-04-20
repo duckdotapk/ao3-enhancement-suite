@@ -179,7 +179,7 @@ async function insertSelection(textarea)
 
 		fakeSubmit.addEventListener("click", async function(event)
 		{
-			if(textarea.value.length == 0)
+			if(textarea.value.length == 0 || textarea.value.length > ArchiveConfig.COMMENT_MAX)
 			{
 				textarea.classList.add("LV_invalid_field");
 				return;
