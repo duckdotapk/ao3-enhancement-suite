@@ -160,18 +160,29 @@ function makeElementDraggable(mainElement, headerElement)
 	fcbRecommendation.classList.add("footnote");
 	fcbRecommendation.classList.add("aes-fcb-recommendation");
 	
-	fcbRecommendation.appendChild(document.createTextNode(`(${ browser.i18n.getMessage("cb_recommendation", [ browser.i18n.getMessage("name") ]) } `));
-
 	{
-		let fcbRecommendationHelp = new HelpButton("?", browser.i18n.getMessage("settings"), function(event)
+		fcbRecommendation.appendChild(document.createTextNode("("));
+
+		const link = document.createElement("a");
+		link.innerText = browser.i18n.getMessage("cb_recommendation");
+
+		link.addEventListener("click", function(event)
 		{
-			aesDropdown.getItem("settings").onClick();
+			event.preventDefault();
+
+			Setting.get("cb_floating_opacity")
+				.then(function (opacity)
+				{
+					switchToFloatingCommentBox(commentBox, opacity);
+				});
+
+			Setting.set("enable_floating_comment_box", true);
 		});
-	
-		fcbRecommendation.appendChild(fcbRecommendationHelp.element);
+
+		fcbRecommendation.appendChild(link);
+
+		fcbRecommendation.appendChild(document.createTextNode(")"));
 	}
-	
-	fcbRecommendation.appendChild(document.createTextNode(")"));
 
 	fieldset.append(fcbRecommendation);
 
