@@ -44,7 +44,7 @@ new Setting(
 	title: browser.i18n.getMessage("cb_hide_comment_as_heading"), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("cb_hide_comment_as_heading_tooltip"),
-	requiresReload: true,
+	requiresReload: false,
 	defaultValue: false,
 });
 
@@ -55,7 +55,7 @@ new Setting(
 	title: browser.i18n.getMessage("cb_hide_html_footnote"), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("cb_hide_html_footnote_tooltip"),
-	requiresReload: true,
+	requiresReload: false,
 	defaultValue: false,
 });
 
