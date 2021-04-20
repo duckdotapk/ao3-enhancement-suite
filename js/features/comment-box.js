@@ -59,14 +59,18 @@ async function insertSelection(textarea)
 
 	commentBox.classList.add("aes-cb");
 
+	const fieldset = commentBox.querySelector("fieldset");
+	const heading = fieldset.querySelector("h4.heading");
+	const footnote = fieldset.querySelector(".footnote");
+	const textarea = fieldset.querySelector("textarea");
+
+	// Feature: FLoating Comment Box
 	const fcbWindow = new FloatingWindow(browser.i18n.getMessage("floating_comment_box"), settings.enable_floating_comment_box, [ "aes-fcb-window" ]);
 
 	if(settings.enable_floating_comment_box)
 		switchToFloatingCommentBox(fcbWindow, commentBox, settings.cb_floating_opacity);
-
-	const fieldset = commentBox.querySelector("fieldset");
 	
-	let fcbRecommendation = document.createElement("p");
+	const fcbRecommendation = document.createElement("p");
 	fcbRecommendation.classList.add("footnote");
 	fcbRecommendation.classList.add("aes-fcb-recommendation");
 	
@@ -94,18 +98,36 @@ async function insertSelection(textarea)
 		fcbRecommendation.appendChild(document.createTextNode(")"));
 	}
 
-	fieldset.append(fcbRecommendation);
+	fieldset.appendChild(fcbRecommendation);
 
-	const heading = fieldset.querySelector("h4.heading");
+	// Feature: Hide "Comment as <pseud>" heading
 	if(settings.cb_hide_comment_as_heading)
 		heading?.classList.add("aes-hidden");
 
-	const footnote = fieldset.querySelector(".footnote");
+	// Feature Hide "Plain text with limited HTML" footnote
 	if(settings.cb_hide_html_footnote)
 		footnote.classList.add("aes-hidden");
 
-	const textarea = fieldset.querySelector("textarea");
+	// Feature: Additional Controls
+	let controlSet;
+	if(settings.cb_enable_additional_controls)
+	{
+		controlSet = new ControlSet();
+		controlSet.element.classList.add("aes-cb-actions");
+		if(!settings.cb_hide_html_footnote)
+			controlSet.element.classList.add("aes-footnote-offset");
+	
+		const insert = controlSet.addControl("Insert Selection", function(event)
+		{
+			insertSelection(textarea);
+		});
+	
+		insert.title = browser.i18n.getMessage("cb_insert_tooltip");
+	
+		fieldset.insertBefore(controlSet.element, textarea.parentElement);
+	}
 
+	// Feature: Autosave Comments
 	let timeout;
 	textarea.addEventListener("input", async function(event)
 	{
@@ -145,24 +167,7 @@ async function insertSelection(textarea)
 			textarea.value = savedComment;
 	}
 
-	let controlSet;
-	if(settings.cb_enable_additional_controls)
-	{
-		controlSet = new ControlSet();
-		controlSet.element.classList.add("aes-cb-actions");
-		if(!settings.cb_hide_html_footnote)
-			controlSet.element.classList.add("aes-footnote-offset");
-	
-		const insert = controlSet.addControl("Insert Selection", function(event)
-		{
-			insertSelection(textarea);
-		});
-	
-		insert.title = browser.i18n.getMessage("cb_insert_tooltip");
-	
-		fieldset.insertBefore(controlSet.element, textarea.parentElement);
-	}
-
+	// Update Settings w/o Page Reload
 	browser.storage.onChanged.addListener(function(changes, areaName)
 	{
 		if(areaName == "local")
