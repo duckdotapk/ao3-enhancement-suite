@@ -279,6 +279,16 @@
 		"message": "Are you sure you'd like to reset all of your data for this extension?\n\nThis action will delete all of your settings, search presets and saved comments."
 	},
 
+	"export_all_data":
+	{
+		"message": "Export All Data"
+	},
+
+	"export_all_data_tooltip":
+	{
+		"message": "Exports all data for the extension."
+	},
+
 	"confirm":
 	{
 		"message": "OK"
@@ -437,6 +447,21 @@
 	"manage_hide_lists":
 	{
 		"message": "Manage Hidden Authors, Fandoms and Tags"
+	},
+
+	"manage_extension_data":
+	{
+		"message": "Manage Extension Data"
+	},
+
+	"manage_extension_data_desc":
+	{
+		"message": "Easily import and export all of your settings, search presets, saved comments, hide lists and other data for this extension."
+	},
+
+	"total_storage_in_use":
+	{
+		"message": "Total storage space in use"
 	},
 
 	"hidelist_authors":
