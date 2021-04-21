@@ -174,7 +174,7 @@ async function insertSelection(textarea)
 
 			fakeSubmit.value = fakeSubmit.dataset.disableWith;
 
-			await SavedComment.delete()
+			await SavedComment.delete(textarea.id);
 
 			submit.click();
 		});
