@@ -71,6 +71,7 @@
 				"js/classes/HideList.js",
 				"js/classes/Modal.js",
 				"js/classes/NavDropdown.js",
+				"js/classes/SavedComment.js",
 				"js/classes/Setting.js",
 
 				"js/globals.js",

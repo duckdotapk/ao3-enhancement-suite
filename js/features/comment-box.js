@@ -143,26 +143,15 @@ async function insertSelection(textarea)
 		{
 			let workId = "work_" + textarea.id.substr(20);
 
-			let storage =
-			{
-				savedComments: {},
-			}
-
-			storage.savedComments[workId] = textarea.value;
-
-			browser.storage.local.set(storage);
+			SavedComment.save(workId, textarea.value);
 		}, 1000);
 	});
 
 	if(settings.save_comments_to_storage)
 	{
-		let savedComments = (await browser.storage.local.get("savedComments"))?.savedComments;
-		if(savedComments == undefined)
-			savedComments = {};
-
 		let workId = textarea.id.substr(20);
 
-		let savedComment = savedComments["work_" + workId];
+		let savedComment = await SavedComment.get("work_" + workId);
 
 		if(savedComment != undefined)
 			textarea.value = savedComment;
