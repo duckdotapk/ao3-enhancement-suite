@@ -129,6 +129,8 @@ async function insertSelection(textarea)
 	}
 
 	// Feature: Autosave Comments
+	textarea.dataset.saveId = textarea.id.substr(20);
+
 	let timeout;
 	textarea.addEventListener("input", async function(event)
 	{
@@ -141,17 +143,13 @@ async function insertSelection(textarea)
 
 		timeout = setTimeout(function()
 		{
-			let workId = "work_" + textarea.id.substr(20);
-
-			SavedComment.save(workId, textarea.value);
+			SavedComment.save(textarea.id, textarea.value);
 		}, 1000);
 	});
 
 	if(settings.save_comments_to_storage)
 	{
-		let workId = textarea.id.substr(20);
-
-		let savedComment = await SavedComment.get("work_" + workId);
+		let savedComment = await SavedComment.get(textarea.id);
 
 		if(savedComment != undefined)
 			textarea.value = savedComment;
@@ -176,7 +174,7 @@ async function insertSelection(textarea)
 
 			fakeSubmit.value = fakeSubmit.dataset.disableWith;
 
-			// TODO: delete saved comment then proceed
+			await SavedComment.delete()
 
 			submit.click();
 		});

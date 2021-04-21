@@ -39,3 +39,5 @@ const validConfiguationKeys =
 ];
 
 const aesDropdown = new NavDropdown(browser.i18n.getMessage("name"));
+
+SavedComment.migrate();
