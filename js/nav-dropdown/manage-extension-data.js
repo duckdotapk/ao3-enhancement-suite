@@ -63,12 +63,26 @@
 
 			container.appendChild(description);
 
-			const bytesInUse = await getLocalStorageSize();
+			let unit = "bytes";
+			let bytesInUse = await getLocalStorageSize();
+			if(bytesInUse > 1000000)
+			{
+				unit = "megabytes";
+				bytesInUse = bytesInUse / 1000000;
+			}
+			else if(bytesInUse > 1000)
+			{
+				unit = "kilobytes";
+				bytesInUse = bytesInUse / 1000;
+			}
+
+			if(unit != "bytes")
+				bytesInUse = bytesInUse.toFixed(1);
 
 			const totalStorageInUse = document.createElement("p");
 
 			// TODO: improve the way this is displayed
-			totalStorageInUse.innerText = browser.i18n.getMessage("total_storage_in_use") + ": " + bytesInUse + " bytes";
+			totalStorageInUse.innerText = browser.i18n.getMessage("total_storage_in_use") + ": " + bytesInUse + " " + unit;
 
 			container.appendChild(totalStorageInUse);
 
