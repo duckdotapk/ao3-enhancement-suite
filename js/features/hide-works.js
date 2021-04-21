@@ -2,12 +2,12 @@
 {
 	const settings = await Setting.getAll();
 
-	const blockedAuthors = await HideList.get("authors");
-	const blockedFandoms = await HideList.get("fandoms");
-	const blockedWarnings = await HideList.get("warnings");
-	const blockedRelationships = await HideList.get("relationships");
-	const blockedCharacters = await HideList.get("characters");
-	const blockedFreeformTags = await HideList.get("freeforms");
+	const blockedAuthors = await HideList.get("Authors");
+	const blockedFandoms = await HideList.get("Fandoms");
+	const blockedWarnings = await HideList.get("Warnings");
+	const blockedRelationships = await HideList.get("Relationships");
+	const blockedCharacters = await HideList.get("Characters");
+	const blockedFreeformTags = await HideList.get("Freeforms");
 
 	const blockedTags =
 	[
@@ -66,7 +66,7 @@
 		for(let authorLink of authorLinks)
 		{
 			authorLink.classList.add("aes-hide-parameter");
-			authorLink.dataset.aesHideListId = "authors";
+			authorLink.dataset.aesHideListId = "Authors";
 
 			let author = authorLink.innerText.trim();
 
@@ -83,7 +83,7 @@
 		for(let fandomLink of fandomLinks)
 		{
 			fandomLink.classList.add("aes-hide-parameter");
-			fandomLink.dataset.aesHideListId = "fandoms";
+			fandomLink.dataset.aesHideListId = "Fandoms";
 
 			let fandom = fandomLink.innerText.trim();
 
@@ -107,7 +107,9 @@
 			{
 				let tagLink = tagItem.querySelector("a"); 
 				tagLink.classList.add("aes-hide-parameter");
-				tagLink.dataset.aesHideListId = tagItem.classList[0];
+
+				let rawClass = tagItem.classList[0];
+				tagLink.dataset.aesHideListId = rawClass.charAt(0).toUpperCase() + rawClass.slice(1);
 
 				let tag = tagLink.innerText.trim();
 

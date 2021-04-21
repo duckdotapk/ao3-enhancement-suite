@@ -56,4 +56,4 @@ class HideList
 	}
 }
 
-HideList.storageBase = "hidelist-";
+HideList.storageBase = "hidelist";

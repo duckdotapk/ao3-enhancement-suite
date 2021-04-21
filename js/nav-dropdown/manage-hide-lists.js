@@ -118,12 +118,12 @@
 
 			container.appendChild(header);
 
-			await createHideList(container, "authors", 			"stop_hiding_works_by");
-			await createHideList(container, "fandoms", 			"stop_hiding_works_in_fandom");
-			await createHideList(container, "warnings", 		"stop_hiding_works_tagged");
-			await createHideList(container, "relationships",	"stop_hiding_works_tagged");
-			await createHideList(container, "characters",		"stop_hiding_works_tagged");
-			await createHideList(container, "freeforms",		"stop_hiding_works_tagged");
+			await createHideList(container, "Authors", 			"stop_hiding_works_by");
+			await createHideList(container, "Fandoms", 			"stop_hiding_works_in_fandom");
+			await createHideList(container, "Warnings", 		"stop_hiding_works_tagged");
+			await createHideList(container, "Relationships",	"stop_hiding_works_tagged");
+			await createHideList(container, "Characters",		"stop_hiding_works_tagged");
+			await createHideList(container, "Freeforms",		"stop_hiding_works_tagged");
 		}
 
 		return container;
