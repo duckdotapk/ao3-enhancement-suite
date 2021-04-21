@@ -52,7 +52,7 @@ class SavedComment
 		{
 			if(key.startsWith("work_"))
 			{
-				savedComments["comment_content_for_" + key.substr(5)] = value;
+				savedComments["works_comment_content_for_" + key.substr(5)] = value;
 
 				oldKeys.push(key);
 			}
