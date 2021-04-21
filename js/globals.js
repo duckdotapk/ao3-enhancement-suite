@@ -25,4 +25,17 @@ const tagLists =
 
 const tagListsStr = tagLists.join(", ");
 
+const validConfiguationKeys =
+[
+	"hidelistAuthors",
+	"hidelistFandoms",
+	"hidelistWarnings",
+	"hidelistRelationships",
+	"hidelistCharacters",
+	"hidelistFreeforms",
+	"savedComments",
+	"searchPresets",
+	"settings",
+];
+
 const aesDropdown = new NavDropdown(browser.i18n.getMessage("name"));

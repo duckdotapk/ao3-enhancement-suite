@@ -10,7 +10,7 @@ async function exportAllData(request, sender, sendResponse)
 
 	console.log(objectURL);
 
-	browser.downloads.download({ url: objectURL, saveAs: true, filename: browser.i18n.getMessage("name_acronym") + "-data-" + Date.now().toString() + ".json" });
+	browser.downloads.download({ url: objectURL, saveAs: true, filename: browser.i18n.getMessage("name_acronym") + "-data-" + Date.now().toString() + ".ao3es" });
 }
 
 browser.runtime.onMessage.addListener(function(request, sender, sendResponse)

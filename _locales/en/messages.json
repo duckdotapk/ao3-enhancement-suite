@@ -289,6 +289,16 @@
 		"message": "Exports all data for the extension."
 	},
 
+	"import_all_data":
+	{
+		"message": "Import All Data"
+	},
+
+	"import_all_data_tooltip":
+	{
+		"message": "Imports all data for the extension."
+	},
+
 	"confirm":
 	{
 		"message": "OK"
@@ -517,5 +527,25 @@
 	"choose_a_warning":
 	{
 		"message": "- Choose an Archive Warning -"
+	},
+
+	"configuration_import_failed":
+	{
+		"message": "Configuration Import Failed"
+	},
+
+	"configuration_import_failed_desc":
+	{
+		"message": "Importing the selected configuration file ($1) failed for the following reasons:"
+	},
+
+	"config_import_invalid_key":
+	{
+		"message": "Invalid configuration key: $1"
+	},
+
+	"config_import_failed_to_parse":
+	{
+		"message": "Failed to parse configuration file."
 	}
 }

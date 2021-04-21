@@ -202,19 +202,6 @@
 	
 			location.reload();
 		});
-	
-		addFooterSeparator(footer);
-	
-		addFooterLink(footer, "reset-data", browser.i18n.getMessage("reset_all_data"), browser.i18n.getMessage("reset_all_data_tooltip"), async function(event)
-		{
-			// TODO: switch to Modal.confirm
-			if(window.confirm(browser.i18n.getMessage("reset_all_data_confirmation")))
-			{
-				await browser.storage.local.clear();
-	
-				location.reload();
-			}
-		});
 
 		return settingsContainer;
 	}

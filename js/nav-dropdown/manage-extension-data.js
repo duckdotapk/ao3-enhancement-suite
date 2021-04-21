@@ -63,7 +63,7 @@
 
 			container.appendChild(description);
 
-			const bytesInUse = await getLocalStorageSize(); // await browser.storage.local.getBytesInUse();
+			const bytesInUse = await getLocalStorageSize();
 
 			const totalStorageInUse = document.createElement("p");
 
@@ -72,7 +72,90 @@
 
 			container.appendChild(totalStorageInUse);
 
+			const fileInput = document.createElement("input");
+			fileInput.classList.add("aes-hidden");
+			fileInput.type = "file";
+			fileInput.accept = ".ao3es";
+
+			fileInput.addEventListener("input", async function(event)
+			{
+				const file = event.target.files[0];
+
+				const errors = [];
+
+				// TODO: more validation steps
+				let configuration;
+				try
+				{
+					configuration = JSON.parse(await file.text());
+
+					console.log(typeof(configuration));
+
+					for(let [key, value] of Object.entries(configuration))
+						if(!validConfiguationKeys.includes(key))
+							errors.push(browser.i18n.getMessage("config_import_invalid_key", [ key ]));
+				}
+				catch(error)
+				{
+					errors.push(browser.i18n.getMessage("config_import_failed_to_parse"));
+					console.log(error);
+				}
+
+				if(errors.length > 0)
+				{
+					let header = document.createElement("h1");
+					header.innerText = browser.i18n.getMessage("configuration_import_failed");
+
+					let paragraph = document.createElement("p");
+					paragraph.innerText = browser.i18n.getMessage("configuration_import_failed_desc", [ file.name ]);
+
+					let list = document.createElement("ul");
+
+					for(let error of errors)
+					{
+						let item = document.createElement("li");
+						item.innerText = error;
+
+						list.appendChild(item);
+					}
+
+					Modal.close();
+
+					await Modal.show(
+					[
+						header,
+						paragraph,
+						list,
+					]);
+				}
+				
+				await browser.storage.local.clear();
+
+				await browser.storage.local.set(configuration);
+			
+				location.reload();
+			});
+
+			container.appendChild(fileInput);
+
 			const controlSet = new ControlSet();
+
+			controlSet.addControl(browser.i18n.getMessage("reset_all_data"), async function(event)
+			{
+				Modal.close();
+
+				if(await Modal.confirm(browser.i18n.getMessage("reset_all_data_confirmation")))
+				{
+					await browser.storage.local.clear();
+		
+					location.reload();
+				}
+			});
+
+			controlSet.addControl(browser.i18n.getMessage("import_all_data"), async function(event)
+			{
+				fileInput.click();
+			});
 	
 			// TODO: add tooltip browser.i18n.getMessage("export_all_data_tooltip")
 			//		Probably modify this function to take a tooltip arg
