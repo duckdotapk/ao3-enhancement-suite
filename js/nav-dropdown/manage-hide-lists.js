@@ -57,7 +57,7 @@
 
 			let input;
 			let event;
-			if(id == "warnings")
+			if(id == "Warnings")
 			{
 				input = document.createElement("select");
 
