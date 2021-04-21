@@ -10,6 +10,11 @@
 	padding-top: 35px;
 }
 
+.aes-fake-submit
+{
+	height: auto !important;
+}
+
 /* Floating Comment Box */
 .aes-fcb-window
 {
