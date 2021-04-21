@@ -1,3 +1,7 @@
+//
+// Variables
+//
+
 const ArchiveConfig =
 {
 	// https://github.com/otwcode/otwarchive/blob/7e583009b59acb17e805cb228c545aec6893627c/config/config.yml#L89
@@ -13,6 +17,9 @@ const archiveWarnings =
 	"Rape/Non-Con",
 	"Underage",
 ];
+
+const pagePath = new URL(window.location).pathname.split("/");
+pagePath.shift();
 
 const tagLists =
 [
@@ -37,6 +44,10 @@ const validConfiguationKeys =
 	"searchPresets",
 	"settings",
 ];
+
+//
+// Function Calls
+//
 
 const aesDropdown = new NavDropdown(browser.i18n.getMessage("name"));
 

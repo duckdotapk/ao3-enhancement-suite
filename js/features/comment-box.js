@@ -143,13 +143,13 @@ async function insertSelection(textarea)
 
 		timeout = setTimeout(function()
 		{
-			SavedComment.save(textarea.id, textarea.value);
+			SavedComment.save(pagePath[0] + "_" + textarea.id, textarea.value);
 		}, 1000);
 	});
 
 	if(settings.save_comments_to_storage)
 	{
-		let savedComment = await SavedComment.get(textarea.id);
+		let savedComment = await SavedComment.get(pagePath[0] + "_" + textarea.id);
 
 		if(savedComment != undefined)
 			textarea.value = savedComment;
