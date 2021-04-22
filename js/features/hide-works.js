@@ -141,7 +141,7 @@
 				blockReasons.push("Fandom" + (blockedFandomMatches.length != 1 ? "s" : "") + ": " + blockedFandomMatches.join(", "));
 
 			if(settings.hide_multiple_fandoms && tooManyFandoms)
-				blockReasons.push("Too Many Fandoms");
+				blockReasons.push("Too Many Fandoms (" + fandomLinks.length.toString() + ")");
 
 			if(settings.hide_specific_tags && blockedTagMatches.length > 0)
 				blockReasons.push("Tag" + (blockedTagMatches.length != 1 ? "s" : "") + ": " + blockedTagMatches.join(", "));
