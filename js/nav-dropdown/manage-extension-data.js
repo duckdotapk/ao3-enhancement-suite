@@ -154,7 +154,7 @@
 
 			const controlSet = new ControlSet();
 
-			controlSet.addControl(browser.i18n.getMessage("reset_all_data"), async function(event)
+			controlSet.addControl(browser.i18n.getMessage("reset_all_data"), browser.i18n.getMessage("reset_all_data_tooltip"), async function(event)
 			{
 				Modal.close();
 
@@ -166,14 +166,14 @@
 				}
 			});
 
-			controlSet.addControl(browser.i18n.getMessage("import_all_data"), async function(event)
+			controlSet.addControl(browser.i18n.getMessage("import_all_data"), browser.i18n.getMessage("import_all_data_tooltip"), async function(event)
 			{
 				fileInput.click();
 			});
 	
-			// TODO: add tooltip browser.i18n.getMessage("export_all_data_tooltip")
+			// TODO: add tooltip 
 			//		Probably modify this function to take a tooltip arg
-			controlSet.addControl(browser.i18n.getMessage("export_all_data"), async function(event)
+			controlSet.addControl(browser.i18n.getMessage("export_all_data"), browser.i18n.getMessage("export_all_data_tooltip"), async function(event)
 			{
 				browser.runtime.sendMessage("export-all-data");				
 			});

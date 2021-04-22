@@ -403,12 +403,12 @@
 	{
 		const controlSet = new ControlSet();
 
-		controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), function(event)
+		controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), undefined, function(event)
 		{
 			deleteCurrentlySelectedPreset();
 		});
 		
-		controlSet.addControl(browser.i18n.getMessage("save_current_settings_as_preset"), function(event)
+		controlSet.addControl(browser.i18n.getMessage("save_current_settings_as_preset"), undefined, function(event)
 		{
 			saveCurrentSettingsAsPreset();
 		});

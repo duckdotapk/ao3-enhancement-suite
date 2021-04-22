@@ -71,7 +71,7 @@ class Modal
 
 				let controlSet = new ControlSet();
 
-				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
+				controlSet.addControl(browser.i18n.getMessage("confirm"), undefined, function()
 				{
 					Modal.close();
 
@@ -97,14 +97,14 @@ class Modal
 
 				let controlSet = new ControlSet();
 
-				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
+				controlSet.addControl(browser.i18n.getMessage("confirm"), undefined, function()
 				{
 					Modal.close();
 
 					resolve(true);
 				});
 
-				controlSet.addControl(browser.i18n.getMessage("cancel"), function()
+				controlSet.addControl(browser.i18n.getMessage("cancel"), undefined, function()
 				{
 					Modal.close();
 
@@ -137,14 +137,14 @@ class Modal
 		
 				let controlSet = new ControlSet();
 		
-				controlSet.addControl(browser.i18n.getMessage("confirm"), function()
+				controlSet.addControl(browser.i18n.getMessage("confirm"), undefined, function()
 				{
 					resolve(input.value);
 		
 					Modal.close();
 				});
 		
-				controlSet.addControl(browser.i18n.getMessage("cancel"), function()
+				controlSet.addControl(browser.i18n.getMessage("cancel"), undefined, function()
 				{
 					resolve(null);
 		

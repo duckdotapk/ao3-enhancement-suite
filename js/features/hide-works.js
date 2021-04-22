@@ -172,7 +172,8 @@
 
 				let controlSet = new ControlSet();
 
-				controlSet.addControl("Show", function(event, link)
+				// TODO: tooltip?
+				controlSet.addControl("Show", undefined, function(event, link)
 				{
 					hiddenContainer.classList.toggle("aes-hidden");
 

@@ -14,10 +14,13 @@ class ControlSet
 		this.element = controlSet;
 	}
 
-	addControl(controlText, onClick)
+	addControl(controlText, tooltip, onClick)
 	{
 		const control = document.createElement("li");
 	
+		if(tooltip != undefined)
+			control.title = tooltip;
+
 		{
 			const link = document.createElement("a");
 	

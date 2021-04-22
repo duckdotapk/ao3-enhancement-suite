@@ -118,7 +118,8 @@ async function insertSelection(textarea)
 		if(!settings.cb_hide_html_footnote)
 			controlSet.element.classList.add("aes-footnote-offset");
 	
-		const insert = controlSet.addControl("Insert Selection", function(event)
+		// TODO: tooltip
+		const insert = controlSet.addControl("Insert Selection", undefined, function(event)
 		{
 			insertSelection(textarea);
 		});
