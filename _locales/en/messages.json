@@ -239,6 +239,11 @@
 		"message": "Set the amount of words-per-minute used to calculate \"Estimated reading time\" stats."
 	},
 
+	"setting_is_experimental":
+	{
+		"message": "This setting is experimental and may not work properly."
+	},
+
 	"setting_requires_reload":
 	{
 		"message": "You must reload the page for changes to this setting to take effect."
@@ -557,5 +562,25 @@
 	"config_import_failed_to_parse":
 	{
 		"message": "Failed to parse configuration file."
+	},
+
+	"show_chapter_word_counts":
+	{
+		"message": "Show Individual Chapter Word Counts"
+	},
+
+	"show_chapter_word_counts_tooltip":
+	{
+		"message": "Adds approximated word counts for individual chapters when viewing multi-chapter works."
+	},
+
+	"experimental":
+	{
+		"message": "Experimental"
+	},
+
+	"word_count_approx":
+	{
+		"message": "This word count is approximated and may be slightly or entirely off.\r\n\r\nThis is worked out with different logic from AO3's actual code."
 	}
 }

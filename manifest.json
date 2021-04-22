@@ -106,6 +106,16 @@
 		{
 			"matches": 
 			[
+				"*://*.archiveofourown.org/works/*"
+			],
+			"js": 
+			[
+				"js/features/chapter-stats.js"
+			]
+		},
+		{
+			"matches": 
+			[
 				"*://*.archiveofourown.org/works/search*"
 			],
 			"js": 

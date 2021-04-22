@@ -49,6 +49,7 @@ class Setting
 		this.type = options.type;
 		this.defaultValue = options.defaultValue;
 		this.tooltip = options.tooltip;
+		this.experimental = options.experimental;
 		this.requiresReload = options.requiresReload;
 		this.extraData = options.extraData;
 

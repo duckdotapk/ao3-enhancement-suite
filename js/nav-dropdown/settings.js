@@ -163,13 +163,15 @@
 				if(setting.tooltip)
 				{
 					let tooltip = setting.tooltip;
+
+					if(setting.experimental)
+						tooltip += "\r\n\r\n" + browser.i18n.getMessage("setting_is_experimental");
+
 					if(setting.requiresReload)
 						tooltip += "\r\n\r\n" + browser.i18n.getMessage("setting_requires_reload");
 	
 					settingContainer.setAttribute("title", tooltip);
 				}
-	
-				settingsList.appendChild(settingContainer);
 	
 				switch(setting.type)
 				{
@@ -188,7 +190,16 @@
 					default:
 						break;
 				}
+
+				if(setting.experimental)
+				{
+					const span = document.createElement("span");
+					span.innerText = "(" + browser.i18n.getMessage("experimental") + ")";
+
+					settingContainer.appendChild(span);
+				}
 	
+				settingsList.appendChild(settingContainer);
 			}
 		};
 
