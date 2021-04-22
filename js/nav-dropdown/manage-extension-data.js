@@ -89,7 +89,7 @@
 			const fileInput = document.createElement("input");
 			fileInput.classList.add("aes-hidden");
 			fileInput.type = "file";
-			fileInput.accept = ".ao3es";
+			fileInput.accept = ".ao3es, .json";
 
 			fileInput.addEventListener("input", async function(event)
 			{
