@@ -399,6 +399,16 @@
 		"message": "Hides works with tags in your archive warning, relationship, character and additional tag hide list when enabled."
 	},
 
+	"hide_own_works":
+	{
+		"message": "Hide Own Works"
+	},
+
+	"hide_own_works_tooltip":
+	{
+		"message": "Hides works written by you that match any of your hide lists."
+	},
+
 	"about":
 	{
 		"message": "About"

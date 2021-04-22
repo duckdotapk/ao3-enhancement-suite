@@ -224,6 +224,17 @@ new Setting(
 	requiresReload: true,
 });
 
+new Setting(
+{
+	id: "hide_own_works",
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_own_works"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("hide_own_works_tooltip"),
+	defaultValue: false,
+	requiresReload: true,
+});
+
 // Search Presets
 new Setting(
 {

@@ -124,7 +124,7 @@
 		const showReasons = settings.hidden_aw_show_reasons;
 
 		// Skip the users own works
-		if(work.classList.contains("own"))
+		if(!settings.hide_own_works && work.classList.contains("own"))
 			continue;
 
 		if(exceedsMaxRating || blockedAuthorMatches.length > 0 || blockedFandomMatches.length > 0 || tooManyFandoms || blockedTagMatches.length > 0)
