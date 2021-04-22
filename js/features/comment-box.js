@@ -13,6 +13,10 @@ function switchToStaticCommentBox(fcbWindow, commentBox)
 
 async function insertSelection(textarea)
 {
+	const formatting = await Setting.get("cb_insert_formatting");
+
+	const joiner = formatting == "blockquote" ? "\r\n" : "\r\n\r\n";
+
 	let rawSelection = window.getSelection().toString().split("\r\n");
 
 	let processedSelection = [];
@@ -22,7 +26,7 @@ async function insertSelection(textarea)
 		if(line == "")
 			continue;
 
-		switch(await Setting.get("cb_insert_formatting"))
+		switch(formatting)
 		{
 			case "bold":
 				processedSelection.push(`<b>${ line }</b>`);
@@ -30,6 +34,10 @@ async function insertSelection(textarea)
 
 			case "italics":
 				processedSelection.push(`<i>${ line }</i>`);
+				break;
+
+			case "blockquote":
+				processedSelection.push(`\t<p>${ line }</p>`);
 				break;
 
 			case "none":
@@ -41,7 +49,12 @@ async function insertSelection(textarea)
 	if(processedSelection.length == 0)
 		return;
 
-	textarea.value += processedSelection.join("\r\n\r\n") + "\r\n\r\n";
+	let text = processedSelection.join(joiner);
+
+	if(formatting == "blockquote");
+		text = "<blockquote>\r\n" + text + "\r\n</blockquote>";
+
+	textarea.value += text + "\r\n\r\n";
 
 	if(await Setting.get("cb_focus_after_insert"))
 		textarea.focus();
