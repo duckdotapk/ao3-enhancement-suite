@@ -97,7 +97,7 @@ new Setting(
 			{ value: "none", text: "None" },
 			{ value: "bold", text: "Bold" },
 			{ value: "italics", text: "Italics" },
-			{ value: "blockquote", text: "Blockquote" },``
+			{ value: "blockquote", text: "Blockquote" },
 		],
 	},
 });
