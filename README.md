@@ -23,6 +23,9 @@ This feature moves the comment box into a floating, resizable window that follow
 ### Insert Selection
 This feature allows you to easily insert the text you have selected into the comment box. You can also choose the default formatting of the inserted text (bold, italics or none).
 
+## Hidden Authors & Works
+This feature allows you to hide works based on their author, fandoms, number of fandoms (crossovers), archive warnings, relationships, characters and additional tags.
+
 ## Search Presets
 This feature allows you to easily save and reload search setting presets. If you ever have a really fine tuned search to find works you're looking for and want to save it, this is the feature for you!
 
@@ -57,6 +60,24 @@ Clone/fork this repository and load the addon into your web browser. There are n
 See [LICENSE](/LICENSE).
 
 # Version History
+## 1.3
+
+**This update was released on April 22nd, 2021.**
+
+- Added a new AO3 Enhancement Suite menu to the site's navigation bar.
+	- This menu is the new home for the extension's settings.
+	- It also contains various other menus to manage your data for the extension.
+- Added the ability to hide works based on their author, fandoms, number of fandoms, archive warnings, relationships, characters and additional tags.
+- Added the ability to import and export all of your data for the extension via the "Manage Extension Data" modal.
+	- You can also view how much storage space is currently in use by the extension.
+- Fixed a bug where there could only be one autosaved comment at a time.
+- Fixed the "Autosave Comments" setting having no tooltip.
+- Made various Comment Box settings apply immediately instead of requiring a page reload.
+	- Enable Floating Comment Box
+	- Floating Comment Box Opacity
+	- Hide "Comment as <pseud>" heading
+	- Hide "Plain text with limited HTML" footnote
+
 ## 1.2
 
 **This update was released on April 16th, 2021.**
