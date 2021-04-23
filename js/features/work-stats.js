@@ -1,6 +1,6 @@
 {
 	//
-	// Shared Variables & Util Functions
+	// Variables & Util Functions
 	//
 
 	function getStats(statList)
@@ -61,7 +61,7 @@
 	const statLists = document.querySelectorAll("dl.stats");
 
 	//
-	// Features
+	// Feature
 	//
 
 	new Feature("work-stats", async function(settings)
