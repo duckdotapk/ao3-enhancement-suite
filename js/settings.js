@@ -257,7 +257,7 @@ new Setting(
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("enable_tag_collapse_tooltip"),
 	requiresReload: true,
-	defaultValue: true,
+	defaultValue: false,
 });
 
 new Setting(
