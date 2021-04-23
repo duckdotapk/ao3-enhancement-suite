@@ -241,7 +241,7 @@ new Setting(
 {
 	id: "enable_search_presets", 
 	category: browser.i18n.getMessage("search_presets"),	
-	title: browser.i18n.getMessage("enable"), 
+	title: browser.i18n.getMessage("show_search_presets_panel_works"), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("enable_search_presets_tooltip"),
 	requiresReload: true,

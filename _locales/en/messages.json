@@ -84,6 +84,11 @@
 		"message": "Are you sure you'd like to delete your \"$1\" preset?"
 	},
 
+	"show_search_presets_panel_works":
+	{
+		"message": "Show search presets panel on the works search page."
+	},
+
 	"name_this_preset":
 	{
 		"message": "Name this preset"

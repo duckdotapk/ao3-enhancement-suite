@@ -336,7 +336,7 @@
 
 	{
 		const legend = document.createElement("legend");
-		legend.innerText = browser.i18n.getMessage("fieldset_title", [ browser.i18n.getMessage("name"), browser.i18n.getMessage("search_presets") ]);
+		legend.innerText = browser.i18n.getMessage("search_presets");
 		
 		aesFieldset.append(legend);
 	}
