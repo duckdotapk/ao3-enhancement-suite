@@ -66,6 +66,7 @@
 
 				"js/classes/ControlSet.js",
 				"js/classes/DeleteButton.js",
+				"js/classes/Feature.js",
 				"js/classes/FloatingWindow.js",
 				"js/classes/HelpButton.js",
 				"js/classes/HideList.js",
@@ -131,6 +132,16 @@
 			"js":
 			[				
 				"js/features/preferences.js"
+			]
+		},
+		{
+			"matches":
+			[
+				"*://*.archiveofourown.org/*"
+			],
+			"js":
+			[
+				"js/execute-features.js"
 			]
 		}
 	],
