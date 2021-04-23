@@ -63,6 +63,8 @@ class Setting
 		category.push(this);
 
 		Setting.categories.set(this.categoryId, category);
+
+		Setting.defaultValues[this.id] = this.defaultValue;
 	}
 }
 
@@ -73,3 +75,4 @@ class Setting
 Setting.instances = [];
 Setting.instancesById = {};
 Setting.categories = new Map();
+Setting.defaultValues = {};
