@@ -37,6 +37,11 @@
 		if(wordsElement != undefined)
 			words = parseInt(wordsElement.innerText.replace(",", ""));
 
+		// Drafts have the words stat 
+		//	BUT do not actually show the words and will result in this being NaN!
+		if(isNaN(words)) 
+			return;
+
 		const chaptersElement = statElement.querySelector("dd.chapters");
 		let chapters;
 		let currentChapterCount;
@@ -60,6 +65,8 @@
 		if(settings.enable_estimated_reading_time_stat && wordsElement != undefined)
 		{
 			let time = Math.ceil(words / settings.read_speed);
+
+
 
 			let hours = Math.floor(time / 60);
 			let minutes = time % 60;
