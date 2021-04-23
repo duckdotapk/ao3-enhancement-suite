@@ -1,56 +1,55 @@
-(async function()
 {
-	//
-	// Check if this feature is enabled
-	//
-
-	if(!await Setting.get("enable_tag_collapse"))
-		return;
-
-	//
-	// Locals
+	// 
+	// Feature
 	//
 
-	const threshold = await Setting.get("tag_collapse_threshold");
+	new Feature("tag-collapse", async function(settings)
+	{
+		if(!settings.enable_tag_collapse)
+			return;
 
-	function collapseTagLists(selector)
-	{	
-		// Get all lists that match the given selector
-		const mainLists = document.querySelectorAll(selector);
+		const tagLists = document.querySelectorAll(globals.tagListsSelector);
 
-		// Iterate them and collapse excess tags
-		for(let mainList of mainLists)
+		for(let tagList of tagLists)
 		{
-			// Move excess tags into a hidden list
+			if(tagList.children.length <= settings.tag_collapse_threshold)
+				continue;
+
+			//
+			// Excess List
+			//
+
 			const excessList = document.createElement("ul");
 			excessList.classList.add("tags", "commas", "aes-hidden");
 			
-			mainList.after(excessList);
+			while(tagList.children.length > settings.tag_collapse_threshold)
+				excessList.appendChild(tagList.children[settings.tag_collapse_threshold]);
+
+			tagList.after(excessList);
 		
-			const tagListItems = mainList.querySelectorAll("li");	
-	
-			if(tagListItems.length <= threshold)
-				continue;
-	
-			for(let i = threshold; i < tagListItems.length; i++)
-				excessList.appendChild(tagListItems[i]);
-		
-			// Add the "and X more tags" / "Show X tags" link to the main list
+			//
+			// More Connector (if threshold > 0)
+			//
+
 			let moreConnector;
-			if(threshold > 0)
+			if(settings.tag_collapse_threshold > 0)
 			{
 				moreConnector = document.createElement("span");
 				moreConnector.classList.add("aes_tags_more_connector");
 				moreConnector.innerText = " and ";
 			
-				mainList.append(moreConnector);
+				tagList.append(moreConnector);
 			}
+
+			//
+			// Show More Link
+			//
 		
 			const moreLink = document.createElement("a");
 			moreLink.classList.add("aes_tags_more_link");
 			moreLink.href = "#";
 
-			if(threshold > 0)
+			if(settings.tag_collapse_threshold > 0)
 				moreLink.innerText = excessList.children.length + " more tag";
 			else
 				moreLink.innerText = "Show " + excessList.children.length + " tag";
@@ -63,20 +62,14 @@
 				event.preventDefault();
 		
 				while(excessList.children.length > 0)
-					mainList.appendChild(excessList.children[0]);
+					tagList.appendChild(excessList.children[0]);
 		
 				excessList.remove();
 				moreConnector?.remove();
 				moreLink.remove();
 			});
 		
-			mainList.append(moreLink);
+			tagList.append(moreLink);
 		}
-	}
-
-	//
-	// Feature
-	//
-
-	collapseTagLists(tagListsStr);
-})();
+	});
+}

@@ -48,6 +48,11 @@ const validConfiguationKeys =
 	"settings",
 ];
 
+// TODO: shift everything towards being in this one object
+const globals = {};
+
+globals.tagListsSelector = tagListsStr;
+
 //
 // Function Calls
 //
