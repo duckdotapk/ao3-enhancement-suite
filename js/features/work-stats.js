@@ -31,7 +31,10 @@
 
 	for(let statElement of statElements)
 	{
+		//
 		// Shared
+		//
+
 		const wordsElement = statElement.querySelector("dd.words");
 		let words;
 		if(wordsElement != undefined)
@@ -53,7 +56,10 @@
 			totalChapterCount = chapters[1] != "?" ? parseInt(chapters[1]) : -1;
 		}
 
+		//
 		// Average words per chapter
+		//
+		
 		if(settings.enable_average_words_per_chapter_stat && wordsElement != undefined && chaptersElement != undefined && totalChapterCount != 1)
 		{
 			let average = Math.ceil(words / currentChapterCount);
@@ -61,12 +67,13 @@
 			addStat(statElement, "aes_average_chapter_length", browser.i18n.getMessage("average_words_per_chapter"), average.toLocaleString("en"));
 		}
 
+		//
 		// Estimated reading time
+		//
+
 		if(settings.enable_estimated_reading_time_stat && wordsElement != undefined)
 		{
 			let time = Math.ceil(words / settings.read_speed);
-
-
 
 			let hours = Math.floor(time / 60);
 			let minutes = time % 60;
