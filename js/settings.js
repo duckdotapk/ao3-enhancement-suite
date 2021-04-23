@@ -313,10 +313,11 @@ new Setting(
 	},
 });
 
+// Chapter Stats
 new Setting(
 {
 	id: "show_chapter_word_counts",
-	category: browser.i18n.getMessage("work_stats"), 
+	category: browser.i18n.getMessage("chapter_stats"), 
 	title: browser.i18n.getMessage("show_chapter_word_counts"),
 	type: "checkbox",
 	tooltip: browser.i18n.getMessage("show_chapter_word_counts_tooltip"),
