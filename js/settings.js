@@ -13,7 +13,7 @@ new Setting(
 {
 	id: "enable_floating_comment_box",
 	category: browser.i18n.getMessage("comment_box"),
-	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("floating_comment_box") ]),
+	title: browser.i18n.getMessage("enable_floating_comment_box"),
 	type: "checkbox",
 	tooltip: browser.i18n.getMessage("enable_floating_comment_box_toolip"),
 	requiresReload: false,
@@ -63,7 +63,7 @@ new Setting(
 {
 	id: "cb_enable_additional_controls", 
 	category: browser.i18n.getMessage("comment_box"), 
-	title: browser.i18n.getMessage("enable_titled_nq", [ browser.i18n.getMessage("additional_controls") ]), 
+	title: browser.i18n.getMessage("cb_enable_additional_controls"), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("cb_enable_additional_controls_tooltip"),
 	requiresReload: true,
@@ -253,7 +253,7 @@ new Setting(
 {
 	id: "enable_tag_collapse", 
 	category: browser.i18n.getMessage("tag_collapse"),	
-	title: browser.i18n.getMessage("enable"), 
+	title: browser.i18n.getMessage("enable_tag_collapse"), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("enable_tag_collapse_tooltip"),
 	requiresReload: true,
@@ -264,7 +264,7 @@ new Setting(
 {
 	id: "tag_collapse_threshold", 
 	category: browser.i18n.getMessage("tag_collapse"),	
-	title: browser.i18n.getMessage("threshold"), 
+	title: browser.i18n.getMessage("threshold_num_tags"), 
 	type: "number", 
 	tooltip: browser.i18n.getMessage("tag_collapse_threshold_tooltip"),
 	requiresReload: true,
@@ -280,7 +280,7 @@ new Setting(
 {
 	id: "enable_average_words_per_chapter_stat", 
 	category: browser.i18n.getMessage("work_stats"), 
-	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("average_words_per_chapter") ]),	
+	title: browser.i18n.getMessage("show_stat", [ browser.i18n.getMessage("average_words_per_chapter") ]),	
 	type: "checkbox",	
 	tooltip: browser.i18n.getMessage("enable_average_words_per_chapter_stat_tooltip"),
 	requiresReload: true,
@@ -291,7 +291,7 @@ new Setting(
 {
 	id: "enable_estimated_reading_time_stat", 
 	category: browser.i18n.getMessage("work_stats"), 
-	title: browser.i18n.getMessage("enable_titled", [ browser.i18n.getMessage("estimated_reading_time") ]), 
+	title: browser.i18n.getMessage("show_stat", [ browser.i18n.getMessage("estimated_reading_time") ]), 
 	type: "checkbox", 
 	tooltip: browser.i18n.getMessage("enable_estimated_reading_time_stat_tooltip"),
 	requiresReload: true,

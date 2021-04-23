@@ -36,12 +36,12 @@
 
 	"enable":
 	{
-		"message": "Enable"
+		"message": "Enable."
 	},
 
 	"enable_titled":
 	{
-		"message": "Enable \"$1\""
+		"message": "Enable \"$1\"."
 	},
 
 	"enable_titled_nq":
@@ -49,9 +49,19 @@
 		"message": "Enable $1"
 	},
 
+	"show_stat":
+	{
+		"message": "Show \"$1\" stat."
+	},
+
 	"threshold":
 	{
 		"message": "Threshold"
+	},
+
+	"threshold_num_tags":
+	{
+		"message": "Threshold (# of tags)"
 	},
 
 	"average_words_per_chapter":
@@ -66,7 +76,7 @@
 
 	"reading_speed":
 	{
-		"message": "Reading Speed (wpm)"
+		"message": "Reading speed (wpm)"
 	},
 
 	"delete_currently_selected_preset_message":
@@ -124,24 +134,29 @@
 		"message": "Floating Comment Box"
 	},
 
+	"enable_floating_comment_box":
+	{
+		"message": "Enable a floating comment box."
+	},
+
 	"cb_floating_opacity":
 	{
-		"message": "Floating Comment Box Opacity"
+		"message": "Floating comment box opacity"
 	},
 
 	"cb_hide_comment_as_heading":
 	{
-		"message": "Hide \"Comment as <pseud>\" heading"
+		"message": "Hide \"Comment as <pseud>\" heading."
 	},
 
 	"cb_hide_html_footnote":
 	{
-		"message": "Hide \"Plain text with limited HTML\" footnote"
+		"message": "Hide \"Plain text with limited HTML\" footnote."
 	},
 
 	"cb_focus_after_insert":
 	{
-		"message": "Focus comment text area after insert"
+		"message": "Focus comment box text area after inserting my current selection."
 	},
 
 	"cb_recommendation":
@@ -189,6 +204,11 @@
 		"message": "Hides the \"Plain text with limited HTML\" footnote in the comment box."
 	},
 
+	"cb_enable_additional_controls":
+	{
+		"message": "Enable additional controls (\"Insert Selection\" button)."
+	},
+
 	"cb_enable_additional_controls_tooltip":
 	{
 		"message": "Enables an additional set of controls to make formatting your comments easier."
@@ -212,6 +232,11 @@
 	"enable_search_presets_tooltip":
 	{
 		"message": "Enables the search presets fieldset on the search page."
+	},
+
+	"enable_tag_collapse":
+	{
+		"message": "Collapse excessive tags (you can still choose to show them)."
 	},
 
 	"enable_tag_collapse_tooltip":
@@ -251,12 +276,12 @@
 
 	"save_comments_to_storage":
 	{
-		"message": "Autosave Comments"
+		"message": "Autosave comments to my browser's storage."
 	},
 
 	"save_comments_to_storage_tooltip":
 	{
-		"message": "Autosaves comments to your browser's storage."
+		"message": "Autosaves comments to your browser's storage.\n\nLocally saved copies will be deleted when posted."
 	},
 
 	"reset_all_settings":
@@ -346,17 +371,17 @@
 
 	"hidden_aw_show_reasons":
 	{
-		"message": "Show Reasons"
+		"message": "Show hide list matches when hiding works."
 	},
 
 	"hidden_aw_show_reasons_tooltip":
 	{
-		"message": "Shows the reasons a work has been hidden when enabled."
+		"message": "Shows what authors, fandoms and tags matched your hide lists when hiding works."
 	},
 
 	"hide_specific_authors":
 	{
-		"message": "Hide Specific Authors"
+		"message": "Hide works by authors on my hide list."
 	},
 
 	"hide_specific_authors_tooltip":
@@ -366,7 +391,7 @@
 
 	"hide_specific_fandoms":
 	{
-		"message": "Hide Specific Fandoms"
+		"message": "Hide works within fandoms on my hide list."
 	},
 
 	"hide_specific_fandoms_tooltip":
@@ -376,7 +401,7 @@
 
 	"hide_multiple_fandoms":
 	{
-		"message": "Hide Crossovers"
+		"message": "Hide crossovers."
 	},
 
 	"hide_multiple_fandoms_tooltip":
@@ -396,7 +421,7 @@
 
 	"hide_specific_tags":
 	{
-		"message": "Hide Specific Tags"
+		"message": "Hide works with additional tags on my hide list."
 	},
 
 	"hide_specific_tags_tooltip":
@@ -406,7 +431,7 @@
 
 	"hide_own_works":
 	{
-		"message": "Hide Own Works"
+		"message": "Hide my own works when they match my hide lists."
 	},
 
 	"hide_own_works_tooltip":
@@ -441,7 +466,7 @@
 
 	"hidden_aw_quick_hide_key":
 	{
-		"message": "Quick Hide Shortcut"
+		"message": "Quick hide shortcut"
 	},
 
 	"hidden_aw_quick_hide_key_tooltip":
@@ -451,7 +476,7 @@
 
 	"hidden_aw_max_rating":
 	{
-		"message": "Maximum Rating"
+		"message": "Maximum rating"
 	},
 
 	"hidden_aw_max_rating_tooltip":
@@ -461,7 +486,7 @@
 
 	"hidden_aw_consider_not_rated_explicit":
 	{
-		"message": "Consider \"Not Rated\" Works Explicit"
+		"message": "Consider \"Not Rated\" works explicit"
 	},
 
 	"hidden_aw_consider_not_rated_explicit_tooltip":
@@ -566,7 +591,7 @@
 
 	"show_chapter_word_counts":
 	{
-		"message": "Show Individual Chapter Word Counts"
+		"message": "Show individual chapter word counts."
 	},
 
 	"show_chapter_word_counts_tooltip":
