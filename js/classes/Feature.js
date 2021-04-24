@@ -17,7 +17,7 @@ class Feature
 		}
 		catch(error)
 		{
-			console.log(`Error occured while executing code for the "${ this.id }" feature:`);
+			console.log(`Error occured while executing onInit for the "${ this.id }" feature:`);
 			console.log(error);
 			debugger;
 		}
@@ -42,8 +42,21 @@ browser.storage.onChanged.addListener(function(changes, areaName)
 			console.log(changedSettings);
 
 			for(let feature of Feature.instances)
+			{
 				if(feature.onSettingChange != undefined)
-					feature.onSettingChange(newSettings, changedSettings);
+				{
+					try
+					{
+						feature.onSettingChange(newSettings, changedSettings);
+					}
+					catch(error)
+					{
+						console.log(`Error occured while executing onSettingChange for the "${ feature.id }" feature:`);
+						console.log(error);
+						debugger;
+					}
+				}
+			}
 		}
 
 	}
