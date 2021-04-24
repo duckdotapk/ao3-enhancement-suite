@@ -173,13 +173,13 @@
 		
 				timeout = setTimeout(function()
 				{
-					SavedComment.save(pagePath[0] + "_" + textarea.id, textarea.value);
+					SavedComment.save(globals.pagePath[0] + "_" + textarea.id, textarea.value);
 				}, 1000);
 			});
 		
 			if(settings.save_comments_to_storage)
 			{
-				let savedComment = await SavedComment.get(pagePath[0] + "_" + textarea.id);
+				let savedComment = await SavedComment.get(globals.pagePath[0] + "_" + textarea.id);
 		
 				if(savedComment != undefined)
 					textarea.value = savedComment;
@@ -196,7 +196,7 @@
 		
 				fakeSubmit.addEventListener("click", async function(event)
 				{
-					if(textarea.value.length == 0 || textarea.value.length > ArchiveConfig.COMMENT_MAX)
+					if(textarea.value.length == 0 || textarea.value.length > globals.ArchiveConfig.COMMENT_MAX)
 					{
 						textarea.classList.add("LV_invalid_field");
 						return;

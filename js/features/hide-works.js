@@ -96,7 +96,7 @@
 
 		let tooManyFandoms = fandomLinks.length >= settings.multiple_fandoms_threshold;
 
-		let workTagLists = work.querySelectorAll(tagListsStr);
+		let workTagLists = work.querySelectorAll(globals.tagListsSelector);
 
 		let blockedTagMatches = [];
 		for(let tagList of workTagLists)

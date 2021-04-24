@@ -2,7 +2,9 @@
 // Variables
 //
 
-const ArchiveConfig =
+const globals = {};
+
+globals.ArchiveConfig =
 {
 	// https://github.com/otwcode/otwarchive/blob/7e583009b59acb17e805cb228c545aec6893627c/config/config.yml#L89
 	COMMENT_MAX: 10000,
@@ -11,7 +13,7 @@ const ArchiveConfig =
 	CHARACTER_COUNT_SCRIPTS: ["Han", "Hiragana", "Katakana", "Thai"],
 }
 
-const archiveWarnings =
+globals.archiveWarnings =
 [
 	"Choose Not To Use Archive Warnings",
 	"Graphic Depictions Of Violence",
@@ -21,10 +23,10 @@ const archiveWarnings =
 	"Underage",
 ];
 
-const pagePath = new URL(window.location).pathname.split("/");
-pagePath.shift();
+globals.pagePath = new URL(window.location).pathname.split("/");
+globals.pagePath.shift();
 
-const tagLists =
+globals.tagListsSelectors =
 [
 	"ul.tags.commas",
 	"dd.fandom.tags > ul",
@@ -33,9 +35,9 @@ const tagLists =
 	"dd.freeform.tags > ul",
 ];
 
-const tagListsStr = tagLists.join(", ");
+globals.tagListsSelector = tagListsSelectors.join(", ");
 
-const validConfiguationKeys =
+globals.validConfiguationKeys =
 [
 	"hidelistAuthors",
 	"hidelistFandoms",
@@ -47,11 +49,6 @@ const validConfiguationKeys =
 	"searchPresets",
 	"settings",
 ];
-
-// TODO: shift everything towards being in this one object
-const globals = {};
-
-globals.tagListsSelector = tagListsStr;
 
 //
 // Function Calls

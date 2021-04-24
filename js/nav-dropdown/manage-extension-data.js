@@ -106,7 +106,7 @@
 					console.log(typeof(configuration));
 
 					for(let [key, value] of Object.entries(configuration))
-						if(!validConfiguationKeys.includes(key))
+						if(!globals.validConfiguationKeys.includes(key))
 							errors.push(browser.i18n.getMessage("config_import_invalid_key", [ key ]));
 				}
 				catch(error)

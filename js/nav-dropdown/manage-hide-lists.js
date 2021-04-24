@@ -69,7 +69,7 @@
 					input.appendChild(option);
 				}
 
-				for(let warning of archiveWarnings)
+				for(let warning of globals.archiveWarnings)
 				{
 					const option = document.createElement("option");
 					option.value = warning;
