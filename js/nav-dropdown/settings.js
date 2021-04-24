@@ -203,16 +203,16 @@
 			}
 		};
 
-		// TODO: Replace this with a controlSet now that it's part of the page
-		let footer = document.createElement("footer");
-		settingsContainer.appendChild(footer);
-	
-		addFooterLink(footer, "reset-settings", browser.i18n.getMessage("reset_all_settings"), browser.i18n.getMessage("reset_all_settings_tooltip"), async function(event)
+		const controlSet = new ControlSet();
+
+		controlSet.addControl(browser.i18n.getMessage("reset_all_settings"), browser.i18n.getMessage("reset_all_settings_tooltip"), async function(event)
 		{
 			await browser.storage.local.remove("settings");
 	
 			location.reload();
 		});
+
+		settingsContainer.appendChild(controlSet.element);
 
 		return settingsContainer;
 	}
