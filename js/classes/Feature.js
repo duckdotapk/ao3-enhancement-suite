@@ -58,6 +58,5 @@ browser.storage.onChanged.addListener(function(changes, areaName)
 				}
 			}
 		}
-
 	}
 });
