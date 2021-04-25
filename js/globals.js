@@ -35,7 +35,7 @@ globals.tagListsSelectors =
 	"dd.freeform.tags > ul",
 ];
 
-globals.tagListsSelector = tagListsSelectors.join(", ");
+globals.tagListsSelector = globals.tagListsSelectors.join(", ");
 
 globals.validConfiguationKeys =
 [
