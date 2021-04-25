@@ -74,6 +74,7 @@
 				"js/classes/NavDropdown.js",
 				"js/classes/SavedComment.js",
 				"js/classes/Setting.js",
+				"js/classes/UserDataManager.js",
 
 				"js/globals.js",
 		
