@@ -39,8 +39,6 @@ browser.storage.onChanged.addListener(function(changes, areaName)
 			for(let setting of Setting.instances)
 				changedSettings[setting.id] = oldSettings[setting.id] != newSettings[setting.id];
 
-			console.log(changedSettings);
-
 			for(let feature of Feature.instances)
 			{
 				if(feature.onSettingChange != undefined)
