@@ -5,7 +5,7 @@ class UserDataManager
 		this.storageKey = storageKey;
 	}
 
-	async all()
+	async all(returnEntries)
 	{
 		let storage = await browser.storage.local.get(this.storageKey);
 
@@ -14,7 +14,10 @@ class UserDataManager
 		if(allUserData == undefined)
 			allUserData = {};
 
-		return allUserData;
+		if(returnEntries)
+			return Object.entries(allUserData);
+		else
+			return allUserData;
 	}
 
 	async get(id)
