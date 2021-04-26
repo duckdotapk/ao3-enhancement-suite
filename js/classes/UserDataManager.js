@@ -20,10 +20,15 @@ class UserDataManager
 	async get(id)
 	{
 		let allUserData = await this.all();
-		
-		let userData = allUserData[id];
 
-		return userData;
+		return allUserData[id];
+	}
+
+	async exists(id)
+	{
+		let allUserData = await this.all();
+
+		return allUserData[id] != undefined;
 	}
 
 	async set(id, data)
