@@ -173,13 +173,13 @@
 		
 				timeout = setTimeout(function()
 				{
-					SavedComment.save(globals.pagePath[0] + "_" + textarea.id, textarea.value);
+					globals.managers.savedCommentManager.save(globals.pagePath[0] + "_" + textarea.id, textarea.value);
 				}, 1000);
 			});
 		
 			if(settings.save_comments_to_storage)
 			{
-				let savedComment = await SavedComment.get(globals.pagePath[0] + "_" + textarea.id);
+				let savedComment = await globals.managers.savedCommentManager.get(globals.pagePath[0] + "_" + textarea.id);
 		
 				if(savedComment != undefined)
 					textarea.value = savedComment;
@@ -204,7 +204,7 @@
 		
 					fakeSubmit.value = fakeSubmit.dataset.disableWith;
 		
-					await SavedComment.delete(textarea.id);
+					await globals.managers.savedCommentManager.delete(textarea.id);
 		
 					submit.click();
 				});

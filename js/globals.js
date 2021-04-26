@@ -23,6 +23,10 @@ globals.archiveWarnings =
 	"Underage",
 ];
 
+globals.managers = {};
+
+globals.managers.savedCommentManager = new UserDataManager("savedComments");
+
 globals.pagePath = new URL(window.location).pathname.split("/");
 globals.pagePath.shift();
 
