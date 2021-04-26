@@ -173,7 +173,7 @@
 		
 				timeout = setTimeout(function()
 				{
-					globals.managers.savedCommentManager.save(globals.pagePath[0] + "_" + textarea.id, textarea.value);
+					globals.managers.savedCommentManager.set(globals.pagePath[0] + "_" + textarea.id, textarea.value);
 				}, 1000);
 			});
 		
