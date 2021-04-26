@@ -26,6 +26,7 @@ globals.archiveWarnings =
 globals.managers = {};
 
 globals.managers.savedCommentManager = new UserDataManager("savedComments");
+globals.managers.searchPresetManager = new UserDataManager("searchPresets");
 
 globals.pagePath = new URL(window.location).pathname.split("/");
 globals.pagePath.shift();
@@ -59,5 +60,3 @@ globals.validConfiguationKeys =
 //
 
 const aesDropdown = new NavDropdown(browser.i18n.getMessage("name"));
-
-SavedComment.migrate();

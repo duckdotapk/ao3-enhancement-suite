@@ -1,23 +1,6 @@
-(async function()
 {
 	//
-	// Get User Settings
-	//
-
-	if(!await Setting.get("enable_search_presets"))
-		return;
-
-	//
-	// Setup
-	//
-
-	let searchPresets = (await browser.storage.local.get("searchPresets")).searchPresets;
-
-	if(searchPresets == undefined)
-		searchPresets = {};
-
-	//
-	// Locals
+	// Variables & Util Functions
 	//
 
 	const defaultSearchSettings =
@@ -70,7 +53,7 @@
 		// Search Block
 		sort_column: "_score",
 		sort_direction: "desc",
-	}
+	};
 
 	const radioSuffixes = ["", "f", "t"];
 
@@ -283,11 +266,9 @@
 
 		if(await Modal.confirm(browser.i18n.getMessage("delete_currently_selected_preset_message", [ option.innerText ])))
 		{
-			delete searchPresets[option.value];
-
 			option.remove();
 
-			browser.storage.local.set({ searchPresets: searchPresets });
+			globals.managers.searchPresetManager.delete(option.value);
 		}
 
 		setCurrentSearchSettings(defaultSearchSettings);
@@ -303,7 +284,7 @@
 			return await Modal.alert(browser.i18n.getMessage("preset_name_blank_warning"));
 
 		let replacingExisting = false;
-		if(searchPresets[searchPresetName] != undefined)
+		if(await globals.managers.searchPresetManager.exists(searchPresetName))
 		{
 			if(!await Modal.confirm(browser.i18n.getMessage("preset_name_already_exists_warning", [ searchPresetName ])))
 				return;
@@ -311,9 +292,7 @@
 			replacingExisting = true;
 		}
 
-		searchPresets[searchPresetName] = getCurrentSearchSettings();
-
-		browser.storage.local.set({ searchPresets: searchPresets });
+		await globals.managers.searchPresetManager.set(searchPresetName, getCurrentSearchSettings());
 
 		const select = document.getElementById("aes_search_presets")
 		if(!replacingExisting)
@@ -323,98 +302,112 @@
 	}
 
 	//
-	// AES Search Form
+	// Feature
 	//
 
-	const form = document.getElementById("new_work_search");
-	
-	// Looking at search results and not the search form
-	if(form == undefined)
-		return;
-
-	const aesFieldset = document.createElement("fieldset");
-
-	{
-		const legend = document.createElement("legend");
-		legend.innerText = browser.i18n.getMessage("search_presets");
-		
-		aesFieldset.append(legend);
-	}
-
-	{
-		const descriptionList = document.createElement("dl");
-		
+	new Feature("search-presets",
+		async function(settings)
 		{
-			const descriptionTerm = document.createElement("dt");
+			if(!settings.enable_search_presets)
+				return;
+
+			const searchPresets = globals.managers.searchPresetManager.all();
+
+			const form = document.getElementById("new_work_search");
+			
+			// Looking at search results and not the search form
+			if(form == undefined)
+				return;
+
+			const aesFieldset = document.createElement("fieldset");
 
 			{
-				const label = document.createElement("label");
-
-				label.setAttribute("for", "aes_search_preset");
-				label.innerText = browser.i18n.getMessage("search_preset");
+				const legend = document.createElement("legend");
+				legend.innerText = browser.i18n.getMessage("search_presets");
 				
-				descriptionTerm.append(label);
+				aesFieldset.append(legend);
 			}
-
-			descriptionList.append(descriptionTerm);
-		}
-
-		{
-			const descriptionDetails = document.createElement("dd");
 
 			{
-				const select = document.createElement("select");
-				select.id = "aes_search_presets";
-
+				const descriptionList = document.createElement("dl");
+				
 				{
-					const option = document.createElement("option");
-					option.setAttribute("value", "");
-					option.innerText = browser.i18n.getMessage("default");
+					const descriptionTerm = document.createElement("dt");
 
-					select.append(option);
-				}
-
-				{
-					for(let [searchPresetName, searchPreset] of Object.entries(searchPresets))
 					{
-						addPresetOption(select, searchPresetName);
+						const label = document.createElement("label");
+
+						label.setAttribute("for", "aes_search_preset");
+						label.innerText = browser.i18n.getMessage("search_preset");
+						
+						descriptionTerm.append(label);
 					}
+
+					descriptionList.append(descriptionTerm);
 				}
 
 				{
-					select.addEventListener("change", function(event)
+					const descriptionDetails = document.createElement("dd");
+
 					{
-						if(event.target.value == "")
-							setCurrentSearchSettings(defaultSearchSettings);
-						else
-							setCurrentSearchSettings(searchPresets[event.target.value]);
-					});
+						const select = document.createElement("select");
+						select.id = "aes_search_presets";
+
+						{
+							const option = document.createElement("option");
+							option.setAttribute("value", "");
+							option.innerText = browser.i18n.getMessage("default");
+
+							select.append(option);
+						}
+
+						{
+							for(let [searchPresetName, searchPreset] of Object.entries(searchPresets))
+							{
+								addPresetOption(select, searchPresetName);
+							}
+						}
+
+						{
+							select.addEventListener("change", async function(event)
+							{
+								if(event.target.value == "")
+								{
+									setCurrentSearchSettings(defaultSearchSettings);
+								}
+								else
+								{
+									const searchPreset = await globals.managers.searchPresetManager.get(event.target.value);
+									setCurrentSearchSettings(searchPreset);
+								}
+							});
+						}
+
+						descriptionDetails.append(select);
+					}
+
+					descriptionList.append(descriptionDetails);
 				}
 
-				descriptionDetails.append(select);
+				aesFieldset.append(descriptionList);
 			}
 
-			descriptionList.append(descriptionDetails);
-		}
+			{
+				const controlSet = new ControlSet();
 
-		aesFieldset.append(descriptionList);
-	}
+				controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), undefined, function(event)
+				{
+					deleteCurrentlySelectedPreset();
+				});
+				
+				controlSet.addControl(browser.i18n.getMessage("save_current_settings_as_preset"), undefined, function(event)
+				{
+					saveCurrentSettingsAsPreset();
+				});
 
-	{
-		const controlSet = new ControlSet();
+				aesFieldset.append(controlSet.element);
+			}
 
-		controlSet.addControl(browser.i18n.getMessage("delete_currently_selected_preset"), undefined, function(event)
-		{
-			deleteCurrentlySelectedPreset();
+			form.prepend(aesFieldset);
 		});
-		
-		controlSet.addControl(browser.i18n.getMessage("save_current_settings_as_preset"), undefined, function(event)
-		{
-			saveCurrentSettingsAsPreset();
-		});
-
-		aesFieldset.append(controlSet.element);
-	}
-
-	form.prepend(aesFieldset);
-})();
+}
