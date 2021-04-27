@@ -208,7 +208,7 @@ class FloatingWindow
 		this.root.classList.add("aes-hidden");
 
 		if(this.onHide)
-			this.onHide();
+			this.onHide(this);
 	}
 
 	show()
@@ -217,7 +217,7 @@ class FloatingWindow
 		this.root.classList.remove("aes-hidden");
 
 		if(this.onShow)
-			this.onShow();
+			this.onShow(this);
 	}
 }
 

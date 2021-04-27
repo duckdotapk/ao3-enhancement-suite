@@ -109,7 +109,7 @@
 					[ 
 						"aes-fcb-window" 
 					],
-					onHide: function(event)
+					onHide: function(window)
 					{			
 						Setting.set("enable_floating_comment_box", false);
 					},
