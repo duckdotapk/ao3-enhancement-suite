@@ -509,6 +509,11 @@
 		"message": "Manage Hidden Authors, Fandoms and Tags"
 	},
 
+	"manage_saved_comments":
+	{
+		"message": "Manage Saved Comments"
+	},
+
 	"manage_extension_data":
 	{
 		"message": "Manage Extension Data"
@@ -617,5 +622,15 @@
 	"word_count_approx":
 	{
 		"message": "This word count is approximated and may be slightly or entirely off.\r\n\r\nThis is worked out with different logic from AO3's actual code."
+	},
+
+	"no_saved_comments":
+	{
+		"message": "You do not have any saved comments."
+	},
+
+	"delete_saved_comment":
+	{
+		"message": "Permanently delete this saved comment."
 	}
 }

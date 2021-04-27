@@ -82,6 +82,7 @@
 				"js/nav-dropdown/about.js",
 				"js/nav-dropdown/settings.js",
 				"js/nav-dropdown/manage-hide-lists.js",
+				"js/nav-dropdown/manage-saved-comments.js",
 				"js/nav-dropdown/manage-extension-data.js",
 
 				"js/features/hide-works.js",

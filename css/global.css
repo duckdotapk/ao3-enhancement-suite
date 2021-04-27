@@ -33,6 +33,12 @@
 	min-width: 20em;
 }
 
+/* Manage Saved Comments */
+.aes-manage-saved-comments-textarea
+{
+	resize: vertical;
+}
+
 /* Hidden Authors & Works */
 .aes-hidden-work-controls
 {
