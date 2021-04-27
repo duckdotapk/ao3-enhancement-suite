@@ -101,7 +101,19 @@
 			submit = fieldset.querySelector(".submit.actions > input");
 		
 			// Feature: FLoating Comment Box
-			fcbWindow = new FloatingWindow(browser.i18n.getMessage("floating_comment_box"), settings.enable_floating_comment_box, [ "aes-fcb-window" ]);
+			fcbWindow = new FloatingWindow(
+				{
+					title: browser.i18n.getMessage("floating_comment_box"), 
+					visible: settings.enable_floating_comment_box, 
+					cssClasses: 
+					[ 
+						"aes-fcb-window" 
+					],
+					onHide: function(event)
+					{			
+						Setting.set("enable_floating_comment_box", false);
+					},
+				});
 		
 			if(settings.enable_floating_comment_box)
 				switchToFloatingCommentBox(fcbWindow, commentBox, settings.cb_floating_opacity);

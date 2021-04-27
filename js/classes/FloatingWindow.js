@@ -1,16 +1,23 @@
 class FloatingWindow
 {
-	constructor(title, visible, cssClasses)
+	constructor(options)
 	{
 		// Create Window Elements
 		const floatingWindow = document.createElement("div");
 		floatingWindow.classList.add("aes-floating-window");
 
-		if(visible != undefined && !visible)
+		if(options.visible != undefined && !options.visible)
+		{
+			floatingWindow.visible = false;
 			floatingWindow.classList.add("aes-hidden");
+		}
+		else
+		{
+			floatingWindow.visible = true;
+		}
 
-		if(cssClasses != undefined)
-			floatingWindow.classList.add(...cssClasses);
+		if(options.cssClasses != undefined)
+			floatingWindow.classList.add(...options.cssClasses);
 
 		document.body.appendChild(floatingWindow);
 
@@ -24,7 +31,36 @@ class FloatingWindow
 		{
 			const floatingWindowHeader = document.createElement("div");
 			floatingWindowHeader.classList.add("aes-floating-window-title-bar");
-			floatingWindowHeader.innerText = title;
+			floatingWindowHeader.innerText = options.title;
+
+			{
+				const windowControls = document.createElement("div");
+				windowControls.classList.add("aes-floating-window-controls");
+
+				{
+					const closeButtonControl = document.createElement("div");
+					closeButtonControl.classList.add("aes-floating-window-control");
+	
+					{
+						const closeButton = document.createElement("a");
+						closeButton.setAttribute("href", "#");
+						closeButton.innerText = "X";
+		
+						closeButton.addEventListener("click", (event) =>
+						{
+							event.preventDefault();
+		
+							this.hide();
+						});
+	
+						closeButtonControl.appendChild(closeButton);
+					}
+
+					windowControls.appendChild(closeButtonControl);
+				}
+
+				floatingWindowHeader.appendChild(windowControls);
+			}
 	
 			floatingWindow.appendChild(floatingWindowHeader);
 
@@ -45,6 +81,13 @@ class FloatingWindow
 		this.pos4 = 0;
 
 		this.makeDraggable();
+
+		// Other Window Options
+		if(options.onHide)
+			this.onHide = options.onHide;
+		
+		if(options.onShow)
+			this.onShow = options.onShow;
 
 		FloatingWindow.windows.push(this);
 	}
@@ -111,15 +154,19 @@ class FloatingWindow
 			this.moveToTop();
 
 			event = event || window.event;
-			event.preventDefault();
 
-			// get the mouse cursor position at startup:
-			this.pos3 = event.clientX;
-			this.pos4 = event.clientY;
+			if(event.target == this.header)
+			{
+				event.preventDefault();
 
-			// call a function whenever the cursor moves:
-			document.addEventListener("mousemove", mouseMove);
-			document.addEventListener("mouseup", mouseUp);
+				// get the mouse cursor position at startup:
+				this.pos3 = event.clientX;
+				this.pos4 = event.clientY;
+	
+				// call a function whenever the cursor moves:
+				document.addEventListener("mousemove", mouseMove);
+				document.addEventListener("mouseup", mouseUp);
+			}
 		}
 
 		this.header.addEventListener("mousedown", mouseDown);
@@ -157,12 +204,20 @@ class FloatingWindow
 
 	hide()
 	{
+		this.visible = false;
 		this.root.classList.add("aes-hidden");
+
+		if(this.onHide)
+			this.onHide();
 	}
 
 	show()
 	{
+		this.visible = true;
 		this.root.classList.remove("aes-hidden");
+
+		if(this.onShow)
+			this.onShow();
 	}
 }
 
