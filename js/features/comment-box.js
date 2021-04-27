@@ -173,7 +173,37 @@
 		
 				timeout = setTimeout(function()
 				{
-					globals.managers.savedCommentManager.set(globals.pagePath[0] + "_" + textarea.id, textarea.value);
+					const savedComment = {};
+
+					if(globals.pagePath[0] == "works")
+					{
+						savedComment.work = 
+						{
+							id: globals.pagePath[1],
+							title: document.getElementById("workskin").querySelector(".title.heading").innerText,
+						};
+
+						if(globals.pagePath[2] == "chapters")
+						{
+							savedComment.chapter = 
+							{
+								id: globals.pagePath[3],
+								title: document.querySelector(".chapter.preface.group").querySelector(".title").innerText,
+							};
+						}
+					}
+					else if(globals.pagePath[0] == "admin_posts")
+					{
+						savedComment.adminPost =
+						{
+							id: globals.pagePath[1],
+							title: document.querySelector(".news.module.group").querySelector(".heading").innerText,
+						}
+					}
+
+					savedComment.value = textarea.value;
+
+					globals.managers.savedCommentManager.set(globals.pagePath[0] + "_" + textarea.id, savedComment);
 				}, 1000);
 			});
 		
@@ -182,7 +212,10 @@
 				let savedComment = await globals.managers.savedCommentManager.get(globals.pagePath[0] + "_" + textarea.id);
 		
 				if(savedComment != undefined)
-					textarea.value = savedComment;
+				{
+					// Check for older versions where savedComment would just be the content of the comment
+					textarea.value = savedComment.value != undefined ? savedComment.value : savedComment;
+				}
 			}
 		
 			{
