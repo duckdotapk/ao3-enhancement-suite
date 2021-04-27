@@ -109,7 +109,11 @@
 				tagLink.classList.add("aes-hide-parameter");
 
 				let rawClass = tagItem.classList[0];
-				tagLink.dataset.aesHideListId = rawClass.charAt(0).toUpperCase() + rawClass.slice(1);
+
+				if(rawClass != undefined && rawClass != "last")
+					tagLink.dataset.aesHideListId = rawClass.charAt(0).toUpperCase() + rawClass.slice(1);
+				else
+					tagLink.dataset.aesHideListId = "Freeforms";
 
 				let tag = tagLink.innerText.trim();
 
