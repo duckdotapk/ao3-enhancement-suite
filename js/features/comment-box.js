@@ -181,11 +181,23 @@
 						{
 							id: globals.pagePath[1],
 							title: document.getElementById("workskin").querySelector(".title.heading").innerText,
+							authors: [],
 						};
+
+						savedComment.work.authors = [];
+
+						for(let author of document.getElementById("workskin").querySelector(".byline.heading").querySelectorAll("a"))
+						{
+							savedComment.work.authors.push(
+								{
+									name: author.innerText,
+									url: author.getAttribute("href"),
+								});
+						}
 
 						if(globals.pagePath[2] == "chapters")
 						{
-							savedComment.chapter = 
+							savedComment.work.chapter = 
 							{
 								id: globals.pagePath[3],
 								title: document.querySelector(".chapter.preface.group").querySelector(".title").innerText,
