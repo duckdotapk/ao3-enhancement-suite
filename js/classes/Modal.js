@@ -32,6 +32,8 @@ class Modal
 		Modal.wrap.style.display = "block";
 		Modal.wrap.style.top = `${ window.scrollY.toString() }px`;
 
+		Modal.modal.classList.add("tall");
+
 		Modal.body.classList.remove("userstuff");
 		Modal.body.classList.add("aes-modal");
 
@@ -166,6 +168,9 @@ class Modal
 Modal.background = document.getElementById("modal-bg");
 
 Modal.wrap = document.getElementById("modal-wrap");
+
+Modal.modal = document.getElementById("modal");
+
 Modal.body = Modal.wrap.querySelector(".content.userstuff");
 Modal.footer = Modal.wrap.querySelector(".footer");
 Modal.closeButton = Modal.wrap.querySelector(".modal-closer");
