@@ -173,7 +173,11 @@
 		
 				timeout = setTimeout(function()
 				{
+					const url = new URL(window.location);
+
 					const savedComment = {};
+
+					savedComment.url = url.pathname + url.search;
 
 					if(globals.pagePath[0] == "works")
 					{
