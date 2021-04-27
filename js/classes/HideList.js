@@ -15,6 +15,9 @@ class HideList
 
 	static async add(id, item)
 	{
+		if(!HideList.validIds.includes(id))
+			return;
+
 		let hideList = await HideList.get(id);
 
 		if(!hideList.includes(item))
@@ -57,3 +60,13 @@ class HideList
 }
 
 HideList.storageBase = "hidelist";
+
+HideList.validIds = 
+[
+	"Authors", 
+	"Fandoms", 
+	"Warnings", 
+	"Relationships", 
+	"Characters", 
+	"Freeforms",
+];
