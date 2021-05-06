@@ -95,9 +95,9 @@
 				let details = "";
 
 				if(hours > 0)
-					details += hours.toString() + " hours and ";
+					details += hours.toString() + " hour" + (hours != 1 ? "s" : "") + " and ";
 					
-				details += minutes.toString() + " minutes";
+				details += minutes.toString() + " minute" + (minutes != 1 ? "s" : "") + "";
 
 				addStat(statList, "aes_estimated_reading_time", browser.i18n.getMessage("estimated_reading_time"), details);
 			}
