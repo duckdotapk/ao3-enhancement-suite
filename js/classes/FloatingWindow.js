@@ -1,7 +1,20 @@
 class FloatingWindow
 {
+	static get(id)
+	{
+		return FloatingWindow.windowsById[id];
+	}
+
 	constructor(options)
 	{
+		// Window IDs
+		if(options.id)
+		{
+			this.id = options.id;
+			
+			FloatingWindow.windowsById[this.id] = this;
+		}
+
 		// Create Window Elements
 		const floatingWindow = document.createElement("div");
 		floatingWindow.classList.add("aes-floating-window");
@@ -222,3 +235,4 @@ class FloatingWindow
 }
 
 FloatingWindow.windows = [];
+FloatingWindow.windowsById = {};
