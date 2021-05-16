@@ -73,6 +73,8 @@ class FloatingWindow
 				}
 
 				floatingWindowHeader.appendChild(windowControls);
+
+				this.controls = windowControls;
 			}
 	
 			floatingWindow.appendChild(floatingWindowHeader);
@@ -113,14 +115,19 @@ class FloatingWindow
 		{
 			const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // HACK
 			const floatingWindowRect = this.root.getBoundingClientRect();
+			const windowControlRect = this.controls.getBoundingClientRect();
 
-			let maxX = window.innerWidth - scrollbarWidth - floatingWindowRect.width;
-			if(maxX < 0)
-				maxX = 0;
+			let minX = -(floatingWindowRect.width) + windowControlRect.width + 30;
+			let maxX = window.innerWidth - scrollbarWidth - 30;
 
+			let minY = 0;
 			let maxY = window.innerHeight - 30;
-			if(maxY < 0)
-				maxY = 0;
+
+			if(this.root.offsetLeft < minX)
+				this.root.style.left = minX.toString() + "px";
+
+			if(this.root.offsetTop < minY)
+				this.root.style.top = minY.toString() + "px";
 
 			if(this.root.offsetLeft > maxX)
 				this.root.style.left = maxX.toString() + "px";
@@ -142,12 +149,7 @@ class FloatingWindow
 
 			// Set the element's new position
 			let newX = this.root.offsetLeft - this.pos1;
-			if(newX < 0)
-				newX = 0;
-
 			let newY = this.root.offsetTop - this.pos2;
-			if(newY < 0)
-				newY = 0;
 
 			this.root.style.left = newX.toString() + "px";
 			this.root.style.top = newY.toString() + "px";
