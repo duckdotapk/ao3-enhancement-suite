@@ -325,3 +325,15 @@ new Setting(
 	experimental: true,
 	defaultValue: false,
 });
+
+// Archive.org Integration
+new Setting(
+{
+	id: "show_archives_404",
+	category: browser.i18n.getMessage("archive_dot_org_integration"),
+	title: browser.i18n.getMessage("show_archives_404"),
+	type: "checkbox",
+	tooltip: browser.i18n.getMessage("show_archives_404_tooltip"),
+	requiresReload: true,
+	defaultValue: false,
+});

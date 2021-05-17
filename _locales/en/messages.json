@@ -632,5 +632,45 @@
 	"delete_saved_comment":
 	{
 		"message": "Permanently delete this saved comment."
+	},
+
+	"archive_dot_org_integration":
+	{
+		"message": "Archive.org Integration"
+	},
+
+	"show_archives_404":
+	{
+		"message": "Show links to archived works on 404 pages where possible."
+	},
+
+	"show_archives_404_tooltip":
+	{
+		"message": "Enabling this will show links to archived copies of deleted or otherwise unavailable works on Archive.org when they exist."
+	},
+	
+	"archives":
+	{
+		"message": "Archives"
+	},
+
+	"archives_available_404":
+	{
+		"message": "Archives for this work are available on Archive.org: "
+	},
+
+	"work":
+	{
+		"message": "Work"
+	},
+
+	"work_full":
+	{
+		"message": "Full Work"
+	},
+
+	"chapter":
+	{
+		"message": "Chapter"
 	}
 }
