@@ -55,6 +55,11 @@
 	margin: 1px;
 }
 
+.aes-floating-window .aes-floating-window-control a
+{
+	color: #ffffff;
+}
+
 .aes-floating-window .aes-floating-window-control:hover
 {
 	background: #ff0000;
