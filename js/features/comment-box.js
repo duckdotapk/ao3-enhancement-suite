@@ -14,11 +14,12 @@
 	let submit;
 
 	let fcbWindow;
+	let controlSet;
 
 	function switchToFloatingCommentBox(fcbWindow, commentBox, opacity)
 	{
 		fcbWindow.show();
-		fcbWindow.contentWrapper.appendChild(commentBox);
+		fcbWindow.content.appendChild(commentBox);
 		fcbWindow.root.style.opacity = opacity;
 	}
 	
@@ -151,7 +152,6 @@
 				footnote.classList.add("aes-hidden");
 		
 			// Feature: Additional Controls
-			let controlSet;
 			if(settings.cb_enable_additional_controls)
 			{
 				controlSet = new ControlSet();

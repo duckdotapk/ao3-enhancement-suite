@@ -81,12 +81,13 @@ class FloatingWindow
 
 			this.header = floatingWindowHeader;
 	
-			const floatingWindowContentWrapper = document.createElement("div");
-			floatingWindowContentWrapper.classList.add("aes-floating-window-content");
+			const floatingWindowContent = document.createElement("div");
+			floatingWindowContent.classList.add("aes-floating-window-content");
 
-			floatingWindow.appendChild(floatingWindowContentWrapper);
 
-			this.contentWrapper = floatingWindowContentWrapper;
+			floatingWindow.appendChild(floatingWindowContent);
+
+			this.content = floatingWindowContent;
 		}
 
 		// Make Window Draggable
