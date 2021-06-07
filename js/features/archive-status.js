@@ -21,7 +21,7 @@
 				statuses.push(
 				{
 					type: browser.i18n.getMessage("work"),
-					status: status,
+					snapshot: status.archived_snapshots.closest,
 				});
 			}
 		}
@@ -36,7 +36,7 @@
 				statuses.push(
 				{
 					type: browser.i18n.getMessage("work_full"),
-					status: status,
+					snapshot: status.archived_snapshots.closest,
 				});
 			}
 		}
@@ -52,7 +52,7 @@
 				statuses.push(
 				{
 					type: browser.i18n.getMessage("chapter"),
-					status: status,
+					snapshot: status.archived_snapshots.closest,
 				});
 			}
 		}
@@ -68,16 +68,14 @@
 
 	new Feature("archive-status", async function(settings)
 	{
-		if(globals.pagePath[0] == "works" && globals.pagePath[1] != "search")
+		if(globals.pagePath[0] == "works" && globals.pagePath[1] != "search" && (settings.show_archives_404))
 		{
 			mainElement = document.getElementById("main");
 
-			// TODO: Show similar stuff on non-404 work pages
+			const archives = await getArchives(globals.pagePath[1], globals.pagePath[3]);
 	
 			if(settings.show_archives_404 && mainElement.classList.contains("error-404"))
 			{
-				const archives = await getArchives(globals.pagePath[1], globals.pagePath[3]);
-
 				if(archives.length > 0)
 				{
 					const heading = document.createElement("h2");
@@ -96,10 +94,59 @@
 					{
 						const link = document.createElement("a");
 						link.innerText = archive.type;
-						link.setAttribute("href", archive.status.archived_snapshots.closest.url);
+						link.setAttribute("href", archive.snapshot.url);
+						link.setAttribute("target", "_blank");
 
 						paragraph.appendChild(link);
 					}
+				}
+			}
+			else
+			{
+				const meta = document.querySelector(".work.meta.group");
+
+				{
+					const descriptionTerm = document.createElement("dt");
+					descriptionTerm.classList.add("aes-archives");
+					descriptionTerm.innerText = "Archive.org Archives: ";
+
+					meta.appendChild(descriptionTerm);
+
+					const descriptionDetails = document.createElement("dd");
+					descriptionDetails.classList.add("aes-archives");
+					
+					if(archives.length > 0)
+					{
+						const list = document.createElement("ul");
+						list.classList.add("commas");
+
+						for(let [archiveIndex, archive] of archives.entries())
+						{
+							const item = document.createElement("li");
+
+							if(archiveIndex == archives.length - 1)
+								item.classList.add("last");
+
+							{
+								const link = document.createElement("a");
+								link.innerText = archive.type;
+								link.setAttribute("href", archive.snapshot.url);
+								link.setAttribute("target", "_blank");
+		
+								item.appendChild(link);
+							}
+
+							list.appendChild(item);
+						}
+
+						descriptionDetails.appendChild(list);
+					}
+					else
+					{
+						descriptionDetails.innerText = "No archives available";
+					}
+
+					meta.appendChild(descriptionDetails);
 				}
 			}
 		}
