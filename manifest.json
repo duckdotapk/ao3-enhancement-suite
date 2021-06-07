@@ -84,8 +84,7 @@
 				"js/nav-dropdown/manage-hide-lists.js",
 				"js/nav-dropdown/manage-saved-comments.js",
 				"js/nav-dropdown/manage-extension-data.js",
-
-				"js/features/archive-status.js",
+				
 				"js/features/hide-works.js",
 				"js/features/tag-collapse.js",
 				"js/features/work-stats.js"

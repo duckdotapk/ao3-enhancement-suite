@@ -327,6 +327,7 @@ new Setting(
 });
 
 // Archive.org Integration
+/*
 new Setting(
 {
 	id: "show_archives_404",
@@ -337,3 +338,4 @@ new Setting(
 	requiresReload: true,
 	defaultValue: false,
 });
+*/
