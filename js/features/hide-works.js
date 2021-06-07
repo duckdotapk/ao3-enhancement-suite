@@ -153,48 +153,55 @@
 			if(blockReasons.length == 0)
 				continue;
 
-			let controlContainer = document.createElement("div");
-			controlContainer.classList.add("aes-hidden-work-controls");
-
-			let hiddenContainer = document.createElement("div");
-			hiddenContainer.classList.add("aes-hidden");
-			
+			if(settings.hide_works_mode == "collapse")
 			{
-				let controlHeader = document.createElement("h4");
+				let controlContainer = document.createElement("div");
+				controlContainer.classList.add("aes-hidden-work-controls");
+	
+				let hiddenContainer = document.createElement("div");
+				hiddenContainer.classList.add("aes-hidden");
 				
-				if(workType == "bookmark")
-					controlHeader.innerText = browser.i18n.getMessage("hidden_bookmark");
-				else if(workType == "series")
-					controlHeader.innerText = browser.i18n.getMessage("hidden_series");
-				else
-					controlHeader.innerText = browser.i18n.getMessage("hidden_work");
-
-				if(showReasons)
-					controlHeader.innerText += " - " + blockReasons.join(" - ");
-
-				controlContainer.appendChild(controlHeader);
-
-				let controlSet = new ControlSet();
-
-				// TODO: tooltip?
-				controlSet.addControl("Show", undefined, function(event, link)
 				{
-					hiddenContainer.classList.toggle("aes-hidden");
-
-					if(link.innerText == browser.i18n.getMessage("show"))
-						link.innerText = browser.i18n.getMessage("hide")
+					let controlHeader = document.createElement("h4");
+					
+					if(workType == "bookmark")
+						controlHeader.innerText = browser.i18n.getMessage("hidden_bookmark");
+					else if(workType == "series")
+						controlHeader.innerText = browser.i18n.getMessage("hidden_series");
 					else
-						link.innerText = browser.i18n.getMessage("show")
-				});
+						controlHeader.innerText = browser.i18n.getMessage("hidden_work");
+	
+					if(showReasons)
+						controlHeader.innerText += " - " + blockReasons.join(" - ");
+	
+					controlContainer.appendChild(controlHeader);
+	
+					let controlSet = new ControlSet();
+	
+					// TODO: tooltip?
+					controlSet.addControl("Show", undefined, function(event, link)
+					{
+						hiddenContainer.classList.toggle("aes-hidden");
+	
+						if(link.innerText == browser.i18n.getMessage("show"))
+							link.innerText = browser.i18n.getMessage("hide")
+						else
+							link.innerText = browser.i18n.getMessage("show")
+					});
+	
+					controlContainer.appendChild(controlSet.element);
+				}
+	
+				while(work.children.length > 0)
+					hiddenContainer.appendChild(work.firstChild);
 
-				controlContainer.appendChild(controlSet.element);
+				work.appendChild(controlContainer);
+				work.appendChild(hiddenContainer);
 			}
-
-			while(work.children.length > 0)
-				hiddenContainer.appendChild(work.firstChild);
-
-			work.appendChild(controlContainer);
-			work.appendChild(hiddenContainer);
+			else if(settings.hide_works_mode == "remove")
+			{
+				work.classList.add("aes-hidden");
+			}
 		}
 	}
 

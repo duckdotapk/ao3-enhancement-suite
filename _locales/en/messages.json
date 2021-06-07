@@ -381,12 +381,12 @@
 
 	"hidden_aw_show_reasons":
 	{
-		"message": "Show hide list matches when hiding works."
+		"message": "Show hide list matches when collapsing works."
 	},
 
 	"hidden_aw_show_reasons_tooltip":
 	{
-		"message": "Shows what authors, fandoms and tags matched your hide lists when hiding works."
+		"message": "Shows what authors, fandoms and tags matched your hide lists when hiding works.\n\nRequires the above setting to be set to \"Collapse\"."
 	},
 
 	"hide_specific_authors":
@@ -672,5 +672,15 @@
 	"chapter":
 	{
 		"message": "Chapter"
+	},
+
+	"hide_works_mode":
+	{	
+		"message": "Hide works by"
+	},
+
+	"hide_works_mode_tooltip":
+	{
+		"message": "This setting affects how works that match your hide lists are hidden.\n\n\"Collapse\" puts them into blocks you can choose to expand.\n\n\"Hide\" hides them from view entirely.\""
 	}
 }

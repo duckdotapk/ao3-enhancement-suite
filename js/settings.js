@@ -154,6 +154,25 @@ new Setting(
 		],
 	},
 });
+
+new Setting(
+{
+	id: "hide_works_mode", 
+	category: browser.i18n.getMessage("hidden_authors_and_works"),
+	title: browser.i18n.getMessage("hide_works_mode"), 
+	type: "select", 
+	tooltip: browser.i18n.getMessage("hide_works_mode_tooltip"),
+	defaultValue: "collapse", 
+	requiresReload: true,
+	extraData:
+	{
+		options:
+		[
+			{ value: "collapse", text: "Collapsing them" },
+			{ value: "remove", text: "Removing them" },
+		],
+	},
+});
 	
 new Setting(
 {
