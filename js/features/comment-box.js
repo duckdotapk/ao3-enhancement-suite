@@ -244,7 +244,7 @@
 		
 			if(settings.save_comments_to_storage)
 			{
-				let id = multiChapterWork ? globals.pagePath[3] : globals.pagePath[1];
+				let id = multiChapterWork && globals.pagePath[2] == "chapters" ? globals.pagePath[3] : globals.pagePath[1];
 
 				let savedComment = await globals.managers.savedCommentManager.get(savedCommentIdBase + id);
 
