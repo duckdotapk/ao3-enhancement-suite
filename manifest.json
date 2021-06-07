@@ -75,7 +75,8 @@
 			"matches": 
 			[
 				"*://*.archiveofourown.org/admin_posts/*",
-				"*://*.archiveofourown.org/works/*"
+				"*://*.archiveofourown.org/works/*",
+				"*://*.archiveofourown.org/chapters/*"
 			],
 			"css":
 			[
