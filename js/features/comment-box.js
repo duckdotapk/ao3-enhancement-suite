@@ -122,8 +122,6 @@
 					},
 					onHide: function(window)
 					{	
-						console.log("salad");
-
 						if(notice != undefined)
 							notice.style.width = null;
 
