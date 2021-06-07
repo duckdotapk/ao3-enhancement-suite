@@ -314,6 +314,7 @@ new Setting(
 });
 
 // Chapter Stats
+/*
 new Setting(
 {
 	id: "show_chapter_word_counts",
@@ -325,6 +326,7 @@ new Setting(
 	experimental: true,
 	defaultValue: false,
 });
+*/
 
 // Archive.org Integration
 /*
