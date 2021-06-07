@@ -44,3 +44,10 @@
 {
 	display: none;
 }
+
+.aes-fcb-window .notice
+{
+	width: 500px;
+
+	white-space: normal;
+}

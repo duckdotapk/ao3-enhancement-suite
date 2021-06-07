@@ -102,6 +102,7 @@
 			fieldset = commentBox.querySelector("fieldset");
 			heading = fieldset.querySelector("h4.heading");
 			footnote = fieldset.querySelector(".footnote");
+			notice = fieldset.querySelector(".notice");
 			textarea = fieldset.querySelector("textarea");
 			submit = fieldset.querySelector(".submit.actions > input");
 		
@@ -114,14 +115,40 @@
 					[ 
 						"aes-fcb-window" 
 					],
+					onShow: function(window)
+					{
+						if(notice != undefined)
+							notice.style.width = textarea.style.width;
+					},
 					onHide: function(window)
-					{			
+					{	
+						console.log("salad");
+
+						if(notice != undefined)
+							notice.style.width = null;
+
+						textarea.style.width = null;
+
 						Setting.set("enable_floating_comment_box", false);
 					},
 				});
 		
 			if(settings.enable_floating_comment_box)
 				switchToFloatingCommentBox(fcbWindow, commentBox, settings.cb_floating_opacity);
+
+			// HACK: Resize the notice with the textarea!
+			//			But only when in a floating window.
+			if(notice != undefined)
+			{
+				let resizeObserver = new ResizeObserver(function(entries)
+				{
+					if(!fcbWindow.root.classList.contains("aes-hidden"))
+						for(let entry of entries)
+							notice.style.width = entry.contentBoxSize.inlineSize.toString() + "px";
+				});
+	
+				resizeObserver.observe(textarea);
+			}
 			
 			const fcbRecommendation = document.createElement("p");
 			fcbRecommendation.classList.add("footnote");
