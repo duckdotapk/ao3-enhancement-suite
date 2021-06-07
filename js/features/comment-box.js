@@ -89,6 +89,10 @@
 	new Feature("comment-box", 
 		async function(settings)
 		{
+			let multiChapterWork = document.querySelector("dd.chapters").innerText != "1/1";
+
+			let savedCommentIdBase = globals.pagePath[0] + "_comment_content_for_";
+
 			commentBox = document.getElementById("add_comment_placeholder");
 			if(commentBox == null)
 				return;
@@ -211,7 +215,7 @@
 								});
 						}
 
-						if(globals.pagePath[2] == "chapters")
+						if(document.querySelector("dd.chapters").innerText != "1/1")
 						{
 							savedComment.work.chapter = 
 							{
@@ -231,14 +235,19 @@
 
 					savedComment.value = textarea.value;
 
-					globals.managers.savedCommentManager.set(globals.pagePath[0] + "_" + textarea.id, savedComment);
+					if(multiChapterWork && globals.pagePath[2] == "chapters")
+						globals.managers.savedCommentManager.set(savedCommentIdBase + globals.pagePath[3], savedComment);
+					else
+						globals.managers.savedCommentManager.set(savedCommentIdBase + globals.pagePath[1], savedComment);
 				}, 1000);
 			});
 		
 			if(settings.save_comments_to_storage)
 			{
-				let savedComment = await globals.managers.savedCommentManager.get(globals.pagePath[0] + "_" + textarea.id);
-		
+				let id = multiChapterWork ? globals.pagePath[3] : globals.pagePath[1];
+
+				let savedComment = await globals.managers.savedCommentManager.get(savedCommentIdBase + id);
+
 				if(savedComment != undefined)
 				{
 					// Check for older versions where savedComment would just be the content of the comment
@@ -265,7 +274,10 @@
 		
 					fakeSubmit.value = fakeSubmit.dataset.disableWith;
 		
-					await globals.managers.savedCommentManager.delete(textarea.id);
+					if(multiChapterWork && globals.pagePath[2] == "chapters")
+						await globals.managers.savedCommentManager.delete(savedCommentIdBase + globals.pagePath[3]);
+					else
+						await globals.managers.savedCommentManager.delete(savedCommentIdBase + globals.pagePath[1]);
 		
 					submit.click();
 				});
