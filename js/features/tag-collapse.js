@@ -3,7 +3,7 @@
 	// Feature
 	//
 
-	new Feature("tag-collapse", async function(settings)
+	new Feature("tag-collapse", undefined, async function(settings)
 	{
 		if(!settings.enable_tag_collapse)
 			return;

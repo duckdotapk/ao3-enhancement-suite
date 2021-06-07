@@ -86,7 +86,7 @@
 	// Feature
 	//
 
-	new Feature("comment-box", 
+	new Feature("comment-box", [ ["admin_posts"], ["works"], ["chapters"] ],
 		async function(settings)
 		{
 			let multiChapterWork = document.querySelector("dd.chapters").innerText != "1/1";

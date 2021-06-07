@@ -64,7 +64,7 @@
 	// Feature
 	//
 
-	new Feature("work-stats", async function(settings)
+	new Feature("work-stats", undefined, async function(settings)
 	{
 		for(let statList of statLists)
 		{

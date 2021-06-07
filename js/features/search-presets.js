@@ -305,7 +305,7 @@
 	// Feature
 	//
 
-	new Feature("search-presets",
+	new Feature("search-presets", [ ["works", "search"] ],
 		async function(settings)
 		{
 			if(!settings.enable_search_presets)

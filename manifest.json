@@ -39,7 +39,9 @@
 			"css":
 			[
 				"css/global.css",
-				"css/floating-window.css"
+				"css/floating-window.css",
+
+				"css/features/comment-box.css"
 			],
 			"js":
 			[
@@ -66,64 +68,13 @@
 				"js/nav-dropdown/manage-saved-comments.js",
 				"js/nav-dropdown/manage-extension-data.js",
 				
+				"js/features/comment-box.js",
 				"js/features/hide-works.js",
+				"js/features/preferences.js",
+				"js/features/search-presets.js",
 				"js/features/tag-collapse.js",
-				"js/features/work-stats.js"
-			]
-		},
-		{
-			"matches": 
-			[
-				"*://*.archiveofourown.org/admin_posts/*",
-				"*://*.archiveofourown.org/works/*",
-				"*://*.archiveofourown.org/chapters/*"
-			],
-			"css":
-			[
-				"css/features/comment-box.css"
-			],
-			"js": 
-			[
-				"js/features/comment-box.js"
-			]
-		},
-		{
-			"matches": 
-			[
-				"*://*.archiveofourown.org/works/*"
-			],
-			"js": 
-			[
-				"js/features/chapter-stats.js"
-			]
-		},
-		{
-			"matches": 
-			[
-				"*://*.archiveofourown.org/works/search*"
-			],
-			"js": 
-			[
-				"js/features/search-presets.js"
-			]
-		},
-		{
-			"matches":
-			[
-				"*://*.archiveofourown.org/users/*/preferences"
-			],
-			"js":
-			[				
-				"js/features/preferences.js"
-			]
-		},
-		{
-			"matches":
-			[
-				"*://*.archiveofourown.org/*"
-			],
-			"js":
-			[
+				"js/features/work-stats.js",
+
 				"js/execute-features.js"
 			]
 		}

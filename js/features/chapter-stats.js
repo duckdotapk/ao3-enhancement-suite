@@ -38,7 +38,7 @@
 	// Feature
 	//
 
-	new Feature("chapter-stats", async function(settings)
+	new Feature("chapter-stats", [ ["works"], ["chapters"] ], async function(settings)
 	{
 		if(settings.show_chapter_word_counts)
 		{

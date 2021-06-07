@@ -66,7 +66,7 @@
 
 	let mainElement;
 
-	new Feature("archive-status", async function(settings)
+	new Feature("archive-status", undefined, async function(settings)
 	{
 		if(globals.pagePath[0] == "works" && globals.pagePath[1] != "search" && (settings.show_archives_404))
 		{

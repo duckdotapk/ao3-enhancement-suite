@@ -1,5 +1,5 @@
 {
-	new Feature("preferences", async function(setting)
+	new Feature("preferences", [ ["users", undefined, "preferences"] ], async function(setting)
 	{
 		const acronym = browser.i18n.getMessage("name_acronym");
 
