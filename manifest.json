@@ -17,25 +17,6 @@
 		"96": "icons/logo_96.png"
 	},
 
-	"options_ui":
-	{
-		"browser_style": true,
-		"chrome_style": true,
-		"open_in_tab": false,
-		"page": "pages/settings.html"
-	},
-
-	"browser_action":
-	{
-		"browser_style": true,
-		"default_popup": "pages/settings.html",
-		"default_icon":
-		{
-			"16": "icons/logo_16.png",
-			"32": "icons/logo_32.png"
-		}
-	},
-
 	"background":
 	{
 		"scripts":
