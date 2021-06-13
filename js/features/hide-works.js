@@ -21,6 +21,10 @@
 
 	for(let work of works)
 	{
+		// Skip the users own works
+		if(!settings.hide_own_works && work.classList.contains("own"))
+			continue;
+
 		let workType;
 		if(work.classList.contains("bookmark"))
 			workType = "bookmark";
