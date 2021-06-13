@@ -60,6 +60,35 @@ Clone/fork this repository and load the addon into your web browser. There are n
 See [LICENSE](/LICENSE).
 
 # Version History
+## 1.4.1
+
+**This update was released on June 7th, 2021.**
+
+Removed an unused permission.
+
+## 1.4
+
+**This update was released on June 7th, 2021.**
+
+- Added support for importing .json files as well as .ao3es files to the Import All Data feature.
+	- This is because Chrome sucks and does not respect the extensions .ao3es extension when exporting.
+- Added a new Blockquote formatting option for the "Inserted text formatting" setting.
+- Made hidden crossovers show the amount of fandoms they have in the reason text.
+- Removed additional work stats from draft pages as the word count is not available to work them out.
+- Changed the "Tag Collapse" setting to be disabled by default.
+- Overhauled the text of the settings window to feel more like AO3's preferences.
+	- This means its a bit wordier but also more clear about the functionality at first glance.
+- Fixed a bug where bookmarker tags existing on the page broke hiding works, series & bookmarks.
+	- These should now work properly and are considered Additional Tags for blocking purposes.
+- Added the ability to manage currently saved comments via the "Manage Saved Comments" modal.
+	- Note that comments saved in older versions will have an internal name displayed on this window.
+	- This is because older versions did not save title or URL information with comments.
+- Added the ability to close the floating comment box with a new close button.
+	- You can also switch back to it without going into the extension's settings via a new link below the comment box.
+- Fixed a bug where the estimated reading time work stat would read "hours" even when it was only 1 hour.
+- Fixed a bug where saved comments would not be deleted after posting them.
+- Fixed a bug where the moderated comments message stretched the floating comment box window.
+
 ## 1.3
 
 **This update was released on April 22nd, 2021.**
